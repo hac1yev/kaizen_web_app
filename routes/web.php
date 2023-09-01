@@ -27,7 +27,7 @@ use App\Http\Controllers\Front\UsersController\UsersController;
 use App\Http\Controllers\Front\DetailController\DetailController;
 use App\Http\Controllers\Front\AccountController\AccountController;
 use App\Http\Controllers\Front\PostFrontController\PostFrontController;
-use App\Http\Controllers\SearchController as PostSearchController;
+use App\Http\Controllers\SearchController\SearchController as PostSearchController;
 
 use Illuminate\Support\Facades\Route;
 
