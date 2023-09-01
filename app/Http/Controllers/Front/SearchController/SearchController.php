@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\SearchController;
-
+namespace App\Http\Controllers\Front\SearchController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Posts;
 use Illuminate\Support\Str;
