@@ -1,0 +1,18 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"abdulkadirbudak_com_kaizen"},
+{"type":"table","name":"why_deleted","database":"abdulkadirbudak_com_kaizen","data":
+[
+{"id":"1","reason":"nem ureyimden geldi\r\n","user":"78"},
+{"id":"2","reason":"YOXDUR","user":"167"},
+{"id":"3","reason":"Anlamadim ne? \r\no uzden !","user":"240"},
+{"id":"4","reason":"Anlamadim ne? \r\no uzden !","user":"240"},
+{"id":"5","reason":"xxxxx","user":"360"},
+{"id":"6","reason":"Səbəb","user":"76"},
+{"id":"7","reason":"Bilmədən açmışam","user":"514"},
+{"id":"8","reason":"Dərs yoxdur ","user":"521"},
+{"id":"9","reason":"Ehtiyacım yoxdur ","user":"675"},
+{"id":"10","reason":"test ucun","user":"767"}
+]
+}
+]

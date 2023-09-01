@@ -1,0 +1,20 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"abdulkadirbudak_com_kaizen"},
+{"type":"table","name":"quote","database":"abdulkadirbudak_com_kaizen","data":
+[
+{"id":"7","content":"&quot;“Uğursuzluq – nələrisə yenidən, daha müdrik şəkildə başlamaq imkanıdır”&quot;","author":"&quot;Henri Ford&quot;","created":"2022-09-16 16:23:25"},
+{"id":"8","content":"&quot;“İnsan öyrənməyi dayandırdığı gün yaşlanır”&quot;","author":"&quot;Henri Ford&quot;","created":"2022-09-16 16:23:32"},
+{"id":"9","content":"&quot;“Səhv etməmiş biri, heç vaxt cəhd etməmiş biridir”&quot;","author":"&quot;Albert Eynşteyn&quot;","created":"2022-09-16 16:24:20"},
+{"id":"10","content":"&quot;“Dayanmadığın müddətcə nə qədər asta getdiyin önəmli deyil”&quot;","author":"&quot;Konfutsi&quot;","created":"2022-09-16 16:24:11"},
+{"id":"11","content":"&quot;“Bildiklərimiz bir damla, bilmədiklərimiz isə bir okeandır”&quot;","author":"&quot;İsaak Nyuton&quot;","created":"2022-09-16 16:22:22"},
+{"id":"12","content":"&quot;“Əgər kimsə bacarıbsa sən də bacaracaqsan, əgər heç kim bacarmayıbsa sən ilk olacaqsan”&quot;","author":"&quot;Sokrat&quot;","created":"2022-09-16 16:22:12"},
+{"id":"13","content":"&quot;“Sabahı gözəlləşdirməyin tək yolu, bu gün nəyi səhv etdiyini bilməkdir”&quot;","author":"&quot;Robin Şarma&quot;","created":"2022-09-16 16:22:00"},
+{"id":"14","content":"&quot;“Batan günəş üçün ağlamayın! Yenidən doğulduğunda nə edəcəyinizə qərar verin”&quot;","author":"&quot;Dale Karnegie&quot;","created":"2022-09-16 16:21:51"},
+{"id":"15","content":"&quot;“Heç vaxt unutmayın ki, siz tamamilə bənzərsizsiniz. Eynilə hamı kimi”&quot;","author":"&quot;Margaret Mead&quot;","created":"2022-09-16 16:35:58"},
+{"id":"16","content":"&quot;“Dünya hamıya çatacaq qədər böyükdür. Başqasının yerini tutmağa çalışmaqdansa, öz yerin haqqında fikirləş”&quot;","author":"&quot;Çarli Çaplin&quot;","created":"2022-09-16 16:35:15"},
+{"id":"17","content":"&quot;“Xəyal edə biləcəyin hər şey gerçəkdir”&quot;","author":"&quot;Pablo Picasso&quot;","created":"2022-09-16 16:34:36"},
+{"id":"18","content":"&quot;“Çox çalışın, əylənin, tarix yazın”&quot;","author":"&quot;Jeff Bezos&quot;","created":"2022-09-16 16:43:33"}
+]
+}
+]
