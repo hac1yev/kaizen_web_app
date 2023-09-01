@@ -5,28 +5,25 @@
     <section class="profile-information-section row m-0 pt-4">
         <div class="profile-information-wrapper col-md-4 pl-4">   
             <div class="profile-photo-img">
-                <img src="back/assets/img/profile/profil-photo.png" alt="profil-photo" />
+                <img src="{{asset($users->image)}}" alt="profil-photo" />
             </div>
             <h6>
                 {{$users->fullname}}
-                <img src="back/assets/img/profile/profile-pen.png" alt="profile-pen" />
+                <a href="{{route('editprofile',$users->id)}}"><img src="back/assets/img/profile/profile-pen.png" alt="profile-pen" /></a>
                 <span>Yazıçı</span>
             </h6>
             <div class="profile-info">
                 <div class="profile-mail">
                     <img src="back/assets/img/profile/profile-mail.png" alt="profile-mail" />
                     <span>{{$users->email}}</span>
-                    <img src="back/assets/img/profile/profile-pen.png" alt="profile-pen" />
                 </div>
                 <div class="profile-person">
                     <img src="back/assets/img/profile/profile-person.png" alt="profile-person" />
                     <span>{{$users->username}}</span>
-                    <img src="back/assets/img/profile/profile-pen.png" alt="profile-pen" />
                 </div>
                 <div class="profile-calendar">
                     <img src="back/assets/img/profile/profile-calendar.png" alt="profile-calendar" />
                     <span>{{$users->created_at}}</span>
-                    <img src="back/assets/img/profile/profile-pen.png" alt="profile-pen" />
                 </div>
                 <div class="profile-num">
                     <img src="back/assets/img/profile/profile-num.png" alt="profile-num" />

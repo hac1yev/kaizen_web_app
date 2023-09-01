@@ -154,7 +154,11 @@ Route::get('/seyahet', [TravelController::class, "travel"])->name('travel');
 Route::get('/hekayeler', [StoryController::class, "story"])->name('story');
 Route::get('/filmler', [FilmController::class, "film"])->name('film');
 Route::get('/biznes-dunyasi', [BiznesController::class, "biznes"])->name('biznes');
+
+
 Route::get('/profil', [ProfilController::class, "profil"])->name('profil');
+Route::get('/editprofile/{id}', [ProfilController::class, "editprofile"])->name('editprofile');
+Route::post('/updateprofile', [ProfilController::class, "updateprofile"])->name('updateprofile');
 
 
 Route::get('/settings', [SettingController::class, "settings"])->name('settings');
