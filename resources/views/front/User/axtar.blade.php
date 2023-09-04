@@ -10,15 +10,19 @@
                         <input type="text" placeholder="Axtar" name="searching" value="{{ (isset($searchingVal)) ? $searchingVal : null }}" />
                     </form>
                 </div>
-                @foreach ($users as $u)
-                    <div class="col-md-3 col-sm-6 mt-2">
-                        <div class="card">
-                            <img class="card-img" src="{{$u->image}}" alt="user1" />
-                            <h6 class="card-title">{{$u->fullname}}</h6>
-                            <span>{{$u->username}}</span>
+                @if (($searchingVal))
+                    @foreach ($users as $u)
+                        <div class="col-md-3 col-sm-6 mt-2">
+                            <div class="card">
+                                <img class="card-img" src="{{$u->image}}" alt="user1" />
+                                <h6 class="card-title">{{$u->fullname}}</h6>
+                                <span>{{$u->username}}</span>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <h1>Belə bir istifadəçi yoxdur</h1>
+                @endif
             </div>
         </div>
     </section>

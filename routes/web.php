@@ -173,6 +173,9 @@ Route::get('/subc', [SettingController::class, "subc"])->name('subc');
 
 
 Route::get('/users', [UsersController::class, "user"])->name('user');
+Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
+
+
 Route::get('/post/{id}', [DetailController::class, "detail"])->name('detail');
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
 

@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+            @endforeach
             @else
                    <h1>fdssdsdfsf </h1>        
             @endif
@@ -78,32 +78,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('back/assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('back/assets/js/app.js') }}"></script>
 
-<script>
-    $(".owl-carousel").owlCarousel({
-        loop: true,
-        margin: 10,
-        responsiveClass: true,
-        items: 1,
-        nav: true,
-        navText: [
-            "<img src='{{ asset('back/assets/img/paper/navText.png') }}' />",
-            "<img src='{{ asset('back/assets/img/paper/navText.png') }}' />",
-        ],
-        navClass: ["owl-prev", "owl-next"],
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 1,
-            },
-            1000: {
-                items: 1,
-            },
-        },
-    });
-</script>
+
 @endsection
