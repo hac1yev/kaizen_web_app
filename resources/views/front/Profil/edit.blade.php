@@ -35,16 +35,18 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form>
                                                                 <select style="width: 100%; padding: 10px" name="change-image" id="change-image">
-                                                                    <option value="">Avatarı seç</option>
+                                                                    <option value="" disabled>Avatarı seç</option>
                                                                 </select>
                                                                 <div id="selected-img"></div>
-                                                            </form>
+                                                                <button class="btn btn-primary deyis" id="submit-change-img" onclick="saveSelectedAvatar()">Dəyiş</button>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="selected-avatar-url" id="selected-avatar-url" value="">
+
                                             <input type="file" id="fileInput" class="custom-file-input" style="display: none;">
                                             
                                                             
@@ -104,6 +106,17 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        function saveSelectedAvatar() {
+        let selectedValue = document.getElementById('change-image').value;
+
+        if (selectedValue) {
+            document.getElementById('selected-avatar-url').value = selectedValue;
+            document.getElementById('profile-form').submit();
+        }
+    }
+
+    </script>
+    <script>
         function chooseOption(option) {
             if (option === 'change-img-new') {
                 document.getElementById("fileInput").click();
@@ -125,7 +138,6 @@
             }
         }
 
-        // Seçilen avatarı göster
         document.getElementById('change-image').addEventListener('change', function() {
             let selectedValue = this.value;
             let selectedImgDiv = document.getElementById('selected-img');

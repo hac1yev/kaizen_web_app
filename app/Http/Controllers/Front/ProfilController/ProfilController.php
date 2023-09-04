@@ -82,6 +82,11 @@ class ProfilController extends Controller
                 $name = $directory.$name;
                 $user->image = $name;
             }
+            $selectedAvatarUrl = $request->input('selected-avatar-url');
+            if ($selectedAvatarUrl) {
+                $user->image = $selectedAvatarUrl;
+            }
+            
             $user->save();
     
             return redirect()->route('profil')->with('success', 'Profiliniz uğurla yeniləndi');
