@@ -56,8 +56,19 @@
                             </div>
                             <div class="blog-det-2">
                                 <a href="{{route('detail', $fav->id)}}"style="color: #020202; text-decoration:none">
-                                    {{ htmlspecialchars_decode($fav->post_title) }}</a>
-                                <p>{!! htmlspecialchars_decode($fav->description) !!}</p>
+                                    @if(mb_strlen($fav->post_title) > 20)
+                                        {{ html_entity_decode(mb_substr($fav->post_title, 0, 20)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($fav->post_title) !!}
+                                    @endif
+                                </a>
+                                <p>
+                                    @if(mb_strlen($fav->description) > 60)
+                                        {{ html_entity_decode(mb_substr($fav->description, 0, 60)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($fav->description) !!}
+                                    @endif
+                                </p>
                             </div>
                             <div class="blog-det-3">
                                     <a href="{{route('detail', $fav->id)}}">
@@ -165,8 +176,19 @@
                         <div class="blog-det-2">
 
                             <a href="{{route('detail', $m->id)}}"style="color: #020202; text-decoration:none">
-                                {{ htmlspecialchars_decode($m->post_title) }}</a>
-                            <p>{!! htmlspecialchars_decode($m->description) !!}</p>
+                                @if(mb_strlen($m->post_title) > 20)
+                                    {{ html_entity_decode(mb_substr($m->post_title, 0, 20)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($m->post_title) !!}
+                                @endif
+                            </a>
+                            <p>
+                                @if(mb_strlen($m->description) > 60)
+                                    {{ html_entity_decode(mb_substr($m->description, 0, 60)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($m->description) !!}
+                                @endif
+                            </p>
                         </div>
                         <div class="blog-det-3">
                             <a href="{{route('detail', $m->id)}}">

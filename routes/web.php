@@ -149,6 +149,11 @@ Route::middleware('isLogout')->group(function () {
 
 
 Route::get('/', [İndexController::class, "index"])->name('index');
+Route::post('/indexlike', [İndexController::class, 'like'])->name('indexlike');
+Route::post('/indexdislike', [İndexController::class, 'dislike'])->name('indexdislike');
+Route::post('/indexbook', [İndexController::class, 'book'])->name('indexbook');
+Route::post('/indexdisbook', [İndexController::class, 'disbook'])->name('indexdisbook');
+
 
 Route::get('/ferdi-inkisaf', [InkisafController::class, "ferdi"])->name('ferdi');
 Route::get('/ferdi-inkisaf/hamisi', [InkisafController::class, "all"])->name('inkisafall');
@@ -222,4 +227,10 @@ Route::get('/logout', [AccountController::class, "logout"])->name('logouts');
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
+
+
 Route::get('/search', [PostSearchController::class, "action"])->name('search');
+Route::post('/searchlike', [PostSearchController::class, 'like'])->name('searchlike');
+Route::post('/searchdislike', [PostSearchController::class, 'dislike'])->name('searchdislike');
+Route::post('/searchbook', [PostSearchController::class, 'book'])->name('searchbook');
+Route::post('/searchdisbook', [PostSearchController::class, 'disbook'])->name('searchdisbook');

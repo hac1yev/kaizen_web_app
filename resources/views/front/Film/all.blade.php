@@ -34,10 +34,18 @@
                         </div>
                         <div class="paper-blog2-content">
                             <a href="{{route('detail', $post->id)}}" style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($post->post_title) !!}</a>
-                            <p>
-                                {!! htmlspecialchars_decode($post->description) !!}
-                            </p>
+                                @if(mb_strlen($post->post_title) > 40)
+                                    {{ html_entity_decode(mb_substr($post->post_title, 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($post->post_title) !!}
+                                @endif
+                                <p>
+                                    @if(mb_strlen($post->description) > 80)
+                                        {{ html_entity_decode(mb_substr($post->description, 0, 80)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($post->description) !!}
+                                    @endif
+                                </p>
                         </div>
                         <div class="paper-blog2-button">
                             <a href="{{route('detail', $post->id)}}"><button>
@@ -52,10 +60,12 @@
                                         alt="look" />
                                         {{$post->view}}
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}"
-                                    alt="heart" />
-                                <img src="{{ asset('back/assets/img/save.png') }}"
-                                    alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $post->id }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $post->id }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $post->id }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $post->id }})" >
+
                             </div>
                         </div>
                     </div>
@@ -75,10 +85,114 @@
 
 @section('js')
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('back/assets/js/app.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('back/assets/js/app.js') }}"></script>
+
+    <script>
+        function likePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('searchlike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#likeButton_' + postId).hide();
+                    $('#dislikeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function dislikePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('searchdislike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#dislikeButton_' + postId).hide();
+                    $('#likeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function bookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('searchbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#bookButton_' + postId).hide();
+                    $('#disbookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function disbookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('searchdisbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#disbookButton_' + postId).hide();
+                    $('#bookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
 
 
 @endsection

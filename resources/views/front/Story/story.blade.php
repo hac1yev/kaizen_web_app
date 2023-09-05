@@ -318,9 +318,18 @@
                             </div>
                             <div class="paper-blog2-content">
                                 <a href="{{ route('detail', ['id' => $story[7]['id']]) }}" style="color: #020202; text-decoration:none">
-                                    {!! htmlspecialchars_decode($story[7]['post_title'])!!}</a>
+                                    @if(mb_strlen($story[7]['post_title']) > 40)
+                                        {{ html_entity_decode(mb_substr($story[7]['post_title'], 0, 40)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($story[7]['post_title']) !!}
+                                    @endif
+                                </a>
                                 <p>
-                                    {!! htmlspecialchars_decode($story[7]['description'])!!}
+                                    @if(mb_strlen($story[7]['description']) > 100)
+                                        {{ html_entity_decode(mb_substr($story[7]['description'], 0, 100)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($story[7]['description']) !!}
+                                    @endif
                                 </p>
                             </div>
                             <div class="paper-blog2-button">
@@ -387,9 +396,18 @@
                         <div class="paper-blog2-content">
                              
                             <a href="{{ route('detail', ['id' => $story[9]['id']]) }}" style="color: #020202; text-decoration:none">
-                            {!! htmlspecialchars_decode($story[9]['post_title'])!!}</a>
+                                @if(mb_strlen($story[9]['post_title']) > 40)
+                                    {{ html_entity_decode(mb_substr($story[9]['post_title'], 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($story[9]['post_title']) !!}
+                                @endif
+                            </a>
                             <p>
-                                {!! htmlspecialchars_decode($story[9]['description'])!!}
+                                @if(mb_strlen($story[9]['description']) > 90)
+                                    {{ html_entity_decode(mb_substr($story[9]['description'], 0, 90)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($story[9]['description']) !!}
+                                @endif
                             </p>
                         </div>
                         <div class="paper-blog2-button">
@@ -427,8 +445,19 @@
                         </div>
                         <div class="blog-det-2">
                             <a href="{{ route('detail', ['id' => $story[10]['id']]) }}" style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($story[10]['post_title'])!!}</a>
-                            <p>{!! htmlspecialchars_decode($story[10]['description'])!!}</p>
+                                @if(mb_strlen($story[10]['post_title']) > 40)
+                                    {{ html_entity_decode(mb_substr($story[10]['post_title'], 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($story[10]['post_title']) !!}
+                                @endif
+                            </a>
+                            <p>
+                                @if(mb_strlen($story[10]['description']) > 100)
+                                    {{ html_entity_decode(mb_substr($story[10]['description'], 0, 100)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($story[10]['description']) !!}
+                                @endif
+                            </p>
                         </div>
                         <div class="blog-det-3">
                             <a href="{{route('detail', ['id' => $story[10]['id']])}}"><button class="read-more">
@@ -468,10 +497,19 @@
                             <div class="paper-carousel-content col-md-7">
                                 <span>{{ ($s->created_at)->format('d.m.Y') }}</span>
                                 <a href="{{ route('detail', $s->id) }}" style="color: #020202; text-decoration:none">
-                                {{ htmlspecialchars_decode($s->post_title) }}</a>
+                                    @if(mb_strlen($s->post_title) > 50)
+                                        {{ html_entity_decode(mb_substr($s->post_title, 0, 50)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($s->post_title) !!}
+                                    @endif
+                                </a>
                                 <p>
-                                    {!! htmlspecialchars_decode($s->description) !!}
-
+                                    @if(mb_strlen($s->description) > 120)
+                                        {{ html_entity_decode(mb_substr($s->description, 0, 120)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($s->description) !!}
+                                    @endif
+                                    
                                 </p>
                                 <div class="action-sec">
                                     <div class="look-numb">

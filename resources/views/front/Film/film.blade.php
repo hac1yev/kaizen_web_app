@@ -471,8 +471,19 @@
                         <div class="blog-det-2">
                             <a href="{{ route('detail', ['id' => $film[10]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($film[10]['post_title'])!!}</a>
-                            <p>{!! htmlspecialchars_decode($film[10]['description'])!!}</p>
+                                @if(mb_strlen($film[10]['post_title']) > 500)
+                                    {{ html_entity_decode(mb_substr($film[10]['post_title'], 0, 500)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($film[10]['post_title']) !!}
+                                @endif
+                            </a>
+                            <p>
+                                @if(mb_strlen($film[10]['description']) > 100)
+                                    {{ html_entity_decode(mb_substr($film[10]['description'], 0, 100)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($film[10]['description']) !!}
+                                @endif
+                            </p>
                         </div>
                         <div class="blog-det-3">
                             <a
@@ -515,10 +526,19 @@
                                     <span>{{ ($s->created_at)->format('d.m.Y') }}</span>
                                     <a href="{{ route('detail', $s->id) }}"
                                         style="color: #020202; text-decoration:none">
-                                        {{ htmlspecialchars_decode($s->post_title) }}</a>
+                                        @if(mb_strlen($s->post_title) > 50)
+                                            {{ html_entity_decode(mb_substr($s->post_title, 0, 50)) . '...' }}
+                                        @else
+                                            {!! html_entity_decode($s->post_title) !!}
+                                        @endif
+                                    </a>
                                     <p>
-                                        {!! htmlspecialchars_decode($s->description) !!}
 
+                                        @if(mb_strlen($s->description) > 120)
+                                            {{ html_entity_decode(mb_substr($s->description, 0, 120)) . '...' }}
+                                        @else
+                                            {!! html_entity_decode($s->description) !!}
+                                        @endif
                                     </p>
                                     <div class="action-sec">
                                         <div class="look-numb">
