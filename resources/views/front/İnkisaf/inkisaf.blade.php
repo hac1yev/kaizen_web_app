@@ -476,8 +476,7 @@
                             <p>{!! htmlspecialchars_decode($ferdi[10]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
-                            <a
-                                href="{{ route('detail', ['id' => $ferdi[10]['id']]) }}"><button
+                            <a href="{{ route('detail', ['id' => $ferdi[10]['id']]) }}"><button
                                     class="read-more">
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -540,11 +539,11 @@
                 </div>
             </div>
             <div class="paper-load-more">
+                <a href="{{ route('inkisafall') }}">
                 <button>
                     Daha çox
-                    <img src="{{ asset('back/assets/img/paper/load-more.png') }}"
-                        alt="load-more" />
-                </button>
+                    <img src="{{ asset('back/assets/img/paper/load-more.png') }}" alt="load-more" />
+                </button></a>
             </div>
         </div>
     </section>

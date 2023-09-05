@@ -542,11 +542,13 @@
                 </div>
             </div>
             <div class="paper-load-more">
+                <a href="{{ route('biznesall') }}">
                 <button>
                     Daha çox
                     <img src="{{ asset('back/assets/img/paper/load-more.png') }}"
                         alt="load-more" />
                 </button>
+                </a>
             </div>
         </div>
     </section>

@@ -14,8 +14,17 @@ use App\Models\AdvertFooter;
 
 class FilmController extends Controller
 {
-    public function film(){
 
+    public function all(){
+        $posts = Posts::join('categories','categories.id','=','posts.category_id')
+        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+        ->where('posts.status','1')->where('category_id','14')->orderBy('posts.created_at','DESC')->get();
+        return view('front.İnkisaf.all',get_defined_vars());
+
+    }
+
+    
+    public function film(){
         $film = Posts::join('categories','categories.id','=','posts.category_id')
         ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
         ->where('posts.status','1')->where('category_id','14')->get()->toArray();
