@@ -149,11 +149,37 @@ Route::middleware('isLogout')->group(function () {
 
 
 Route::get('/', [İndexController::class, "index"])->name('index');
+
 Route::get('/ferdi-inkisaf', [InkisafController::class, "ferdi"])->name('ferdi');
+Route::post('/inkisaflike', [InkisafController::class, 'like'])->name('inkisaflike');
+Route::post('/inkisafdislike', [InkisafController::class, 'dislike'])->name('inkisafdislike');
+Route::post('/inkbook', [InkisafController::class, 'book'])->name('inkbook');
+Route::post('/inkdisbook', [InkisafController::class, 'disbook'])->name('inkdisbook');
+
+
 Route::get('/seyahet', [TravelController::class, "travel"])->name('travel');
+Route::post('/travellike', [TravelController::class, 'like'])->name('travellike');
+Route::post('/traveldislike', [TravelController::class, 'dislike'])->name('traveldislike');
+Route::post('/travelbook', [TravelController::class, 'book'])->name('travelbook');
+Route::post('/traveldisbook', [TravelController::class, 'disbook'])->name('traveldisbook');
+
 Route::get('/hekayeler', [StoryController::class, "story"])->name('story');
+Route::post('/storylike', [StoryController::class, 'like'])->name('storylike');
+Route::post('/storydislike', [StoryController::class, 'dislike'])->name('storydislike');
+Route::post('/storybook', [StoryController::class, 'book'])->name('storybook');
+Route::post('/storydisbook', [StoryController::class, 'disbook'])->name('storydisbook');
+
 Route::get('/filmler', [FilmController::class, "film"])->name('film');
+Route::post('/filmlike', [FilmController::class, 'like'])->name('filmlike');
+Route::post('/filmdislike', [FilmController::class, 'dislike'])->name('filmdislike');
+Route::post('/filmbook', [FilmController::class, 'book'])->name('filmbook');
+Route::post('/filmdisbook', [FilmController::class, 'disbook'])->name('filmdisbook');
+
 Route::get('/biznes-dunyasi', [BiznesController::class, "biznes"])->name('biznes');
+Route::post('/bizneslike', [BiznesController::class, 'like'])->name('bizneslike');
+Route::post('/biznesdislike', [BiznesController::class, 'dislike'])->name('biznesdislike');
+Route::post('/biznesbook', [BiznesController::class, 'book'])->name('biznesbook');
+Route::post('/biznesdisbook', [BiznesController::class, 'disbook'])->name('biznesdisbook');
 
 
 Route::get('/profil', [ProfilController::class, "profil"])->name('profil');

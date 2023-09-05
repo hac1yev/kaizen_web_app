@@ -30,14 +30,14 @@ class ProfilController extends Controller
             ->where('post_like.user_id', $userId)
             ->distinct('post_like.post_id')
             ->get();
-
+            
         $marks = User::join('post_bookmark', 'post_bookmark.user_id', '=', 'users.id')
-            ->join('posts', 'post_bookmark.post_id', '=', 'posts.id')
-            ->join('categories','categories.id','=','posts.category_id')
-            ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
-            ->where('post_bookmark.user_id', $userId)
-            ->distinct('post_bookmark.post_id')
-            ->get();
+        ->join('posts', 'post_bookmark.post_id', '=', 'posts.id')
+        ->join('categories','categories.id','=','posts.category_id')
+        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+        ->where('post_bookmark.user_id', $userId)
+        ->distinct('post_bookmark.post_id')
+        ->get();
 
         return View('front.Profil.profil', get_defined_vars());    
     }

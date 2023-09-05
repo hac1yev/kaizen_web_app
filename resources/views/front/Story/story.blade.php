@@ -42,8 +42,12 @@
                                     <img src="{{asset('back/assets/img/look.png')}}" alt="look" />
                                     {{$story[0]['view']}}
                                 </span>
-                                <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[0]['id'] }}" style="{{ in_array($story[0]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[0]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[0]['id'] }}" style="{{ in_array($story[0]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[0]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[0]['id'] }}" style="{{ in_array($story[0]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[0]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[0]['id'] }}" style="{{ in_array($story[0]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[0]['id'] }})" >
+
                             </div>
                         </div>
                     </div>
@@ -78,8 +82,11 @@
                                         {{$story[1]['view']}}
 
                                     </span>
-                                    <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                    <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                    <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[1]['id'] }}" style="{{ in_array($story[1]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[1]['id'] }})">
+                                    <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[1]['id'] }}" style="{{ in_array($story[1]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[1]['id'] }})" >
+
+                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[1]['id'] }}" style="{{ in_array($story[1]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[1]['id'] }})">
+                                    <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[1]['id'] }}" style="{{ in_array($story[1]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[1]['id'] }})" >
                                 </div>
                             </div>
                         </div>
@@ -113,8 +120,11 @@
                                         {{$story[2]['view']}}
 
                                     </span>
-                                    <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                    <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                    <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[2]['id'] }}" style="{{ in_array($story[2]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[2]['id'] }})">
+                                    <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[2]['id'] }}" style="{{ in_array($story[2]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[2]['id'] }})" >
+
+                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[2]['id'] }}" style="{{ in_array($story[2]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[2]['id'] }})">
+                                    <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[2]['id'] }}" style="{{ in_array($story[2]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[2]['id'] }})" >
                                 </div>
                             </div>
                         </div>
@@ -152,10 +162,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{asset('back/assets/img/heart.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[3]['id'] }}" style="{{ in_array($story[3]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[3]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[3]['id'] }}" style="{{ in_array($story[3]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[3]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{asset('back/assets/img/save.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[3]['id'] }}" style="{{ in_array($story[3]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[3]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[3]['id'] }}" style="{{ in_array($story[3]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[3]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -196,8 +208,11 @@
                                     {{$story[4]['view']}}
 
                                 </span>
-                                <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[4]['id'] }}" style="{{ in_array($story[4]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[4]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[4]['id'] }}" style="{{ in_array($story[4]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[4]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[4]['id'] }}" style="{{ in_array($story[4]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[4]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[4]['id'] }}" style="{{ in_array($story[4]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[4]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -232,10 +247,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{asset('back/assets/img/heart.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[5]['id'] }}" style="{{ in_array($story[5]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[5]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[5]['id'] }}" style="{{ in_array($story[5]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[5]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{asset('back/assets/img/save.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[5]['id'] }}" style="{{ in_array($story[5]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[5]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[5]['id'] }}" style="{{ in_array($story[5]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[5]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -273,10 +290,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{asset('back/assets/img/heart.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[6]['id'] }}" style="{{ in_array($story[6]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[6]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[6]['id'] }}" style="{{ in_array($story[6]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[6]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{asset('back/assets/img/save.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[6]['id'] }}" style="{{ in_array($story[6]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[6]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[6]['id'] }}" style="{{ in_array($story[6]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[6]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -344,8 +363,11 @@
                                     {{$story[8]['view']}}
 
                                 </span>
-                                <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[8]['id'] }}" style="{{ in_array($story[8]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[8]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[8]['id'] }}" style="{{ in_array($story[8]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[8]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[8]['id'] }}" style="{{ in_array($story[8]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[8]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[8]['id'] }}" style="{{ in_array($story[8]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[8]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -382,8 +404,11 @@
                                     {{$story[9]['view']}}
 
                                 </span>
-                                <img src="{{asset('back/assets/img/heart.png')}}" alt="heart">
-                                <img src="{{asset('back/assets/img/save.png')}}" alt="save">
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[9]['id'] }}" style="{{ in_array($story[9]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[9]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[9]['id'] }}" style="{{ in_array($story[9]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[9]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[9]['id'] }}" style="{{ in_array($story[9]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[9]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[9]['id'] }}" style="{{ in_array($story[9]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[9]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -418,10 +443,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{asset('back/assets/img/heart.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $story[10]['id'] }}" style="{{ in_array($story[10]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $story[10]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $story[10]['id'] }}" style="{{ in_array($story[10]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $story[10]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{asset('back/assets/img/save.png')}}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $story[10]['id'] }}" style="{{ in_array($story[10]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $story[10]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $story[10]['id'] }}" style="{{ in_array($story[10]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $story[10]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -451,14 +478,7 @@
                                         <img src="{{asset('back/assets/img/look.png')}}" alt="">
                                         <p>{{$s->view}}</p>
                                     </div>
-                                    <div class="act-btns">
-                                        <button>
-                                            <img src="{{asset('back/assets/img/heart.png')}}" alt="">
-                                        </button>
-                                        <button>
-                                            <img src="{{asset('back/assets/img/save.png')}}" alt="">
-                                        </button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -487,7 +507,7 @@
 
 @section('js')
     
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('back/assets/js/owl.carousel.min.js')}}"></script>
@@ -519,4 +539,110 @@
         });
 
     </script>
+
+
+    <script>
+        function likePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('storylike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#likeButton_' + postId).hide();
+                    $('#dislikeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function dislikePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('storydislike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#dislikeButton_' + postId).hide();
+                    $('#likeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function bookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('storybook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#bookButton_' + postId).hide();
+                    $('#disbookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function disbookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('storydisbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#disbookButton_' + postId).hide();
+                    $('#bookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
 @endsection
