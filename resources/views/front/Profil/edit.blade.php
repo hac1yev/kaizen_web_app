@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form method="POST" action="{{route('updateprofile')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('updateprofile')}}" enctype="multipart/form-data" id="edit">
                             @csrf
                             <div class="col-12">
                                 <div class="card mb-4 mb-xl-0">
@@ -101,21 +101,23 @@
 
 @section('js')
     <script src="{{asset('back/assets/js/app.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function saveSelectedAvatar() {
-        let selectedValue = document.getElementById('change-image').value;
+            let selectedValue = document.getElementById('change-image').value;
 
-        if (selectedValue) {
-            document.getElementById('selected-avatar-url').value = selectedValue;
-            document.getElementById('profile-form').submit();
+            if (selectedValue) {
+                document.getElementById('selected-avatar-url').value = selectedValue;
+                document.getElementById('profile-form').submit();
+            }
         }
-    }
 
     </script>
+
+
     <script>
         function chooseOption(option) {
             if (option === 'change-img-new') {
@@ -150,6 +152,41 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+            };
+        
+            $("#edit").validate({
+                rules: {
+                    fullname: {
+                        required: true,
+                    },
+                    username: {
+                        required: true,
+                    },
+                    about: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    username: {
+                        required: errorMessages.required,
+                    },
+                    fullname: {
+                        required: errorMessages.required,
+                    },
+                    about: {
+                        required: errorMessages.required,
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); 
+                }
+            });
+        });
+    </script>
     
 @endsection
     

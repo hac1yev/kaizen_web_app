@@ -4,7 +4,7 @@
     <section class="mt-2 post-share">
         @if($user->verified == 1)
             <div class="container">
-                <form method="POST" action="{{ route('postadd') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('postadd') }}" enctype="multipart/form-data" id="postadd">
                     @csrf
                     <div class="row">
                         <div class="col-12">
@@ -50,7 +50,7 @@
                                         <li class="dropdown__filter-selected" aria-selected="true" id="selected-category">
                                         </li>
                                         <select class="form-control custom-select2" name="category">
-                                            <option disabled="" selected="">Kateqoriyalar</option>
+                                            <option value="" disabled>Kateqoriyalar</option>
                                                 @foreach($categories as $cat)
                                                     <option value="{{$cat->id}}">{{$cat->title}}</option>
                                                 @endforeach
@@ -115,14 +115,80 @@
 
 @section('js') 
     <script src="back/assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="back/assets/js/users.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
    
+
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+
+            };
+        
+            $("#postadd").validate({
+                rules: {
+                    image: {
+                        required: true,
+
+                    },
+                    title: {
+                        required: true,
+
+                    },
+                    description: {
+                        required: true,
+
+                    },
+                    content: {
+                        required: true,
+
+                    },
+                    category: {
+                        required: true,
+
+                    },
+                    'tags[]': {
+                        required: true
+                    }
+
+                },
+                messages: {
+                    image: {
+                        required: errorMessages.required,
+
+                    },
+                    title: {
+                        required: errorMessages.required,
+
+                    },
+                    description: {
+                        required: errorMessages.required,
+                    },
+                    content: {
+                        required: errorMessages.required,
+                    },
+                    category: {
+                        required: errorMessages.required,
+                    },
+                    'tags[]': {
+                        required: errorMessages.required,
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); 
+                }
+            });
+        });
+    </script>
+
+
+
+
     <script>
       document.addEventListener('DOMContentLoaded', function () {
           const selectOptions = document.querySelectorAll('.dropdown__select-option');

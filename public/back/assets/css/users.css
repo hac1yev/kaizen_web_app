@@ -1,0 +1,97 @@
+.card {
+    background-color: transparent;
+    border: none;
+}
+
+.card span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #606060;
+}
+
+.users-head h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #020202;
+}
+
+.users-row {
+    margin-top: 20px;
+}
+
+.card p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 117.5%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: -0.065em;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.users-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.users-head input {
+    padding: 5px 16px;
+    background: #F6F6F6;
+    border: 1px solid #E8E8E8;
+    border: none;
+    outline: none;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #0f0f0f;
+}
+
+.card-title {
+    background: #979797;
+    margin-top: 3px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;    
+    text-align: center;
+    text-transform: capitalize;
+    color: #FDFDFD;
+    padding: 3px 0;
+}
+
+@media screen and (max-width: 800px) {
+    .users-row {
+        margin-top: 40px;
+    }
+
+    .users-head h3 {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+@media screen and (max-width: 575.5px) {
+    .users-head {
+        flex-direction: column;
+    }
+}

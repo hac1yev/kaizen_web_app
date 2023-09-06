@@ -113,7 +113,7 @@
     <div class="modal-dialog login-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="login-form" method="POST" action="{{ route('loginpost') }}">
+                <form class="login-form" method="POST" action="{{ route('loginpost') }}" id="login">
                     @csrf
                     <h4>Daxil olun</h4>
                     <div class="input-group login-form-div">
@@ -146,7 +146,7 @@
     <div class="modal-dialog login-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="login-form" method="POST" action="{{ route('registerpost') }}">
+                <form class="login-form" method="POST" action="{{ route('registerpost') }}" id="register">
                     @csrf
                     <h4>Qeydiyyatdan keçin</h4>
                     <div class="input-group login-form-div">
