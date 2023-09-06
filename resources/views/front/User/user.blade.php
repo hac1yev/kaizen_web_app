@@ -6,7 +6,9 @@
             <div class="row users-row">
                 <div class="col-12 users-head">
                     <h3>İSTİFADƏÇİLƏR</h3>
-                    <input type="text" placeholder="SEARCH" />
+                    <form action="{{route('useraxtar')}}" method="GET">
+                        <input type="text" placeholder="Axtar" name="searching" value="{{ (isset($searchingVal)) ? $searchingVal : null }}" />
+                    </form>
                 </div>
                 @foreach ($users as $u)
                     <div class="col-md-3 col-sm-6 mt-2">
@@ -14,7 +16,6 @@
                             <img class="card-img" src="{{$u->image}}" alt="user1" />
                             <h6 class="card-title">{{$u->fullname}}</h6>
                             <span>{{$u->username}}</span>
-                            <p>{{$u->about}}</p>
                         </div>
                     </div>
                 @endforeach

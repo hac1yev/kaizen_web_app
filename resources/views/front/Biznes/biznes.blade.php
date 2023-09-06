@@ -46,8 +46,12 @@
                                     <img src="{{ asset('back/assets/img/look.png') }}" alt="look" />
                                     {{ $business[0]['view'] }}
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" />
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[0]['id'] }}" style="{{ in_array($business[0]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[0]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[0]['id'] }}" style="{{ in_array($business[0]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[0]['id'] }})" >
+
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[0]['id'] }}" style="{{ in_array($business[0]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[0]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[0]['id'] }}" style="{{ in_array($business[0]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[0]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -88,9 +92,11 @@
                                         {{ $business[1]['view'] }}
 
                                     </span>
-                                    <img src="{{ asset('back/assets/img/heart.png') }}"
-                                        alt="heart" />
-                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[1]['id'] }}" style="{{ in_array($business[1]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[1]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[1]['id'] }}" style="{{ in_array($business[1]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[1]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[1]['id'] }}" style="{{ in_array($business[1]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[1]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[1]['id'] }}" style="{{ in_array($business[1]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[1]['id'] }})" >
                                 </div>
                             </div>
                         </div>
@@ -130,9 +136,11 @@
                                         {{ $business[2]['view'] }}
 
                                     </span>
-                                    <img src="{{ asset('back/assets/img/heart.png') }}"
-                                        alt="heart" />
-                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[2]['id'] }}" style="{{ in_array($business[2]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[2]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[2]['id'] }}" style="{{ in_array($business[2]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[2]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[2]['id'] }}" style="{{ in_array($business[2]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[2]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[2]['id'] }}" style="{{ in_array($business[2]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[2]['id'] }})" >
                                 </div>
                             </div>
                         </div>
@@ -175,10 +183,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[3]['id'] }}" style="{{ in_array($business[3]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[3]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[3]['id'] }}" style="{{ in_array($business[3]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[3]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[3]['id'] }}" style="{{ in_array($business[3]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[3]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[3]['id'] }}" style="{{ in_array($business[3]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[3]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -223,8 +233,11 @@
                                     {{ $business[4]['view'] }}
 
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" />
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[4]['id'] }}" style="{{ in_array($business[4]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[4]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[4]['id'] }}" style="{{ in_array($business[4]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[4]['id'] }})" >
+                                
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[4]['id'] }}" style="{{ in_array($business[4]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[4]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[4]['id'] }}" style="{{ in_array($business[4]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[4]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -264,10 +277,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[5]['id'] }}" style="{{ in_array($business[5]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[5]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[5]['id'] }}" style="{{ in_array($business[5]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[5]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[5]['id'] }}" style="{{ in_array($business[5]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[5]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[5]['id'] }}" style="{{ in_array($business[5]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[5]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -310,10 +325,12 @@
                             </div>
                             <div class="act-btns">
                                 <button>
-                                    <img src="{{ asset('back/assets/img/heart.png') }}" alt="">
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[6]['id'] }}" style="{{ in_array($business[6]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[6]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[6]['id'] }}" style="{{ in_array($business[6]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[6]['id'] }})" >
                                 </button>
                                 <button>
-                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="">
+                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[6]['id'] }}" style="{{ in_array($business[6]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[6]['id'] }})">
+                                    <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[6]['id'] }}" style="{{ in_array($business[6]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[6]['id'] }})" >
                                 </button>
                             </div>
                         </div>
@@ -339,9 +356,18 @@
                             <div class="paper-blog2-content">
                                 <a href="{{ route('detail', ['id' => $business[7]['id']]) }}"
                                     style="color: #020202; text-decoration:none">
-                                    {!! htmlspecialchars_decode($business[7]['post_title'])!!}</a>
+                                    @if(mb_strlen($business[7]['post_title']) > 40)
+                                        {{ html_entity_decode(mb_substr($business[7]['post_title'], 0, 40)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($business[7]['post_title']) !!}
+                                    @endif
+                                </a>
                                 <p>
-                                    {!! htmlspecialchars_decode($business[7]['description'])!!}
+                                    @if(mb_strlen($business[7]['description']) > 80)
+                                        {{ html_entity_decode(mb_substr($business[7]['description'], 0, 80)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($business[7]['description']) !!}
+                                    @endif
                                 </p>
                             </div>
                             <div class="paper-blog2-button">
@@ -369,9 +395,18 @@
                         <div class="paper-blog2-content">
                             <a href="{{ route('detail', ['id' => $business[8]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($business[8]['post_title'])!!}</a>
+                                @if(mb_strlen($business[8]['post_title']) > 40)
+                                    {{ html_entity_decode(mb_substr($business[8]['post_title'], 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[8]['post_title']) !!}
+                                @endif
+                            </a>
                             <p>
-                                {!! htmlspecialchars_decode($business[8]['description'])!!}
+                                @if(mb_strlen($business[8]['description']) > 80)
+                                    {{ html_entity_decode(mb_substr($business[8]['description'], 0, 80)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[8]['description']) !!}
+                                @endif
                             </p>
                         </div>
                         <div class="paper-blog2-button">
@@ -387,8 +422,11 @@
                                     {{ $business[8]['view'] }}
 
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" />
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[8]['id'] }}" style="{{ in_array($business[8]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[8]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[8]['id'] }}" style="{{ in_array($business[8]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[8]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[8]['id'] }}" style="{{ in_array($business[8]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[8]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[8]['id'] }}" style="{{ in_array($business[8]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[8]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -410,9 +448,18 @@
 
                             <a href="{{ route('detail', ['id' => $business[9]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($business[9]['post_title'])!!}</a>
+                                @if(mb_strlen($business[9]['post_title']) > 40)
+                                    {{ html_entity_decode(mb_substr($business[9]['post_title'], 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[9]['post_title']) !!}
+                                @endif
+                            </a>
                             <p>
-                                {!! htmlspecialchars_decode($business[9]['description'])!!}
+                                @if(mb_strlen($business[9]['description']) > 80)
+                                    {{ html_entity_decode(mb_substr($business[9]['description'], 0, 80)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[9]['description']) !!}
+                                @endif
                             </p>
                         </div>
                         <div class="paper-blog2-button">
@@ -428,8 +475,11 @@
                                     {{ $business[9]['view'] }}
 
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart">
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save">
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[9]['id'] }}" style="{{ in_array($business[9]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[9]['id'] }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[9]['id'] }}" style="{{ in_array($business[9]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[9]['id'] }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[9]['id'] }}" style="{{ in_array($business[9]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[9]['id'] }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[9]['id'] }}" style="{{ in_array($business[9]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[9]['id'] }})" >
                             </div>
                         </div>
                     </div>
@@ -451,8 +501,19 @@
                         <div class="blog-det-2">
                             <a href="{{ route('detail', ['id' => $business[10]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
-                                {!! htmlspecialchars_decode($business[10]['post_title'])!!}</a>
-                            <p>{!! htmlspecialchars_decode($business[10]['description'])!!}</p>
+                                @if(mb_strlen($business[10]['post_title']) > 40)
+                                    {{ html_entity_decode(mb_substr($business[10]['post_title'], 0, 40)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[10]['post_title']) !!}
+                                @endif
+                            </a>
+                            <p>
+                                @if(mb_strlen($business[10]['description']) > 100)
+                                    {{ html_entity_decode(mb_substr($business[10]['description'], 0, 100)) . '...' }}
+                                @else
+                                    {!! html_entity_decode($business[10]['description']) !!}
+                                @endif
+                            </p>
                         </div>
                         <div class="blog-det-3">
                             <a
@@ -469,10 +530,12 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $business[10]['id'] }}" style="{{ in_array($business[10]['id'], $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $business[10]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $business[10]['id'] }}" style="{{ in_array($business[10]['id'], $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $business[10]['id'] }})" >
                                     </button>
                                     <button>
-                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $business[10]['id'] }}" style="{{ in_array($business[10]['id'], $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $business[10]['id'] }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $business[10]['id'] }}" style="{{ in_array($business[10]['id'], $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $business[10]['id'] }})" >
                                     </button>
                                 </div>
                             </div>
@@ -493,10 +556,19 @@
                                     <span>{{ ($s->created_at)->format('d.m.Y') }}</span>
                                     <a href="{{ route('detail', $s->id) }}"
                                         style="color: #020202; text-decoration:none">
-                                        {{ htmlspecialchars_decode($s->post_title) }}</a>
+                                        @if(mb_strlen($s->post_title) > 50)
+                                            {{ html_entity_decode(mb_substr($s->post_title, 0, 50)) . '...' }}
+                                        @else
+                                            {!! html_entity_decode($s->post_title) !!}
+                                        @endif
+                                    </a>
                                     <p>
-                                        {!! htmlspecialchars_decode($s->description) !!}
-
+                                        @if(mb_strlen($s->description) > 120)
+                                            {{ html_entity_decode(mb_substr($s->description, 0, 120)) . '...' }}
+                                        @else
+                                            {!! html_entity_decode($s->description) !!}
+                                        @endif
+                                        
                                     </p>
                                     <div class="action-sec">
                                         <div class="look-numb">
@@ -504,16 +576,7 @@
                                                 alt="">
                                             <p>{{ $s->view }}</p>
                                         </div>
-                                        <div class="act-btns">
-                                            <button>
-                                                <img src="{{ asset('back/assets/img/heart.png') }}"
-                                                    alt="">
-                                            </button>
-                                            <button>
-                                                <img src="{{ asset('back/assets/img/save.png') }}"
-                                                    alt="">
-                                            </button>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -526,11 +589,13 @@
                 </div>
             </div>
             <div class="paper-load-more">
+                <a href="{{ route('biznesall') }}">
                 <button>
                     Daha çox
                     <img src="{{ asset('back/assets/img/paper/load-more.png') }}"
                         alt="load-more" />
                 </button>
+                </a>
             </div>
         </div>
     </section>
@@ -543,11 +608,11 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('back/assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('back/assets/js/app.js') }}"></script>
+    <script src="{{ asset('back/assets/js/owl.carousel.min.js') }}"></script>
 
     <script>
         $(".owl-carousel").owlCarousel({
@@ -573,5 +638,109 @@
                 },
             },
         });
+    </script>
+
+    <script>
+        function likePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('bizneslike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#likeButton_' + postId).hide();
+                    $('#dislikeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function dislikePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('biznesdislike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#dislikeButton_' + postId).hide();
+                    $('#likeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function bookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('biznesbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#bookButton_' + postId).hide();
+                    $('#disbookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function disbookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('biznesdisbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#disbookButton_' + postId).hide();
+                    $('#bookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
     </script>
 @endsection

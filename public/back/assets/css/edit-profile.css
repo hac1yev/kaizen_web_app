@@ -1,0 +1,142 @@
+body{
+    background-color:#f2f6fc;
+    color:#69707a;
+    }
+    .img-account-profile {
+        height: 15rem;
+        width: 15rem;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
+    .card {
+        background-color: transparent!important;
+        border: none!important;
+    }
+    .card .card-header {
+        font-weight: 500;
+    }
+    .card-header:first-child {
+        border-radius: 0.35rem 0.35rem 0 0;
+    }
+    .card-header {
+        padding: 1rem 1.35rem;
+        margin-bottom: 0;
+        /* background-color: rgba(33, 40, 50, 0.03); */
+        background-color: transparent!important;
+        border: none!important;
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    }
+    .form-control, .dataTable-input {
+        display: block;
+        width: 100%;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1;
+        color: #69707a;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #c5ccd6;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.35rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .dataTable-input {
+        padding: 0.875rem 1.125rem;
+    }
+    
+    .nav-borders .nav-link.active {
+        color: #0061f2;
+        border-bottom-color: #0061f2;
+    }
+    .nav-borders .nav-link {
+        color: #69707a;
+        border-bottom-width: 0.125rem;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .card-body button {
+        background-color: #f96d00!important;
+        border: none!important;
+    }
+
+    .card-body button:hover {
+        opacity: 0.8;
+    }
+
+    .text-area-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .enable-input,
+    form textarea {
+        background-color: rgba(255, 255, 255, 0.85);
+        border: 0.5px solid #ccc;
+        outline: 1px solid #ccc;
+    }
+
+    form textarea {
+        padding: 6px;
+    }
+
+    .custom-file-input {
+        color: transparent;
+        opacity: 1!important;
+        width: 100px!important;
+      }
+      .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      .custom-file-input::before {
+        content: 'Şəkli dəyiş';
+        color: #fff;
+        display: inline-block;
+        background: #f96d00;
+        border-radius: 3px;
+        padding: 8px 14px;
+        outline: none;
+        white-space: nowrap;
+        --webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 10pt;
+      }
+      .custom-file-input:hover::before {
+        border-color: black;
+      }
+      
+      .custom-file-input:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+      }
+
+      .dropdown-toggle::after {
+        display: none!important;
+      }
+
+      @media screen and (max-width: 992px) {
+        .img-account-profile {
+            height: 10rem;
+            width: 10rem;
+            object-fit: cover;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .img-account-profile {
+            height: 6rem;
+            width: 6rem;
+            object-fit: cover;
+        }
+      }

@@ -43,7 +43,7 @@
                     <a href="{{route('biznes')}}">Biznes Dünyası</a>
                 </li>
         </div>
-        <form action="{{route('contact')}}" method="POST">
+        <form action="{{route('contact')}}" method="POST" id="contact">
             @csrf
             <p>Təklif və iradlar</p>
             <input placeholder="Ad:" name="name" type="text"> &nbsp;&nbsp;
@@ -53,6 +53,9 @@
         </form>
     </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     @if(Session::has('success'))
@@ -75,5 +78,127 @@
         title: '{{ session('warning') }}',
         })
     @endif
+</script>
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            email: 'Zəhmət olmasa düzgün email yazın'
+        };
+    
+        $("#contact").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+                name: {
+                    required: true,
+                },
+                message: {
+                    required: true,
+                }
+            },
+            messages: {
+                email: {
+                    required: errorMessages.required,
+                    email: errorMessages.email,
+                },
+                name: {
+                    required: errorMessages.required,
+                },
+                message: {
+                    required: errorMessages.required,
+                },
+            },
+            submitHandler: function(form) {
+                form.submit(); 
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+            email: 'Zəhmət olmasa düzgün email yazın'
+
+        };
+    
+        $("#login").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8
+
+                },
+                email: {
+                    required: true,
+                    email: true
+
+                }
+            },
+            messages: {
+                password: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                email: {
+                    required: errorMessages.required,
+                    email: errorMessages.email,
+
+                }
+            },
+            submitHandler: function(form) {
+                form.submit(); // Formu gönder
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+            email: 'Zəhmət olmasa düzgün email yazın'
+
+        };
+    
+        $("#register").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8
+
+                },
+                email: {
+                    required: true,
+                    email: true
+
+                }
+            },
+            messages: {
+                password: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                email: {
+                    required: errorMessages.required,
+                    email: errorMessages.email,
+
+                }
+            },
+            submitHandler: function(form) {
+                form.submit(); // Formu gönder
+            }
+        });
+    });
 </script>
  

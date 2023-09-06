@@ -27,7 +27,7 @@
                     <div class="col-md-9">
                         <h2 class="travel-title"> {!! htmlspecialchars_decode($postdetail->post_title) !!}</h2>
                         <div class="">
-                            <img src="https://kaizen.butagrup.az/{{$postdetail->image}}" class="w-100" alt="" />
+                            <img src="{{asset($postdetail->image)}}" class="w-100" alt="" />
                             <div class="paper-blog2-under">
                                 <p class="paper-blog2-bottom-time">
                                     <span class="paper-bottom-date">{{($postdetail->created_at)->format('d.m.Y')}}</span>

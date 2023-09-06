@@ -99,7 +99,7 @@
                     @if($user->verified == 0)
                         <h4 style="color:red;font-size: 0.83em">Ilk öncə verifikasiyadan keçməlisiniz</h4>
                     @else
-                        <form method="POST" action="{{ route('changeEmail') }}">
+                        <form method="POST" action="{{ route('changeEmail') }}" id="emaildeyis">
                             @csrf
                             <input placeholder="E-poçt daxil edin!" type="email" name="email" />
                             <button>Dəyiş</button>
@@ -112,7 +112,7 @@
                     @if($user->verified == 0)
                         <h4 style="color:red;font-size: 0.83em">Ilk öncə verifikasiyadan keçməlisiniz</h4>
                     @else
-                        <form method="POST" action="{{ route('changePass') }}">
+                        <form method="POST" action="{{ route('changePass') }}" id="sifredeyis">
                             @csrf
                             <div class="change-pass-div">
                                 <label for="current_pass">Hazırki şifrə</label>
@@ -136,7 +136,7 @@
                     @if($user->verified == 0)
                         <h4 style="color:red;font-size: 0.83em">Ilk öncə verifikasiyadan keçməlisiniz</h4>
                     @else
-                        <form action="{{ route('forgetpassSetting') }}" method="POST">
+                        <form action="{{ route('forgetpassSetting') }}" method="POST" id="sifreunut">
                             @csrf
                             <div class="forget-password-div">
                                 <label for="new_pass">Yeni şifrə</label>
@@ -176,7 +176,7 @@
                 <div class="delete-account">
                     <h3>HESABI SİLİN</h3>
                     <span>Nəyə görə bizdən ayrılırsınız? 😪</span>
-                    <form action="{{ route('whydelete') }}" method="POST">
+                    <form action="{{ route('whydelete') }}" method="POST" id="niye">
                         @csrf
                         <input type="text" name="reason" placeholder="Səbəb yazın ..." />
                         <button>Sil</button>
@@ -188,10 +188,163 @@
 @endsection
 
 @section('js')
-    <script src="back/assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="back/assets/js/settings.js"></script>
+    <script src="back/assets/js/app.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+                email: 'Zəhmət olmasa düzgün email yazın'
+            };
+        
+            $("#emaildeyis").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true,
+                    }
+                },
+                messages: {
+                    email: {
+                        required: errorMessages.required,
+                        email: errorMessages.email,
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); // Formu gönder
+                }
+            });
+        });
+    </script>
+        
+
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+                minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+                equalTo: 'Bu sahə şifrə ilə eyni olmalıdır!',
+
+            };
+        
+            $("#sifredeyis").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 8
+
+                    },
+                    newpass: {
+                        required: true,
+                        minlength: 8
+
+                    },
+                    connewpass: {
+                        required: true,
+                        minlength: 8,
+                        equalTo: "#new_pass"
+
+                    }
+                },
+                messages: {
+                    password: {
+                        required: errorMessages.required,
+                        minlength: errorMessages.minlength,
+
+                    },
+                    newpass: {
+                        required: errorMessages.required,
+                        minlength: errorMessages.minlength,
+
+                    },
+                    connewpass: {
+                        required: errorMessages.required,
+                        minlength: errorMessages.minlength,
+                        equalTo: errorMessages.equalTo,
+
+
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); // Formu gönder
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+                minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+                equalTo: 'Bu sahə şifrə ilə eyni olmalıdır!',
+
+            };
+        
+            $("#sifreunut").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 8
+
+                    },
+                    password_confirmation: {
+                        required: true,
+                        minlength: 8,
+                        equalTo: "#new_pass"
+
+                    }
+                },
+                messages: {
+                    password: {
+                        required: errorMessages.required,
+                        minlength: errorMessages.minlength,
+
+                    },
+                    password_confirmation: {
+                        required: errorMessages.required,
+                        minlength: errorMessages.minlength,
+                        equalTo: errorMessages.equalTo,
+
+
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); 
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            var errorMessages = {
+                required: 'Bu sahə mütləq doldurulmalıdır!',
+            };
+        
+            $("#niye").validate({
+                rules: {
+                    reason: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    reason: {
+                        required: errorMessages.required,
+                    },
+                },
+                submitHandler: function(form) {
+                    form.submit(); 
+                }
+            });
+        });
+    </script>
+
 @endsection

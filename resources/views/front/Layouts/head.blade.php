@@ -1,4 +1,6 @@
 <meta charset="UTF-8" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kaizen.Az</title>
@@ -13,5 +15,7 @@
 <link rel="stylesheet" href="{{ asset('back/assets/css/users.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/share.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.carousel.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('back/assets/css/edit-profile.css')}}" />
+
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.theme.default.min.css') }}" />
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

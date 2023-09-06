@@ -1,0 +1,406 @@
+.card {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .card span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size:  20px;
+    line-height: 31px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #606060;
+  }
+  
+  .deyis {
+    margin-right: 300px;
+    padding: 8px;
+    margin-top: 20px;
+
+  }
+
+  .users-head h3 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #020202;
+  }
+  
+  .users-row {
+    margin-top: 20px;
+  }
+  
+  .card p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 117.5%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: -0.065em;
+    text-transform: capitalize;
+    color: #000000;
+  }
+  
+  .users-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .users-head input {
+    padding: 5px 16px;
+    background: #f6f6f6;
+    border: 1px solid #e8e8e8;
+    border: none;
+    outline: none;
+    height: 30px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #0f0f0f;
+  }
+  
+  .card-title {
+    background: #979797;
+    margin-top: 3px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fdfdfd;
+    padding: 3px 0;
+  }
+  
+  /* NEW CSS */
+  /* label {
+      background-color: indigo;
+      color: white;
+      padding: 0.5rem;
+      font-family: sans-serif;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    } */
+  
+  #file-chosen {
+    display: flex;
+    max-width: 459px;
+    width: 100%;
+    padding: 17px 0px 17px 20px;
+    align-items: center;
+    border: 1px solid #020202;
+    color: #670505;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .file-label {
+    display: flex;
+    max-width: 459px;
+    width: 100%;
+    padding: 17px 0px 17px 20px;
+    align-items: center;
+    border: 1px solid #020202;
+    color: #000;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+  }
+  
+  .text-area {
+    color: #000;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    max-width: 940px;
+    width: 100%;
+    padding: 26px 0px 25px 20px;
+    align-items: center;
+    border: 1px solid #020202;
+  }
+  
+  .text-editor {
+    max-width: 940px;
+    width: 100%;
+    min-height: 407px;
+    border-radius: 0px 0px 10px 10px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    background: #d9d9d9;
+    margin-top: -8px;
+    padding: 15px;
+  }
+  .mezmun {
+    max-width: 940px;
+    width: 100%;
+    min-height: 65px;
+    font-size: 20px;
+    border-radius: 1px 2px 1px 0px;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+    background: #d9d9d9;
+    margin-top: 6px;
+    padding: 15px;
+  }
+  
+  /* dropdown */
+  li {
+    list-style-type: none;
+  }
+  
+  .dropdown__switch:checked + .dropdown__options-filter .dropdown__select {
+    transform: scaleY(1);
+  }
+  
+  .dropdown__filter-selected,
+  .dropdown__filter-selected2 {
+    color: #000;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .dropdown__switch2:checked + .dropdown__options-filter2 .dropdown__select2 {
+    transform: scaleY(1);
+  }
+  
+  .dropdown__switch:checked + .dropdown__options-filter .dropdown__filter:after {
+    transform: rotate(-135deg);
+  }
+  .dropdown__options-filter,
+  .dropdown__options-filter2 {
+    width: 100%;
+    cursor: pointer;
+  }
+  .dropdown__filter,
+  .dropdown__filter2 {
+    position: relative;
+    background-color: transparent;
+    transition: 0.3s;
+    /* padding: 0px 14px 17px 20px; */
+    
+  }
+  
+.dropdown__switch2-label,
+.dropdown__kategory-label {
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+  .select__kategory {
+    border: 1px solid #020202;
+    padding: 15px 14px 14px 20px;
+    height: 59px;
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  .dropdown__filter::after,
+  .dropdown__filter2::after {
+    position: absolute;
+    top: 45%;
+    right: 20px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #595959;
+    border-bottom: 2px solid #595959;
+    transform: rotate(45deg) translateX(-45%);
+    transition: 0.2s ease-in-out;
+    display: none;
+  }
+  .dropdown__select,
+  .dropdown__select2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px 0 rgba(152, 152, 152, 0.6);
+    transform: scaleY(0);
+    transform-origin: top;
+    font-weight: 300;
+    transition: 0.2s ease-in-out;
+    padding-left: 0;
+    z-index: 55;
+  }
+  .dropdown__select-option,
+  .dropdown__select-option2 {
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #d6d6d6;
+    transition: 0.3s;
+    color: #000;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .dropdown__select-option:last-of-type,
+  .dropdown__select-option2:last-of-type {
+    border-bottom: 0;
+  }
+  .dropdown__select-option:hover,
+  .dropdown__select-option2:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .post-share h3{
+      text-align: center;
+      margin-bottom: 36px;
+      margin-top: 16px;
+  }
+  
+  .select2-container--default .select2-search--inline .select2-search__field {
+    height: 100%!important;
+    /* padding: 14px 0px!important; */
+}
+
+.select2-container {
+  width: 100%!important;
+}
+  
+
+  .select2-container--default .select2-selection--multiple {
+    background-color: transparent!important;
+    border: 1px solid #000!important;
+    display: flex!important;
+    align-items: center!important;
+    border-radius: 0!important;
+  }
+
+  .select2-selection__rendered {
+    margin-bottom: 0!important;
+  }
+
+ .dropdown__filter2::after {
+    top: 33%!important;
+  }
+  
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: transparent!important;
+  }
+  
+  .select2 {
+    height: auto;
+  } 
+  .select2 span {
+    height: 100%;
+  } 
+
+  .content-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .content-button button {
+    border-radius: 5px;
+    background: #BFBFBF;
+    color: #020202;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    outline: none;
+    padding: 10px 35px;
+
+  }
+
+  .custom-select2 {
+    background-color: transparent!important;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none!important;
+  }
+
+
+  .custom-select2:active {
+    background-color: transparent!important;
+  }
+
+  .custom-select2:focus {
+    border: none!important;
+    box-shadow: none!important;
+  }
+
+  @media screen and (max-width: 800px) {
+    .users-row {
+      margin-top: 40px;
+    }
+  
+    .users-head h3 {
+      font-size: 18px;
+      line-height: 27px;
+    }
+  
+    .post-share  .row{
+      justify-content: center !important;
+    }
+  
+    .post-share h3{
+      margin-top: 10% !important;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .dropdown,
+    .dropdown2 {
+      width: 600px;
+    }
+
+    .dropdown__switch2-label,
+.dropdown__kategory-label {
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+  
+  }
+  
+  @media screen and (max-width: 575.5px) {
+    .users-head {
+      flex-direction: column;
+    }
+  }

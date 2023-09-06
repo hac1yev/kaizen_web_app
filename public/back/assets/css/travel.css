@@ -1,0 +1,199 @@
+.travel-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.travel-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 60px;
+    color: #000000;
+}
+
+
+.comment-section-class{
+    display: none;
+    width: 100%;
+    border: 1px solid #908686;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 2px;
+    background: lightgrey;
+}
+
+.comment-card{
+    margin-top: 10px;
+    border-top: 1px solid #908686;
+    padding-top: 10px;
+}
+
+.comment-card-1{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-card-1 img{
+    width: 30px;
+}
+
+.comment-card-1 span{
+    color: #908686;
+    font-size: 12px;
+}
+
+.comment-section-show{
+    display: block !important;
+}
+
+#comment-write{
+    margin-top: 8px;
+}
+
+#comment-write button{
+    color: #000;
+    border: none;
+    background: transparent;
+}
+
+.comment-write-section{
+    display: none;
+    margin-bottom: 15px;
+}
+
+.comment-write-section button{
+    padding: 5px 10px;
+    border: none;
+    height: 35px;
+    background: #6A6A6A;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #FDFDFD;
+    border: none;
+    outline: none;
+}
+
+.comment-textarea{
+    width: 100%;
+    min-height: 60px;
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid #908686;
+    padding: 5px;
+}
+ #comment-write button:hover{
+  border-bottom:1px solid #000;
+} 
+
+
+#comment-write button::before{
+    content: '📝';
+    color: #908686;
+    filter: grayscale(100%);
+    margin-right: 5px;
+}
+
+
+
+.travel-links a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: justify;
+    color: #6D6D6D;
+}
+
+.travel-links p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: justify;
+    color: rgba(0, 0, 0, 1);
+}
+
+.travel-paper3-col {
+    border: 1px solid #000000;
+    height: max-content;
+}
+
+.travel-paper3-header {
+    border-bottom: 1px solid #000;
+    padding: 19px 21px;
+}
+
+.travel-paper3-header h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.travel-button-save {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.travel-button-save button {
+    padding: 0 2px;
+    height: 35px;
+    background: #6A6A6A;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #FDFDFD;
+    border: none;
+    outline: none;
+}
+
+.travel-section .blog-date,
+.travel-section .paper-blog2-bottom-time span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #918686;
+}
+
+
+.travel-section .paper-minute {
+    display: flex;
+    gap: 23px;
+    align-items: center;
+}
+
+@media screen and (max-width: 767.5px) {
+    .paper-1-img {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .paper-4,
+    .paper-5 {
+        display: none;
+    }
+
+    .travel-row {
+        margin: 50px 0;
+    }
+}

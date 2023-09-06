@@ -27,7 +27,7 @@ use App\Http\Controllers\Front\UsersController\UsersController;
 use App\Http\Controllers\Front\DetailController\DetailController;
 use App\Http\Controllers\Front\AccountController\AccountController;
 use App\Http\Controllers\Front\PostFrontController\PostFrontController;
-use App\Http\Controllers\SearchController as PostSearchController;
+use App\Http\Controllers\Front\SearchController\SearchController as PostSearchController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -149,12 +149,59 @@ Route::middleware('isLogout')->group(function () {
 
 
 Route::get('/', [İndexController::class, "index"])->name('index');
+Route::post('/indexlike', [İndexController::class, 'like'])->name('indexlike');
+Route::post('/indexdislike', [İndexController::class, 'dislike'])->name('indexdislike');
+Route::post('/indexbook', [İndexController::class, 'book'])->name('indexbook');
+Route::post('/indexdisbook', [İndexController::class, 'disbook'])->name('indexdisbook');
+
+
 Route::get('/ferdi-inkisaf', [InkisafController::class, "ferdi"])->name('ferdi');
-Route::get('/seyahet', [TravelController::class, "travel"])->name('travel');
-Route::get('/hekayeler', [StoryController::class, "story"])->name('story');
-Route::get('/filmler', [FilmController::class, "film"])->name('film');
-Route::get('/biznes-dunyasi', [BiznesController::class, "biznes"])->name('biznes');
+Route::get('/ferdi-inkisaf/hamisi', [InkisafController::class, "all"])->name('inkisafall');
+Route::post('/inkisaflike', [InkisafController::class, 'like'])->name('inkisaflike');
+Route::post('/inkisafdislike', [InkisafController::class, 'dislike'])->name('inkisafdislike');
+Route::post('/inkbook', [InkisafController::class, 'book'])->name('inkbook');
+Route::post('/inkdisbook', [InkisafController::class, 'disbook'])->name('inkdisbook');
+
+
+Route::get('/travel', [TravelController::class, "travel"])->name('travel');
+Route::get('/travel/all', [TravelController::class, "all"])->name('travelall');
+Route::post('/travellike', [TravelController::class, 'like'])->name('travellike');
+Route::post('/traveldislike', [TravelController::class, 'dislike'])->name('traveldislike');
+Route::post('/travelbook', [TravelController::class, 'book'])->name('travelbook');
+Route::post('/traveldisbook', [TravelController::class, 'disbook'])->name('traveldisbook');
+
+
+Route::get('/stories', [StoryController::class, "story"])->name('story');
+Route::get('/stories/all', [StoryController::class, "all"])->name('storyall');
+Route::post('/storylike', [StoryController::class, 'like'])->name('storylike');
+Route::post('/storydislike', [StoryController::class, 'dislike'])->name('storydislike');
+Route::post('/storybook', [StoryController::class, 'book'])->name('storybook');
+Route::post('/storydisbook', [StoryController::class, 'disbook'])->name('storydisbook');
+
+
+Route::get('/movies', [FilmController::class, "film"])->name('film');
+Route::get('/movies/all', [FilmController::class, "all"])->name('filmall');
+Route::post('/filmlike', [FilmController::class, 'like'])->name('filmlike');
+Route::post('/filmdislike', [FilmController::class, 'dislike'])->name('filmdislike');
+Route::post('/filmbook', [FilmController::class, 'book'])->name('filmbook');
+Route::post('/filmdisbook', [FilmController::class, 'disbook'])->name('filmdisbook');
+
+
+Route::get('/business', [BiznesController::class, "biznes"])->name('biznes');
+Route::get('/business/all', [BiznesController::class, "all"])->name('biznesall');
+Route::post('/bizneslike', [BiznesController::class, 'like'])->name('bizneslike');
+Route::post('/biznesdislike', [BiznesController::class, 'dislike'])->name('biznesdislike');
+Route::post('/biznesbook', [BiznesController::class, 'book'])->name('biznesbook');
+Route::post('/biznesdisbook', [BiznesController::class, 'disbook'])->name('biznesdisbook');
+
+
 Route::get('/profil', [ProfilController::class, "profil"])->name('profil');
+Route::get('/editprofile/{id}', [ProfilController::class, "editprofile"])->name('editprofile');
+Route::post('/updateprofile', [ProfilController::class, "updateprofile"])->name('updateprofile');
+Route::post('/profilelike', [ProfilController::class, 'like'])->name('profilelike');
+Route::post('/profiledislike', [ProfilController::class, 'dislike'])->name('profiledislike');
+Route::post('/profilebook', [ProfilController::class, 'book'])->name('profilebook');
+Route::post('/profiledisbook', [ProfilController::class, 'disbook'])->name('profiledisbook');
 
 
 Route::get('/settings', [SettingController::class, "settings"])->name('settings');
@@ -169,6 +216,9 @@ Route::get('/subc', [SettingController::class, "subc"])->name('subc');
 
 
 Route::get('/users', [UsersController::class, "user"])->name('user');
+Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
+
+
 Route::get('/post/{id}', [DetailController::class, "detail"])->name('detail');
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
 
@@ -181,4 +231,10 @@ Route::get('/logout', [AccountController::class, "logout"])->name('logouts');
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
+
+
 Route::get('/search', [PostSearchController::class, "action"])->name('search');
+Route::post('/searchlike', [PostSearchController::class, 'like'])->name('searchlike');
+Route::post('/searchdislike', [PostSearchController::class, 'dislike'])->name('searchdislike');
+Route::post('/searchbook', [PostSearchController::class, 'book'])->name('searchbook');
+Route::post('/searchdisbook', [PostSearchController::class, 'disbook'])->name('searchdisbook');
