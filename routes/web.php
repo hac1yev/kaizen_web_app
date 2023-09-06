@@ -198,6 +198,10 @@ Route::post('/biznesdisbook', [BiznesController::class, 'disbook'])->name('bizne
 Route::get('/profil', [ProfilController::class, "profil"])->name('profil');
 Route::get('/editprofile/{id}', [ProfilController::class, "editprofile"])->name('editprofile');
 Route::post('/updateprofile', [ProfilController::class, "updateprofile"])->name('updateprofile');
+Route::post('/profilelike', [ProfilController::class, 'like'])->name('profilelike');
+Route::post('/profiledislike', [ProfilController::class, 'dislike'])->name('profiledislike');
+Route::post('/profilebook', [ProfilController::class, 'book'])->name('profilebook');
+Route::post('/profiledisbook', [ProfilController::class, 'disbook'])->name('profiledisbook');
 
 
 Route::get('/settings', [SettingController::class, "settings"])->name('settings');

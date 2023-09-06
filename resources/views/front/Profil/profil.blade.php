@@ -86,10 +86,13 @@
                                     </div>
                                     <div class="act-btns">
                                         <button>
-                                            <img src="back/assets/img/heart.png" alt="">
+                                            <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $fav->id }}" style="{{ in_array($fav->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $fav->id }})">
+                                            <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $fav->id }}" style="{{ in_array($fav->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $fav->id }})">
+            
                                         </button>
                                         <button>
-                                            <img src="back/assets/img/save.png" alt="">
+                                            <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $fav->id }}" style="{{ in_array($fav->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $fav->id }})">
+                                            <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $fav->id }}" style="{{ in_array($fav->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $fav->id }})">
                                         </button>
                                     </div>
                                 </div>
@@ -139,10 +142,13 @@
                                     </div>
                                     <div class="act-btns">
                                         <button>
-                                            <img src="back/assets/img/heart.png" alt="">
+                                            <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $p->id }}" style="{{ in_array($p->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $p->id }})">
+                                            <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $p->id }}" style="{{ in_array($p->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $p->id }})">
+                                            
                                         </button>
                                         <button>
-                                            <img src="back/assets/img/save.png" alt="">
+                                            <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $p->id }}" style="{{ in_array($p->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $p->id }})">
+                                            <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $p->id }}" style="{{ in_array($p->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $p->id }})">
                                         </button>
                                     </div>
                                 </div>
@@ -206,10 +212,14 @@
                                 </div>
                                 <div class="act-btns">
                                     <button>
-                                        <img src="back/assets/img/heart.png" alt="">
+                                        <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $m->id }}" style="{{ in_array($m->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $m->id }})">
+                                        <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $m->id }}" style="{{ in_array($m->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $m->id }})" >
+        
                                     </button>
                                     <button>
-                                        <img src="back/assets/img/save.png" alt="">
+                                        <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $m->id }}" style="{{ in_array($m->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $m->id }})">
+                                        <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $m->id }}" style="{{ in_array($m->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $m->id }})" >
+        
                                     </button>
                                 </div>
                             </div>
@@ -227,10 +237,115 @@
 
 
 @section('js')
-    <script src="back/assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="{{ asset('back/assets/js/app.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>      
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>     
+    
+    <script>
+        function likePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('profilelike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#likeButton_' + postId).hide();
+                    $('#dislikeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function dislikePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('profiledislike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#dislikeButton_' + postId).hide();
+                    $('#likeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function bookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('profilebook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) { 
+                    $('#bookButton_' + postId).hide();
+                    $('#disbookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function disbookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('profiledisbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#disbookButton_' + postId).hide();
+                    $('#bookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
 @endsection
  
