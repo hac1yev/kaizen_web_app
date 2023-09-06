@@ -22,12 +22,10 @@
     
                         <div class="col-12 mt-2 row">
                             <div class="col-md-12">
-                                <input name="title" id="content"  placeholder="Başlıq *" class="mezmun">
+                                <input name="title" id="contentt"  placeholder="Başlıq *" class="mezmun">
                             </div>
                         </div>
                         <div class="col-12 mt-2 row">
-                            <div class="col-md-12">
-                            </div>
                             <div class="col-md-12">
                                 <input name="description" id="content" placeholder="Özət *" class="mezmun">
                             </div>
@@ -37,7 +35,7 @@
                                 <label for="actual-btn" class="text-area">Məzmun <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-md-12">
-                                <textarea name="content" id="content" class="text-editor"></textarea>
+                                <textarea name="content" id="contenttt" class="text-editor"></textarea>
                             </div>
                         </div>
 
@@ -50,7 +48,7 @@
                                         <li class="dropdown__filter-selected" aria-selected="true" id="selected-category">
                                         </li>
                                         <select class="form-control custom-select2" name="category">
-                                            <option value="" disabled>Kateqoriyalar</option>
+                                            <option value="" selected disabled>Kateqoriyalar</option>
                                                 @foreach($categories as $cat)
                                                     <option value="{{$cat->id}}">{{$cat->title}}</option>
                                                 @endforeach

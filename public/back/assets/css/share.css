@@ -141,6 +141,7 @@
     padding: 26px 0px 25px 20px;
     align-items: center;
     border: 1px solid #020202;
+    margin-bottom: 0!important;
   }
   
   .text-editor {
@@ -151,8 +152,9 @@
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
     border-left: 1px solid #000;
+    border-top: 1px solid #000;
     background: #d9d9d9;
-    margin-top: -8px;
+    margin-top: 0px!important;
     padding: 15px;
   }
   .mezmun {
@@ -168,7 +170,18 @@
     margin-top: 6px;
     padding: 15px;
   }
+
+  #category-error {
+    position: absolute;
+    bottom: -35px;
+    left: 0px;
+  }
   
+  #tagSelect-error {
+    position: absolute;
+    bottom: -32px;
+  }
+
   /* dropdown */
   li {
     list-style-type: none;
@@ -328,6 +341,7 @@
   .content-button {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
   }
 
   .content-button button {
