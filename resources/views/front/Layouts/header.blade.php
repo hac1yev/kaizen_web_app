@@ -123,10 +123,12 @@
                     </div>
                     <div class="input-group login-form-div login-div-password mt-4">
                         <label for="password">Şifrə</label>
-                        <a class="login-forgot" href="">Şifrənin bərpası</a>
-                        <input type="password" name="password" placeholder="Enter your password" class="form-control"
-                            type="text" id="password" />
-                        <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                        <a class="login-forgot" href="" data-target="#forgetModal" data-dismiss="modal" data-toggle="modal">Şifrənin bərpası</a>
+                        <div class="input-group">
+                            <input type="password" name="password" placeholder="Enter your password" class="form-control"
+                            type="text" id="password" >
+                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                        </div>
                     </div>
                     <button class="mt-4">Daxil olun</button>
                     <div class="login-dont-account">
@@ -149,26 +151,28 @@
                 <form class="login-form" method="POST" action="{{ route('registerpost') }}" id="register">
                     @csrf
                     <h4>Qeydiyyatdan keçin</h4>
-                    <div class="input-group login-form-div">
+                    <div class="input-group login-form-div mt-2">
                         <label for="fullname">Ad Soyad</label>
                         <input type="text" placeholder="Ad və soyadınzı daxil edin" name="fullname" class="form-control"
                             id="fullname" />
                     </div>
-                    <div class="input-group login-form-div">
+                    <div class="input-group login-form-div mt-2">
                         <label for="username">İstifadəçi adı</label>
                         <input type="text" placeholder="İstifadəçi adını daxil edin" name="username"
                             class="form-control" id="username" />
                     </div>
-                    <div class="input-group login-form-div">
+                    <div class="input-group login-form-div mt-2">
                         <label for="email">Email</label>
                         <input type="email" placeholder="Emailiniz daxil edin" name="email" class="form-control"
                             id="email" />
                     </div>
-                    <div class="input-group login-form-div login-div-password mt-4">
+                    <div class="input-group login-form-div mt-2 login-div-password mt-4">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
+                        <div class="input-group">
+                            <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
                             id="password" />
-                        <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                        </div>
                     </div>
                     <button class="mt-4">Qeydiyyatdan keç</button>
                     <div class="login-dont-account">
@@ -182,3 +186,75 @@
         </div>
     </div>
 </div>
+
+
+<!-- FORGETMODAL -->
+<div class="modal login-modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog login-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="login-form" method="POST" action="{{route('forget_post')}}" id="forget">
+                    @csrf
+                    <h4>Daxil olun</h4>
+                    <div class="input-group login-form-div">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-control" type="text"
+                            id="email" />
+                    </div>
+                    
+                    <button class="mt-4">Göndər</button>
+                    <div class="login-dont-account">
+                        
+                        <a data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
+                            data-target="#loginModal">Geri</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FORGETMODAL -->
+
+
+
+{{-- CONFIRM PASSWORD MODAL --}}
+
+<div class="modal login-modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+    <div class="modal-dialog login-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="login-form" method="POST" action="{{route('confirm_post')}}" id="confirm">
+                    @csrf
+                    <h4>Daxil olun</h4>
+                    <div class="input-group login-form-div mt-2 login-div-password mt-4">
+                        <label for="password">Şifrə</label>
+                        <div class="input-group">
+                            <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
+                            id="password" />
+                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                        </div>
+                    </div>
+                    <div class="input-group login-form-div mt-2 login-div-password mt-4">
+                        <label for="password">Şifrənin təkrarı</label>
+                        <div class="input-group">
+                            <input type="password" placeholder="Şifrənizi daxil edin" name="password_confirmation" class="form-control"
+                            id="password_confirmation" />
+                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                        </div>
+                    </div>
+                    
+                    <button class="mt-4">Göndər</button>
+                    <div class="login-dont-account">
+                        
+                        <a data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
+                            data-target="#forgetModal">Geri</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

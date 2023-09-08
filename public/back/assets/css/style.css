@@ -837,6 +837,16 @@ footer {
   gap: 30px;
 }
 
+.footer-input-groups {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-input-groups div {
+  display: flex;
+  flex-direction: column;
+}
+
 .foot-right div li a {
   font-style: normal;
   font-weight: 400;
@@ -1260,6 +1270,10 @@ footer {
   .paper-k-img img {
     width: 100%;
   }
+
+  .footer-input-groups {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -1375,10 +1389,16 @@ nav.stroke ul li a:hover:after {
   width: 32px;
   height: 32px;
   position: absolute;
-  bottom: 8px;
+  top: 8px;
   right: 10px;
   cursor: pointer;
   z-index: 5;
+}
+
+.error {
+  color: rgb(250, 68, 68)!important;
+  font-size: 14px;
+  margin-top: 5px!important;
 }
 
 .login-form-div input:focus {

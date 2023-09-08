@@ -8,9 +8,13 @@ use App\Models\Contact;
 use App\Models\Posts;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendForgetMail ;
 use Illuminate\Support\Str;
 use Redirect;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 
 class AccountController extends Controller
@@ -87,8 +91,88 @@ class AccountController extends Controller
 
     }
 
-    public function logout()
-    {
+
+    public function forget_post(Request $request){
+        $request->validate([
+            'email' => 'required|email|max:255',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            return redirect()->back()->with('error', 'Belə bir email yoxdur');
+        }
+        
+        $user->email_verification_code = Str::random(40);
+        $user->save();
+
+        $data = [
+            'email_name' => 'Kaizen.az',
+            'subject' => 'Şifrə yeniləmə',
+            'text' => 'Şifrənizi yeniləmək üçün bu linkə tıklayın:',
+            'link' => env('APP_URL') . '/email-verification/' . $user->email_verification_code,
+        ];
+
+        Mail::to($user->email)->send(new SendForgetMail($data));
+
+        return redirect()->back()->with('success', 'Emailinizə gələn linkdən parolunuzu yeniləyin');
+    }
+
+    public function forget_verification(Request $request){
+        $verification = $request->verification;
+
+        try {
+            DB::beginTransaction();
+
+            $user_verification = User::where('email_verification_code', $verification)->first();
+
+            if ($user_verification && $user_verification->status !== NULL) {
+                $user_verification->email_verification_code = "";
+                $user_verification->status = 1;
+                $user_verification->save();
+
+                DB::commit();
+
+                return redirect()->route('index')->with('success', 'Yeni parolunu daxil edin');
+            }
+            else {
+                return redirect()->back();
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+
+        return redirect()->back();
+    }
+    
+
+
+    public function confirm_post(Request $request){
+        try {
+            DB::beginTransaction();
+
+            $user = User::where('email', $request->email)->first();
+
+            if ($user) {
+                $user->email_verification_code = "";
+                $user->password = bcrypt($request->password);
+                $user->save();
+
+                DB::commit();
+
+                return redirect()->route('index')->with('success', 'Təbriklər');
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+
+    }
+
+
+    public function logout(){
         Auth::logout();
         return redirect()->route('index');
     }

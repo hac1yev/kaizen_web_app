@@ -46,8 +46,14 @@
         <form action="{{route('contact')}}" method="POST" id="contact">
             @csrf
             <p>Təklif və iradlar</p>
-            <input placeholder="Ad:" name="name" type="text"> &nbsp;&nbsp;
-            <input placeholder="E-mail:*" name="email" type="email"> <br>
+            <div class="footer-input-groups">
+                <div class="input-group">
+                    <input placeholder="Ad:" name="name" type="text"> &nbsp;&nbsp;
+                </div>
+                <div class="input-group">
+                    <input placeholder="E-mail:*" name="email" type="email"> <br>
+                </div>
+            </div>
             <textarea id="" name="message" cols="" rows=""></textarea> <br>
             <button type="submit">Mesajı göndərin</button>
         </form>
@@ -181,7 +187,13 @@
                     required: true,
                     email: true
 
-                }
+                },
+                username: {
+                    required: true
+                },
+                fullname: {
+                    required: true
+                },
             },
             messages: {
                 password: {
@@ -193,12 +205,112 @@
                     required: errorMessages.required,
                     email: errorMessages.email,
 
-                }
+                },
+                username: {
+                    required: errorMessages.required,
+
+                },
+                fullname: {
+                    required: errorMessages.required,
+
+                },
             },
             submitHandler: function(form) {
-                form.submit(); // Formu gönder
+                form.submit(); 
             }
         });
     });
 </script>
- 
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            email: 'Zəhmət olmasa düzgün email yazın'
+
+        };
+    
+        $("#forget").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+
+                },
+                
+            },
+            messages: {
+                email: {
+                    required: errorMessages.required,
+                    email: errorMessages.email,
+
+                },
+            },
+            submitHandler: function(form) {
+                form.submit(); 
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+            equalTo: 'Bu sahə şifrə ilə eyni olmalıdır!',
+
+        };
+    
+        $("#confirm").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8
+
+                },
+                password_confirmation: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password"
+
+
+                },
+                
+            },
+            messages: {
+                password: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                password_confirmation: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                
+            },
+            submitHandler: function(form) {
+                form.submit(); 
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#openConfirmModalLink').click(function(e) {
+            e.preventDefault(); 
+            
+            window.location.href = $(this).attr('href');
+    
+            // Ardından modalı otomatik olarak aç
+            setTimeout(function() {
+                $('#confirmModal').modal('show');
+            }, 1000); 
+        });
+    });
+    </script>

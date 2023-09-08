@@ -101,7 +101,10 @@
                     @else
                         <form method="POST" action="{{ route('changeEmail') }}" id="emaildeyis">
                             @csrf
-                            <input placeholder="E-poçt daxil edin!" type="email" name="email" />
+                            <div class="input-group">
+                                <input placeholder="E-poçt daxil edin!" type="email" name="email" />
+
+                            </div>
                             <button>Dəyiş</button>
                         </form>
                     @endif
@@ -178,7 +181,9 @@
                     <span>Nəyə görə bizdən ayrılırsınız? 😪</span>
                     <form action="{{ route('whydelete') }}" method="POST" id="niye">
                         @csrf
-                        <input type="text" name="reason" placeholder="Səbəb yazın ..." />
+                        <div class="input-group">
+                            <input type="text" name="reason" placeholder="Səbəb yazın ..." />
+                        </div>
                         <button>Sil</button>
                     </form>
                 </div>

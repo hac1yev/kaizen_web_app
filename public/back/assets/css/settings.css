@@ -112,7 +112,7 @@
 .settings-change-password, 
 .settings-forget-password {
     height: 284.52px;
-    padding: 27px 15px;
+    padding: 5px 15px;
     padding-bottom: 27px;
     border: 1px solid rgba(2,2,2,0.3);
 }
@@ -175,6 +175,7 @@
     border: 1px solid rgb(137, 130, 130);
     padding: 1px 6px;
     cursor: pointer;
+    height: 20px;
 }
 
 .change-pass-div ,
@@ -261,7 +262,7 @@
     font-size: 10px;
     line-height: 15px;
     color: #020202;
-    width: 80%;
+    width: 95%;
 }
 
 .delete-account form button {
@@ -275,6 +276,11 @@
     border: 1px solid rgb(137, 130, 130);
     padding: 1px 6px;
     cursor: pointer;
+    height: 20px;
+}
+
+.delete-account form {
+    display: flex;
 }
 
 .active-account-button {
