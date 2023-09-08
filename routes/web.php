@@ -231,6 +231,9 @@ Route::get('/logout', [AccountController::class, "logout"])->name('logouts');
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
+Route::post('/forget_post', [AccountController::class, 'forget_post'])->name('forget_post');
+Route::get('/email-verification/{verification}',[AccountController::class,'forget_verification'])->name('forget_verification');
+Route::post('/confirm_post', [AccountController::class, 'confirm_post'])->name('confirm_post');
 
 
 Route::get('/search', [PostSearchController::class, "action"])->name('search');

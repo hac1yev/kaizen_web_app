@@ -221,4 +221,96 @@
         });
     });
 </script>
- 
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            email: 'Zəhmət olmasa düzgün email yazın'
+
+        };
+    
+        $("#forget").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+
+                },
+                
+            },
+            messages: {
+                email: {
+                    required: errorMessages.required,
+                    email: errorMessages.email,
+
+                },
+            },
+            submitHandler: function(form) {
+                form.submit(); 
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        var errorMessages = {
+            required: 'Bu sahə mütləq doldurulmalıdır!',
+            minlength: 'Bu sahə minimum 8 simvol olmalıdır!',
+            equalTo: 'Bu sahə şifrə ilə eyni olmalıdır!',
+
+        };
+    
+        $("#confirm").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8
+
+                },
+                password_confirmation: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password"
+
+
+                },
+                
+            },
+            messages: {
+                password: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                password_confirmation: {
+                    required: errorMessages.required,
+                    minlength: errorMessages.minlength,
+
+                },
+                
+            },
+            submitHandler: function(form) {
+                form.submit(); 
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#openConfirmModalLink').click(function(e) {
+            e.preventDefault(); 
+            
+            window.location.href = $(this).attr('href');
+    
+            // Ardından modalı otomatik olarak aç
+            setTimeout(function() {
+                $('#confirmModal').modal('show');
+            }, 1000); 
+        });
+    });
+    </script>
