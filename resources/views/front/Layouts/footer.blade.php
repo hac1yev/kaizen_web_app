@@ -1,7 +1,7 @@
     
 <footer class="footer">
     <div class="foot-left">
-        <img src="{{asset('back/assets/img/f-logo.png')}}" alt="">
+        <img src="{{ asset($setting->logo_kaizen_footer) }}" alt="">
         <p>Uğur, inkişaf və nailiyyətə gedən yolda fəaliyyət göstərən
             Fərdi İnkişaf platforması kaizen.az</p>
         <div class="foot-social">

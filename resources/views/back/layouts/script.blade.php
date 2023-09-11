@@ -31,8 +31,8 @@
 <script src="{{asset('assets/js/reply.js')}}"></script>
 
 <!-- PERFECT SCROLLBAR JS-->
-<script src="{{asset('assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
-<script src="{{asset('assets/plugins/p-scroll/pscroll.js')}}"></script>
+{{-- <script src="{{asset('assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script> --}}
+{{-- <script src="{{asset('assets/plugins/p-scroll/pscroll.js')}}"></script> --}}
 
 <!-- STICKY JS -->
 <script src="{{asset('assets/js/sticky.js')}}"></script>

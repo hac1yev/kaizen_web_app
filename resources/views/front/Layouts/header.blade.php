@@ -51,7 +51,7 @@
 <div class="all-header">
     <header class="container">
         <a href="{{ route('index') }}">
-            <img src="{{ asset('back/assets/img/logo.png') }}" alt="">
+            <img src="{{ asset($setting->logo_kaizen_header) }} " alt="">
         </a>
         <nav class="stroke">
             <ul>
