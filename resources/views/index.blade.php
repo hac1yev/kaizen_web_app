@@ -804,12 +804,9 @@
 
     <script>
         var seeMoreButton = document.querySelector('.see-more-mid');
-
         seeMoreButton.addEventListener('click', function() {
             var activeTab = document.querySelector('.nav-link.active');
             var tabId = activeTab.getAttribute('href').substring(1); 
-
-            // Hangi sekme aktifse, uygun URL'ye yönlendir
             switch (tabId) {
                 case 'ferdi':
                     window.location.href = '{{route('ferdi')}}';
