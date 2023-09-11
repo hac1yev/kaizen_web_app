@@ -10,10 +10,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendForgetMail ;
+use App\Mail\SendContactMail ;
 use Illuminate\Support\Str;
 use Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -42,6 +44,24 @@ class AccountController extends Controller
             'password' => bcrypt($request->password),
             'email_verification_code' => Str::random(40),
         ]);
+        $data=[];
+        $data['email_name']='1is.az';
+        $data['subject']='Email verification';
+        $data['link']=env('APP_URL').'/user-verification/'.$user->email_verification_code;
+        $data['text']='Emailniz tesdiqleyin';
+
+        if (env("APP_ENV") === "local")
+        {
+            $user->verified = '1';
+            $user->email_verification_code = '';
+            
+        }
+        else
+        {
+            Mail::to($user->email)->send(new SendMail($data));
+        }
+        $user->save();
+
         return redirect()->back()->with('success', 'Qeydiyyat uğurla tamamlandı');
     }
 
@@ -59,9 +79,16 @@ class AccountController extends Controller
             $contact->name = $request->name;
             $contact->email = $request->email;
             $contact->message = $request->message;
-    
-
             $contact->save();
+
+            $data = [
+                'email_name' => 'Kaizen.az',
+                'subject' => 'Abunə olmaq',
+                'text' => 'Təbriklərr, saytımıza uğurla abunə oldunuz',
+            ];
+    
+            Mail::to($contact->email)->send(new SendContactMail($data));
+    
     
             return back()->with('success',  'aferin');
     
@@ -119,55 +146,38 @@ class AccountController extends Controller
 
     public function forget_verification(Request $request){
         $verification = $request->verification;
+        
+        if ($user = User::where('email_verification_code', $verification)->first())
+        {
+            return redirect()->route('index')->with([
+                'success' => 'Yeni parolunu daxil edin',
+                'forgot-password-h78he129' => true,
+                'email_verification_code' => $user->email_verification_code
+            ]);
+        }
 
-        try {
-            DB::beginTransaction();
+        return redirect()->route('index');
+    }
 
-            $user_verification = User::where('email_verification_code', $verification)->first();
+    public function confirm_post(Request $request){
+        $verificationCode = $request->email_verification_code;
 
-            if ($user_verification && $user_verification->status !== NULL) {
-                $user_verification->email_verification_code = "";
-                $user_verification->status = 1;
-                $user_verification->save();
+        if ($user = User::where('email_verification_code', $verificationCode)->first())
+        {
+            $newPass = $request->password;
+            $newPassRepeat = $request->password_confirmation;
+            if ($newPass === $newPassRepeat)
+            {
+                $user->password = bcrypt($request->password);
+                $user->email_verification_code = "";
+                $user->verified = '0';
+                $user->save();
+                return redirect()->back()->with('success', 'Şifrəniz uğurla dəyişdirildi');
 
-                DB::commit();
-
-                return redirect()->route('index')->with('success', 'Yeni parolunu daxil edin');
             }
-            else {
-                return redirect()->back();
-            }
-
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
         }
 
         return redirect()->back();
-    }
-    
-
-
-    public function confirm_post(Request $request){
-        try {
-            DB::beginTransaction();
-
-            $user = User::where('email', $request->email)->first();
-
-            if ($user) {
-                $user->email_verification_code = "";
-                $user->password = bcrypt($request->password);
-                $user->save();
-
-                DB::commit();
-
-                return redirect()->route('index')->with('success', 'Təbriklər');
-            }
-
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-        }
 
     }
 

@@ -63,6 +63,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<?php
+    if(session('forgot-password-h78he129')) {
+?>
+        <script type='text/javascript'>
+            $(document).ready(function() {
+                $('#confirmModal').modal('show');
+            });
+        </script>
+<?php
+    }
+?>
+
+
+
 <script>
     @if(Session::has('success'))
     Swal.fire({
@@ -300,17 +316,3 @@
 </script>
 
 
-<script>
-    $(document).ready(function() {
-        $('#openConfirmModalLink').click(function(e) {
-            e.preventDefault(); 
-            
-            window.location.href = $(this).attr('href');
-    
-            // Ardından modalı otomatik olarak aç
-            setTimeout(function() {
-                $('#confirmModal').modal('show');
-            }, 1000); 
-        });
-    });
-    </script>
