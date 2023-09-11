@@ -90,7 +90,7 @@ class AccountController extends Controller
             Mail::to($contact->email)->send(new SendContactMail($data));
     
     
-            return back()->with('success',  'aferin');
+            return back()->with('success',  'Müraciətiniz uğurla göndərildi');
     
         } catch (\Throwable $e) {
             return back()->with('error',$e->getMessage());
