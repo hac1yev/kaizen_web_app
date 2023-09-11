@@ -51,7 +51,7 @@
 <div class="all-header">
     <header class="container">
         <a href="{{ route('index') }}">
-            <img src="{{ asset('back/assets/img/logo.png') }}" alt="">
+            <img src="{{ asset($setting->logo_kaizen_header) }} " alt="">
         </a>
         <nav class="stroke">
             <ul>
@@ -115,6 +115,7 @@
             <div class="modal-body">
                 <form class="login-form" method="POST" action="{{ route('loginpost') }}" id="login">
                     @csrf
+                    
                     <h4>Daxil olun</h4>
                     <div class="input-group login-form-div">
                         <label for="email">Email</label>
@@ -126,7 +127,7 @@
                         <a class="login-forgot" href="" data-target="#forgetModal" data-dismiss="modal" data-toggle="modal">Şifrənin bərpası</a>
                         <div class="input-group">
                             <input type="password" name="password" placeholder="Enter your password" class="form-control"
-                            type="text" id="password" >
+                            type="text" id="passwords" >
                             <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
@@ -150,6 +151,7 @@
             <div class="modal-body">
                 <form class="login-form" method="POST" action="{{ route('registerpost') }}" id="register">
                     @csrf
+                    
                     <h4>Qeydiyyatdan keçin</h4>
                     <div class="input-group login-form-div mt-2">
                         <label for="fullname">Ad Soyad</label>
@@ -170,7 +172,7 @@
                         <label for="password">Password</label>
                         <div class="input-group">
                             <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
-                            id="password" />
+                            id="passwordss" />
                             <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
@@ -228,6 +230,7 @@
             <div class="modal-body">
                 <form class="login-form" method="POST" action="{{route('confirm_post')}}" id="confirm">
                     @csrf
+                    <input name="email_verification_code" type='hidden' value='{{ session('email_verification_code') }}' />
                     <h4>Daxil olun</h4>
                     <div class="input-group login-form-div mt-2 login-div-password mt-4">
                         <label for="password">Şifrə</label>

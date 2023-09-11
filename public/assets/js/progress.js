@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e303fd327ceaba2942daca94780849b68ea12dddc085215372ca70bf357a8353
-size 420
+(function($){
+    'use strict'
+
+    var $toggleBtn = $('#btnToggleAnimatedProgress'),
+        $progressBar = $('#animatedBar');
+    $toggleBtn.on("click", function(e) {
+
+		if($progressBar.hasClass( "progress-bar-animated" )){
+            $progressBar.removeClass('progress-bar-animated');
+        }
+
+        else{
+            $progressBar.addClass('progress-bar-animated');
+        }
+	});
+
+
+})(jQuery); 

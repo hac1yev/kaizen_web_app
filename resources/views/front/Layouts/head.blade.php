@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="{{ asset('back/assets/css/share.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.carousel.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/edit-profile.css')}}" />
+<link rel="icon" href="{{ asset($setting->favicon) }}" type="image/x-icon" />
 
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.theme.default.min.css') }}" />
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

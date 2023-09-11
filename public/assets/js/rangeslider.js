@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e66151bf8379dd019a1b54f486c25fd170a5a51e31c6232a4bb8d370bc18ada
-size 451
+$(function () {
+	'use strict'
+
+	$('.rangeslider1').ionRangeSlider();
+	$('.rangeslider2').ionRangeSlider({
+		min: 100,
+		max: 1000,
+		from: 550
+	});
+	$('.rangeslider3').ionRangeSlider({
+		type: 'double',
+		grid: true,
+		min: 0,
+		max: 1000,
+		from: 200,
+		to: 800,
+		prefix: '$'
+	});
+	$('.rangeslider4').ionRangeSlider({
+		type: 'double',
+		grid: true,
+		min: -1000,
+		max: 1000,
+		from: -500,
+		to: 500,
+		step: 250
+	});
+});

@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:795f9a7dcb753012ef8830a2d9477757f708bf086dfa213e107efec061833092
-size 272
+(function($) {
+	"use strict";
+	
+	const ps5 = new PerfectScrollbar('.content', {
+	  useBothWheelAxes:true,
+	  suppressScrollX:true,
+	});
+	const ps6 = new PerfectScrollbar('.content-1', {
+	  useBothWheelAxes:true,
+	  suppressScrollX:true,
+	});
+	
+	
+
+})(jQuery);

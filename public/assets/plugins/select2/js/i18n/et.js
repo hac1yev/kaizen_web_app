@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d9e6d826e0d6966399bc33e48f6fa2972d3015e355fd15b35ad79ccb820c3faa
-size 782
+/*! Select2 4.0.6-rc.1 | https://github.com/select2/select2/blob/master/LICENSE.md */
+
+(function(){if(jQuery&&jQuery.fn&&jQuery.fn.select2&&jQuery.fn.select2.amd)var e=jQuery.fn.select2.amd;return e.define("select2/i18n/et",[],function(){return{inputTooLong:function(e){var t=e.input.length-e.maximum,n="Sisesta "+t+" täht";return t!=1&&(n+="e"),n+=" vähem",n},inputTooShort:function(e){var t=e.minimum-e.input.length,n="Sisesta "+t+" täht";return t!=1&&(n+="e"),n+=" rohkem",n},loadingMore:function(){return"Laen tulemusi…"},maximumSelected:function(e){var t="Saad vaid "+e.maximum+" tulemus";return e.maximum==1?t+="e":t+="t",t+=" valida",t},noResults:function(){return"Tulemused puuduvad"},searching:function(){return"Otsin…"}}}),{define:e.define,require:e.require}})();

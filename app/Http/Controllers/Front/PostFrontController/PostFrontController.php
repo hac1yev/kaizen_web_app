@@ -7,6 +7,8 @@ use App\Models\Posts;
 use App\Models\User;
 use App\Models\Categories;
 use Illuminate\Support\Str;
+use App\Mail\SendPostMail;
+use Illuminate\Support\Facades\Mail; 
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -47,6 +49,15 @@ class PostFrontController extends Controller
             $post->image = $name;
         }
         $post->save();
+
+        $data = [
+            'email_name' => 'Kaizen.az',
+            'subject' => 'Məqalə yaratmaq',
+            'text' => 'Sizin məqaləniz uğurla yaradıldı',
+        ];
+
+        Mail::to(Auth::user()->email)->send(new SendPostMail($data));
+
         return redirect()->route('share')->with('success','Məqalə uğurla əlavə edildi');
 
     }

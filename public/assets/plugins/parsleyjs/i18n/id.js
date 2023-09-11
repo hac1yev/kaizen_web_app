@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:29e3db921d44a3ce89b04f3981dd1275a8afde7009d290a1f7d5f21dc44ded8f
-size 1116
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('id', {
+  defaultMessage: "tidak valid",
+  type: {
+    email:        "email tidak valid",
+    url:          "url tidak valid",
+    number:       "nomor tidak valid",
+    integer:      "integer tidak valid",
+    digits:       "harus berupa digit",
+    alphanum:     "harus berupa alphanumeric"
+  },
+  notblank:       "tidak boleh kosong",
+  required:       "tidak boleh kosong",
+  pattern:        "tidak valid",
+  min:            "harus lebih besar atau sama dengan %s.",
+  max:            "harus lebih kecil atau sama dengan %s.",
+  range:          "harus dalam rentang %s dan %s.",
+  minlength:      "terlalu pendek, minimal %s karakter atau lebih.",
+  maxlength:      "terlalu panjang, maksimal %s karakter atau kurang.",
+  length:         "panjang karakter harus dalam rentang %s dan %s",
+  mincheck:       "pilih minimal %s pilihan",
+  maxcheck:       "pilih maksimal %s pilihan",
+  check:          "pilih antar %s dan %s pilihan",
+  equalto:        "harus sama"
+});
+
+Parsley.setLocale('id');

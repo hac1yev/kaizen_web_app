@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a1e3244975aae14a7ba4d350aee944c64c590533529fdddcd396cf2a54adacd
-size 597
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('cs', {
+  dateiso:  "Tato položka musí být datum ve formátu RRRR-MM-DD.",
+  minwords: "Tato položka musí mít délku nejméně %s slov.",
+  maxwords: "Tato položka musí mít délku nejvíce %s slov.",
+  words:    "Tato položka musí být od %s do %s slov dlouhá.",
+  gt:       "Tato hodnota musí být větší.",
+  gte:      "Tato hodnota musí být větší nebo rovna.",
+  lt:       "Tato hodnota musí být menší.",
+  lte:      "Tato hodnota musí být menší nebo rovna."
+});

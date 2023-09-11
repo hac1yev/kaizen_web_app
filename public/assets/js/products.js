@@ -1,3 +1,56 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f59df65fdb2cf30ea2b7b160bac8af7de470b1ae9c0f78a2510f69c3e36a13d7
-size 1601
+const colBtn = document.querySelectorAll('#viewBtn');
+const products = document.querySelectorAll('.product-each');
+
+const itemContainer = document.querySelectorAll('.product-grid6');
+
+const displayBtn = document.querySelectorAll('.layoutBtn');
+
+const fourColBtn = document.querySelector('.four-col');
+const threeColBtn = document.querySelector('.three-col')
+const twoColBtn = document.querySelector('.two-col');
+
+function fourCol($e) {
+    'use strict'
+    for (var i = 0; i < products.length; i++) {
+        products[i].className = " ";
+        products[i].className = "col-12 col-md-6 col-sm-6 col-lg-6 col-xl-3";
+    }
+
+    for (var i = 0; i < colBtn.length; i++) {
+        colBtn[i].classList.remove('active');
+    }
+
+    var element = $e.target;
+    element.classList.add('active');
+
+}
+
+function threeCol($e) {
+    'use strict'
+    for (var i = 0; i < products.length; i++) {
+        products[i].className = " ";
+        products[i].className = "col-12 col-md-6 col-sm-6 col-lg-6 col-xl-4";
+    }
+
+    for (var i = 0; i < colBtn.length; i++) {
+        colBtn[i].classList.remove('active');
+    }
+
+    var element = $e.target;
+    element.classList.add('active');
+}
+
+function twoCol($e) {
+    'use strict'
+    for (var i = 0; i < products.length; i++) {
+        products[i].className = " ";
+        products[i].className = "col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6";
+    }
+
+    for (var i = 0; i < colBtn.length; i++) {
+        colBtn[i].classList.remove('active');
+    }
+
+    var element = $e.target;
+    element.classList.add('active');
+}

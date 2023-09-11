@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a568781612801dae491384bda052ec72b9151225637c7150d99e68d6eb713a0
-size 522
+
+$(function (e) {
+	'use strict'
+
+    //select2 dropdown
+    $('.select2-show-search').select2({
+        minimumResultsForSearch: Infinity,
+        width: '100%'
+    });
+
+    //Date Picker
+    $("#bootstrapDatePicker").datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy',
+    }).datepicker('update', new Date());
+
+    //Time Picker
+    $('#tp3').timepicker();
+
+    $(document).on('click', '#setTimeButton', function () {
+        $('#tp3').timepicker('setTime', new Date());
+    });
+})

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a9e26f55a4fc5cd4709fdf6d4f3e7a4a4f550b744ba4264639f5ee45ca92053f
-size 656
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('ms', {
+  dateiso:  "Nilai hendaklah berbentuk tarikh yang sah (YYYY-MM-DD).",
+  minwords: "Ayat terlalu pendek. Ianya perlu sekurang-kurangnya %s patah perkataan.",
+  maxwords: "Ayat terlalu panjang. Ianya tidak boleh melebihi %s patah perkataan.",
+  words:    "Panjang ayat tidak sah. Jumlah perkataan adalah diantara %s hingga %s patah perkataan.",
+  gt:       "Nilai lebih besar diperlukan.",
+  gte:      "Nilai hendaklah lebih besar atau sama.",
+  lt:       "Nilai lebih kecil diperlukan.",
+  lte:      "Nilai hendaklah lebih kecil atau sama."
+});

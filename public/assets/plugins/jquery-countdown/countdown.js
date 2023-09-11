@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:167726c84f0b99be872a8a57cbdacc593d5a34b7082b9fb8808302707efca206
-size 532
+$(function () {
+	 var austDay = new Date("December 1, 2025");
+		$('#launch_date').countdown(
+	{
+	until: austDay,
+	 layout: '<ul class="countdown"><li><span class="number">{dn}<\/span><br/><span class="time">{dl}<\/span><\/li><li><span class="number">{hn}<\/span><br/><span class="time">{hl}<\/span><\/li><li><span class="number">{mn}<\/span><br/><span class="time">{ml}<\/span><\/li><li><span class="number">{sn}<\/span><br/><span class="time">{sl}<\/span><\/li><\/ul>'
+	  });
+  		$('#year').text(austDay.getFullYear());
+});

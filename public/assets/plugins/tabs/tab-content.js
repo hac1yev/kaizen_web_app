@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d93718762c5ee251a0d0bb54f813957873ca456f516bdbe634337afd09f30578
-size 298
+$(function(e) {
+	$(".first_tab").champ();
+	$(".accordion_example").champ({
+		plugin_type: "accordion",
+		side: "left",
+		active_tab: "3",
+		controllers: "true"
+	});
+
+	$(".second_tab").champ({
+		plugin_type: "tab",
+		side: "right",
+		active_tab: "1",
+		controllers: "false"
+	});
+
+});

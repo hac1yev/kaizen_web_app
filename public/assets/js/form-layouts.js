@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:984e68f0076ad38b97b3348a0572608a893feabe9a7d33a17dd67a691518e1f7
-size 752
+$(function (e) {
+	'use strict'
+
+	// Input Masks
+	$('#ssnMask-card').mask('9999-9999-9999-9999');
+	$('#ssnMask-cvv').mask('999');
+
+	//select2 dropdown
+	$('.select2').select2({
+		minimumResultsForSearch: Infinity,
+		width: '100%'
+	});
+});
+
+
+
+//show password
+function showPassword(inputElement, showBtn, eyeOpen, eyeClose) {
+	'use strict'
+	showBtn.addEventListener('click', () => {
+		if (inputElement.type == 'password') {
+			inputElement.type = 'text'
+			eyeOpen.classList.add('d-none');
+			eyeClose.classList.remove('d-none');
+		}
+		else {
+			inputElement.type = 'password';
+			eyeOpen.classList.remove('d-none');
+			eyeClose.classList.add('d-none');
+		}
+	})
+}
+
+showPassword(passwordElement, showBtn, eyeOpen, eyeClose);
