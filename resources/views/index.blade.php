@@ -374,7 +374,7 @@
                         </li>
                       </ul>
                       <button class="see-more-mid">
-                        See More
+                        Daha çox
                         <img src="{{asset('back/assets/img/more.png')}}" alt="">
                     </button>
                 </div>
@@ -800,5 +800,36 @@
         });
 
         }
+    </script>
+
+    <script>
+        var seeMoreButton = document.querySelector('.see-more-mid');
+
+        seeMoreButton.addEventListener('click', function() {
+            var activeTab = document.querySelector('.nav-link.active');
+            var tabId = activeTab.getAttribute('href').substring(1); 
+
+            // Hangi sekme aktifse, uygun URL'ye yönlendir
+            switch (tabId) {
+                case 'ferdi':
+                    window.location.href = '{{route('ferdi')}}';
+                    break;
+                case 'seyahet':
+                    window.location.href = '{{route('travel')}}';
+                    break;
+                case 'hekayeler':
+                    window.location.href = '{{route('story')}}';
+                    break;
+                case 'film':
+                    window.location.href = '{{route('film')}}';
+                    break;
+                case 'biznes':
+                    window.location.href = '{{route('biznes')}}';
+                    break;
+                default:
+                    break;
+            }
+        });
+
     </script>
  @endsection
