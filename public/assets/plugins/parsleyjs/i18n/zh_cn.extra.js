@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:74e78dd80b4c57835d5904f4db1802d2bc50e671c20305a458e8568dff515943
-size 169
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('zh-cn', {
+  dateiso: "请输入正确格式的日期 (YYYY-MM-DD)."
+});

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:495c0fe25b7ddafd97a8c4b5cdfaea360c7c7e0f6fbad8982e32932039b5c135
-size 724
+(function () {
+  'use strict';
+  // Select2
+  $('.select2').select2({
+    minimumResultsForSearch: Infinity
+  });
+
+  window.addEventListener('load', function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c019ba9336c87a3ca4af958ffc41ef61a39454886d0e8fa78603ef6cd2d202e0
-size 292
+$('.dropify').dropify({
+	messages: {
+		'default': 'Drag and drop a file here or click',
+		'replace': 'Drag and drop or click to replace',
+		'remove': 'Remove',
+		'error': 'Ooops, something wrong appended.'
+	},
+	error: {
+		'fileSize': 'The file size is too big (2M max).'
+	}
+});
+	

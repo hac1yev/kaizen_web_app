@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:be68f235f84af18b26dbb42f227ef886d2c556c307cbb453b3e792e956ecf4aa
-size 860
+/*! Select2 4.0.6-rc.1 | https://github.com/select2/select2/blob/master/LICENSE.md */
+
+(function(){if(jQuery&&jQuery.fn&&jQuery.fn.select2&&jQuery.fn.select2.amd)var e=jQuery.fn.select2.amd;return e.define("select2/i18n/pt-BR",[],function(){return{errorLoading:function(){return"Os resultados não puderam ser carregados."},inputTooLong:function(e){var t=e.input.length-e.maximum,n="Apague "+t+" caracter";return t!=1&&(n+="es"),n},inputTooShort:function(e){var t=e.minimum-e.input.length,n="Digite "+t+" ou mais caracteres";return n},loadingMore:function(){return"Carregando mais resultados…"},maximumSelected:function(e){var t="Você só pode selecionar "+e.maximum+" ite";return e.maximum==1?t+="m":t+="ns",t},noResults:function(){return"Nenhum resultado encontrado"},searching:function(){return"Buscando…"}}}),{define:e.define,require:e.require}})();

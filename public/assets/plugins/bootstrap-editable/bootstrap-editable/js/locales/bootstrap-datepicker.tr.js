@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:03faa24abbc02ff2fd5cc6a2d47d2379104001839291491f9e0612f899c492a7
-size 642
+/**
+ * Turkish translation for bootstrap-datepicker
+ * Serkan Algur <kaisercrazy_2@hotmail.com>
+ */
+;(function($){
+	$.fn.datepicker.dates['tr'] = {
+		days: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"],
+		daysShort: ["Pz", "Pzt", "Sal", "Çrş", "Prş", "Cu", "Cts", "Pz"],
+		daysMin: ["Pz", "Pzt", "Sa", "Çr", "Pr", "Cu", "Ct", "Pz"],
+		months: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+		monthsShort: ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
+	};
+}(jQuery));
+

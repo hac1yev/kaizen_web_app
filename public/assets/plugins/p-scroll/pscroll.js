@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c80e0d334729f1da1ac2d52896a8f308e383ddea9e2f63f39bfc3cb6104c5a9a
-size 619
+(function($) {
+	"use strict";
+
+	// For APP-SIDEBAR
+	const ps = new PerfectScrollbar('.app-sidebar', {
+	  useBothWheelAxes:true,
+	  suppressScrollX:true,
+	});
+
+	// For Header Message dropdown
+	const ps2 = new PerfectScrollbar('.message-menu', {
+		useBothWheelAxes:true,
+		suppressScrollX:true,
+	});
+
+	// For Header Notification dropdown
+	const ps3 = new PerfectScrollbar('.notifications-menu', {
+	useBothWheelAxes:true,
+	suppressScrollX:true,
+	});
+	
+	// For Header Cart dropdown
+	const ps4 = new PerfectScrollbar('.cart-menu', {
+	useBothWheelAxes:true,
+	suppressScrollX:true,
+	});
+
+})(jQuery);

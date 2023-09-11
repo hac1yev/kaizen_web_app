@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0eda555cfb41abe09ca1e930ef7d8ffe715714259e0c1549b91c8c87cb01c21a
-size 668
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('de', {
+  dateiso:  "Die Eingabe muss ein gültiges Datum sein (YYYY-MM-DD).",
+  minwords: "Die Eingabe ist zu kurz. Sie muss aus %s oder mehr Wörtern bestehen.",
+  maxwords: "Die Eingabe ist zu lang. Sie muss aus %s oder weniger Wörtern bestehen.",
+  words:    "Die Länge der Eingabe ist ungültig. Sie muss zwischen %s und %s Wörter enthalten.",
+  gt:       "Die Eingabe muss größer sein.",
+  gte:      "Die Eingabe muss größer oder gleich sein.",
+  lt:       "Die Eingabe muss kleiner sein.",
+  lte:      "Die Eingabe muss kleiner oder gleich sein."
+});

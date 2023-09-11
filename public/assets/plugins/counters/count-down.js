@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0b86eaa46b20acc1e42b7b646527eabea89ed489de824d68cf4c1466684b86e
-size 376
+$( function() {
+	$('.count-down').countdown100({
+		// Set Endtime here
+		// Endtime must be > current time
+		endtimeYear: 0,
+		endtimeMonth: 0,
+		endtimeDate: 35,
+		endtimeHours: 18,
+		endtimeMinutes: 0,
+		endtimeSeconds: 0,
+		timeZone: ""
+		// ex:  timeZone: "America/New_York", can be empty
+		// go to " http://momentjs.com/timezone/ " to get timezone
+	});
+});

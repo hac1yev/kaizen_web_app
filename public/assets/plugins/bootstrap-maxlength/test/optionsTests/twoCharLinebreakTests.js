@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f060988191c5f4301e2e579f3d61f7834827a3d1268718ac26a6d98ed81b8329
-size 779
+$(function () {
+  'use strict';
+
+  var maxlengthInput;
+
+  QUnit.module('textarea', {
+    beforeEach: function () {
+      maxlengthInput = $('<textarea maxlength="10"></textarea>')
+        .appendTo('#qunit-fixture');
+
+      maxlengthInput.maxlength({ twoCharLinebreak: false });
+    },
+    afterEach: function () {
+      $('.bootstrap-maxlength').remove();
+      $('#qunit-fixture').empty();
+    }
+  });
+
+  QUnit.test('Newlines are not counted twice', function (assert) {
+    maxlengthInput.val('t\r\nt');
+
+    maxlengthInput.maxlength({ twoCharLinebreak: false });
+    maxlengthInput.focus();
+
+    assert.ok($('.bootstrap-maxlength').html() === '3 / 10', 'Current length is: ' + $('.bootstrap-maxlength').html() + '. Expected 3 / 10.');
+
+  });
+
+});

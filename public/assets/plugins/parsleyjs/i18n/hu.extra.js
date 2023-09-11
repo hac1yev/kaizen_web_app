@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cb83b57ef4871c43c600ee2cbfd12e9bc1ece7879720c8400118ea0166f6ff6
-size 664
+// Validation errors messages for Parsley
+// Load this after Parsley
+
+Parsley.addMessages('hu', {
+  dateiso:  "A mező értéke csak érvényes dátum lehet (YYYY-MM-DD).",
+  minwords: "Minimum %s szó megadása szükséges.",
+  maxwords: "Maximum %s szó megadása engedélyezett.",
+  words:    "Minimum %s, maximum %s szó megadása szükséges.",
+  gt:       "A mező értéke nagyobb kell legyen.",
+  gte:      "A mező értéke nagyobb vagy egyenlő kell legyen.",
+  lt:       "A mező értéke kevesebb kell legyen.",
+  lte:      "A mező értéke kevesebb vagy egyenlő kell legyen.",
+  notequalto: "Az érték különböző kell legyen."
+});

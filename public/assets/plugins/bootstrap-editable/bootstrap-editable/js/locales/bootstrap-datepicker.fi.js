@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e5157a8376efedb19480387b16cba2c2bf31d67420684ea26a7a404f5b1318f1
-size 679
+/**
+ * Finnish translation for bootstrap-datepicker
+ * Jaakko Salonen <https://github.com/jsalonen>
+ */
+;(function($){
+	$.fn.datepicker.dates['fi'] = {
+		days: ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai", "sunnuntai"],
+		daysShort: ["sun", "maa", "tii", "kes", "tor", "per", "lau", "sun"],
+		daysMin: ["su", "ma", "ti", "ke", "to", "pe", "la", "su"],
+		months: ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"],
+		monthsShort: ["tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mar", "jou"]
+	};
+}(jQuery));
