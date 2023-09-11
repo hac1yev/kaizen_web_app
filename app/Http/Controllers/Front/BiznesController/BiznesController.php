@@ -30,7 +30,7 @@ class BiznesController extends Controller
             $book = [];
         }
         
-        return view('front.İnkisaf.all',get_defined_vars());
+        return view('front.Biznes.all',get_defined_vars());
 
     }
 

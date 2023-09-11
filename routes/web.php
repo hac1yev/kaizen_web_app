@@ -221,7 +221,10 @@ Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
 
 Route::get('/post/{id}', [DetailController::class, "detail"])->name('detail');
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
-
+Route::post('/detaillike', [DetailController::class, 'like'])->name('detaillike');
+Route::post('/detaildislike', [DetailController::class, 'dislike'])->name('detaildislike');
+Route::post('/detailbook', [DetailController::class, 'book'])->name('detailbook');
+Route::post('/detaildisbook', [DetailController::class, 'disbook'])->name('detaildisbook');
 
 Route::post('/contact', [AccountController::class, "contactpost"])->name('contact');
 Route::post('/loginpost', [AccountController::class, "loginpost"])->name('loginpost');

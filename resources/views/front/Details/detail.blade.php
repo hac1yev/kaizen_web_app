@@ -54,8 +54,12 @@
                                 <span id="comment-id">{{count($comments)}}</span> Comment
                             </button>
                             <div>
-                                <img src="{{asset('back/assets/img/heart.png')}}" alt="heart" />
-                                <img src="{{asset('back/assets/img/save.png')}}" alt="save" />
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $postdetail->id }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $postdetail->id }})" >
+
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $postdetail->id }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $postdetail->id }})" >
+
                             </div>
                         </div>
                         <div id="comment-write">
@@ -206,5 +210,118 @@
     </script>
 
     
+    <script>
+        function likePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
+
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('detaillike') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) { 
+                        $('#likeButton_' + postId).hide();
+                        $('#dislikeButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+
+            }
+        }
+    </script>
+
+    <script>
+        function dislikePost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('detaildislike') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#dislikeButton_' + postId).hide();
+                    $('#likeButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
+
+    <script>
+        function bookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
+
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('detailbook') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) { 
+                        $('#bookButton_' + postId).hide();
+                        $('#disbookButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+
+            }
+        }
+    </script>
+
+    <script>
+        function disbookPost(postId) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route('detaildisbook') }}',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                post_id: postId
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    $('#disbookButton_' + postId).hide();
+                    $('#bookButton_' + postId).show();
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+        }
+    </script>
 
 @endsection

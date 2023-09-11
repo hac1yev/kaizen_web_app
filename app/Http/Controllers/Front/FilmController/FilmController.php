@@ -30,7 +30,7 @@ class FilmController extends Controller
             $book = [];
         }
         
-        return view('front.İnkisaf.all',get_defined_vars());
+        return view('front.Film.all',get_defined_vars());
 
     }
 

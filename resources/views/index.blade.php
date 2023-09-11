@@ -723,6 +723,36 @@
 
         }
     </script>
+    <script>
+        function likePost(postId) {
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
+    
+            if (!isLoggedIn) {
+                $('#loginModal').modal('show');
+            } else {
+                $.ajax({
+                    url: '{{ route('indexlike') }}',
+                    method: 'POST',
+                    data: {
+                        _token: csrfToken,
+                        post_id: postId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            $('#likeButton_' + postId).hide();
+                            $('#dislikeButton_' + postId).show();
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+        }
+    </script>
+    
 
     <script>
         function dislikePost(postId) {
@@ -753,26 +783,31 @@
     <script>
         function bookPost(postId) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '{{ route('indexbook') }}',
-            method: 'POST',
-            data: {
-                _token: csrfToken,
-                post_id: postId
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) { 
-                    $('#bookButton_' + postId).hide();
-                    $('#disbookButton_' + postId).show();
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
+    
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('indexbook') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) { 
+                        $('#bookButton_' + postId).hide();
+                        $('#disbookButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
 
+            }
         }
     </script>
 
