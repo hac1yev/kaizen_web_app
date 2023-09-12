@@ -17,14 +17,13 @@ class ShowPost
      */
     public function handle(Request $request, Closure $next)
     {
-        $postID = $request->route('id');
-        if ($post = Posts::find($postID))
+        $post = $request->route('post');
+        
+        if ($post->status)
         {
-            if ($post->status)
-            {
-                return $next($request);
-            }
+            return $next($request);
         }
+
         return abort(404);
     }
 }
