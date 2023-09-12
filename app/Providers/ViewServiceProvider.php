@@ -25,7 +25,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('front.Details.detail2', function() {
+        View::composer('front.Details.detail', function() {
 
             View::share('adverts', AdvertFooter::get());
             

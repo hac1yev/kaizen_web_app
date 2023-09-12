@@ -10,33 +10,33 @@
                     <div class="col-12">
                         <div class="travel-links">
                             <a href="{{route('index')}}">Kaizen</a>/
-                            @if ($postdetail->cat_title === 'Fərdi İnkişaf')
+                            @if ($post->getCategory->title === 'Fərdi İnkişaf')
                                 <a href="{{ route('ferdi') }}">Fərdi İnkişaf</a>
-                            @elseif ($postdetail->cat_title === 'Səyahət')
+                            @elseif ($post->getCategory->title === 'Səyahət')
                                 <a href="{{ route('travel') }}">Səyahət</a>
-                            @elseif ($postdetail->cat_title === 'Hekayələr')
+                            @elseif ($post->getCategory->title === 'Hekayələr')
                                 <a href="{{ route('story') }}">Hekayələr</a>
-                            @elseif ($postdetail->cat_title === 'Filmlər')
+                            @elseif ($post->getCategory->title === 'Filmlər')
                                 <a href="{{ route('film') }}">Filmlər</a>
-                            @elseif ($postdetail->cat_title === 'Biznes Dünyası')
+                            @elseif ($post->getCategory->title === 'Biznes Dünyası')
                                 <a href="{{ route('biznes') }}">Biznes Dünyası</a>
                             @endif   
-                            <p> {!! htmlspecialchars_decode($postdetail->post_title) !!}</p>
+                            <p> {!! htmlspecialchars_decode($post->post_title) !!}</p>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <h2 class="travel-title"> {!! htmlspecialchars_decode($postdetail->post_title) !!}</h2>
+                        <h2 class="travel-title"> {!! htmlspecialchars_decode($post->post_title) !!}</h2>
                         <div class="">
-                            <img src="{{asset($postdetail->image)}}" class="w-100" alt="" />
+                            <img src="{{asset($post->image)}}" class="w-100" alt="" />
                             <div class="paper-blog2-under">
                                 <p class="paper-blog2-bottom-time">
-                                    <span class="paper-bottom-date">{{($postdetail->created_at)->format('d.m.Y')}}</span>
-                                    <span>{{$postdetail->cat_title}}</span>
+                                    <span class="paper-bottom-date">{{($post->created_at)->format('d.m.Y')}}</span>
+                                    <span>{{$post->getCategory->title}}</span>
                                 </p>
                                 <span class="paper-minute">
                                     <div>
                                         <img src="{{asset('back/assets/img/travel_eye.png')}}" alt="eye" />
-                                        {{$postdetail->view}}
+                                        {{ $post->view }}
                                     </div>
                                     <div>
                                         <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
@@ -45,21 +45,20 @@
                                 </span>
                             </div>
                             <div class="mt-3 text-justify">
-                                {!! htmlspecialchars_decode($postdetail->content) !!}
+                                {!! htmlspecialchars_decode($post->content) !!}
                             </div>
                         </div>
                         <div class="travel-button-save">
                             <button id="comment-show">
                                 <img src="{{asset('back/assets/img/travel-comment.png')}}" alt="travel-comment" />
-                                <span id="comment-id">{{count($comments)}}</span> Comment
+                                <span id="comment-id">{{count($post->comments)}}</span> Comment
                             </button>
                             <div>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $postdetail->id }})">
-                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $postdetail->id }})" >
+                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $post->id }})">
+                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $post->id }})" >
 
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $postdetail->id }})">
-                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $postdetail->id }}" style="{{ in_array($postdetail->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $postdetail->id }})" >
-
+                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $post->id }})">
+                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $post->id }})" >
                             </div>
                         </div>
                         <div id="comment-write">
@@ -69,11 +68,11 @@
                         <div class="comment-write-section">
                             @csrf
                             <textarea class="comment-textarea"></textarea>
-                            <button data-post="{{ $postdetail->id }}" type="button" class="save-comment">Submit</button>
+                            <button data-post="{{ $post->id }}" type="button" class="save-comment">Submit</button>
                         </div>
 
                         <div id="comment-section" class="comment-section-class">
-                            @foreach($comments as $comment)
+                            @foreach($post->comments as $comment)
                                 <div class="comment-card">
                                     <div class="comment-card-1">
                                             
@@ -92,7 +91,7 @@
                         <div class="travel-paper3-header text-center">
                             <h2>Əlaqəli məqalələr</h2>
                         </div>
-                        @foreach ($elaqeli as $e)
+                        @foreach ($post->getCategory->getPosts->take(5) as $e)
                             <div class="paper-4 p-2">
                                 <img class="paper-1-img" src="{{asset($e->image)}}" alt="paper-1-img" />
                                 <div class="blog-det">

@@ -18,39 +18,39 @@ use Illuminate\Support\Facades\Auth;
 
 class DetailController extends Controller
 {
-    public function detail($id){
-        $post = Posts::find($id);
-        if (!$post || $post->status == 0) {
-            abort(404);
-        }
-        $postdetail = Posts::join('categories', 'categories.id', '=', 'posts.category_id')
-        ->where('posts.id', $id)
-        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
-        ->first();
+    // public function detail($id){
+    //     $post = Posts::find($id);
+    //     if (!$post || $post->status == 0) {
+    //         abort(404);
+    //     }
+    //     $postdetail = Posts::join('categories', 'categories.id', '=', 'posts.category_id')
+    //     ->where('posts.id', $id)
+    //     ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+    //     ->first();
 
-        $elaqeli = Posts::join('categories', 'categories.id', '=', 'posts.category_id')
-        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
-        ->where('posts.status', '1')
-        ->where('posts.id', '!=', $postdetail->id)
-        ->where('posts.category_id', $postdetail->category_id)
-        ->paginate(5);
-        $adverts = AdvertFooter::all();
+    //     $elaqeli = Posts::join('categories', 'categories.id', '=', 'posts.category_id')
+    //     ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+    //     ->where('posts.status', '1')
+    //     ->where('posts.id', '!=', $postdetail->id)
+    //     ->where('posts.category_id', $postdetail->category_id)
+    //     ->paginate(5);
+    //     $adverts = AdvertFooter::all();
 
-        $comments = $post->comments;
-        if(auth()->check()){
-            $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
-            else {
-            $likes = [];
-        }
-        if(auth()->check()){
-            $book = PostBookmark::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
-            else {
-            $book = [];
-        }
+    //     $comments = $post->comments;
+    //     if(auth()->check()){
+    //         $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+    //         else {
+    //         $likes = [];
+    //     }
+    //     if(auth()->check()){
+    //         $book = PostBookmark::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+    //         else {
+    //         $book = [];
+    //     }
 
 
-        return view('front.Details.detail',get_defined_vars());
-    }
+    //     return view('front.Details.detail',get_defined_vars());
+    // }
 
     public function showPost(Posts $post): View
     {
@@ -59,7 +59,7 @@ class DetailController extends Controller
 
         $this->increaseViewCount($post);
 
-        return view('front.Details.detail2', compact(
+        return view('front.Details.detail', compact(
             'post',
             'book',
             'likes'

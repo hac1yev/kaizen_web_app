@@ -219,10 +219,8 @@ Route::get('/users', [UsersController::class, "user"])->name('user');
 Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
 
 
-Route::get('/post/{id}', [DetailController::class, "detail"])->name('detail');
-
 Route::get('/posts/{post}', [DetailController::class, "showPost"])
-    ->name('showPost')
+    ->name('detail')
     ->middleware('showPost');
 
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
