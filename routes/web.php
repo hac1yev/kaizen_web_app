@@ -61,6 +61,8 @@ Route::middleware('isLogin')->group(function () {
     Route::post('/admin/categories/edit', [CategoryController::class, "categoryEdit"])->name('categoryEdit');
     Route::post('/admin/categories/edit/post', [CategoryController::class, "categoryEditPost"])->name('categoryEditPost');
     Route::post('/admin/categories/add/post', [CategoryController::class, "categoryAddPost"])->name('categoryAddPost');
+    Route::post('/admin/categories/status', [CategoryController::class, "categoriesStatus"])->name('categoriesStatus');
+
     //End Categories
 
     //Start Posts

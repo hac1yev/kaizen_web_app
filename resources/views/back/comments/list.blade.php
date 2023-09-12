@@ -125,6 +125,7 @@
                 },
                 success: function (data) {
                     if(data !== '0'){
+                        console.log();
                         document.getElementById('id').value=data[0].id;
                         document.getElementById('comment').value=data[0].comment;
                         document.getElementById('user').value=data[1];
