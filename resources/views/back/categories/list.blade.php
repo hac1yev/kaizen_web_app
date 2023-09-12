@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$category->title}}</td>
-                                    <td>{{count($category->getPosts())}}</td>
+                                    <td>{{count($category->getPosts)}}</td>
                                     <td>{{ \Carbon\Carbon::parse($category->created_at)->format('j F, Y') }}</td>
                                     <td>
                                         <div class="main-toggle-group">
