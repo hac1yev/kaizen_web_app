@@ -18,8 +18,6 @@ class Posts extends Model
         return $this->belongsTo('App\Models\Categories','category_id','id');
     }
     public function comments() {
-        return $this->hasMany('App\Models\Comment', 'post_id', 'id')->orderBy('created_at','DESC');
+        return $this->hasMany('App\Models\Comment', 'post_id', 'id');
     }
-    
-    
 }

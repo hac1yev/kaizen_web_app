@@ -12,6 +12,6 @@ class Categories extends Model
     protected $guarded = [];
 
     public function getPosts(){
-        return $this->hasMany('App\Models\Posts','category_id','id')->get();
+        return $this->hasMany('App\Models\Posts','category_id','id');
     }
 }

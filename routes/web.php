@@ -219,7 +219,10 @@ Route::get('/users', [UsersController::class, "user"])->name('user');
 Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
 
 
-Route::get('/post/{id}', [DetailController::class, "detail"])->name('detail');
+Route::get('/posts/{post}', [DetailController::class, "showPost"])
+    ->name('detail')
+    ->middleware('showPost');
+
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
 Route::post('/detaillike', [DetailController::class, 'like'])->name('detaillike');
 Route::post('/detaildislike', [DetailController::class, 'dislike'])->name('detaildislike');
@@ -230,7 +233,6 @@ Route::post('/contact', [AccountController::class, "contactpost"])->name('contac
 Route::post('/loginpost', [AccountController::class, "loginpost"])->name('loginpost');
 Route::post('/registerpost', [AccountController::class, "registerpost"])->name('registerpost');
 Route::get('/logout', [AccountController::class, "logout"])->name('logouts');
-
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
