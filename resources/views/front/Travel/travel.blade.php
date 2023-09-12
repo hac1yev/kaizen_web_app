@@ -25,14 +25,14 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $travel[0]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[0]['id']]) }}" style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($travel[0]['post_title'] )!!}</a>
                             <p>
                                 {!! htmlspecialchars_decode($travel[0]['description'])!!}
                             </p>
                         </div>
                         <div class="paper-blog2-button">
-                            <a href="{{route('detail', ['id' => $travel[0]['id']])}}"><button>
+                            <a href="{{route('detail', ['post' => $travel[0]['id']])}}"><button>
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="more" />
                             </button>
@@ -63,14 +63,14 @@
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
-                                 <a href="{{ route('detail', ['id' => $travel[1]['id']]) }}" style="color: #020202; text-decoration:none">
+                                 <a href="{{ route('detail', ['post' => $travel[1]['id']]) }}" style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($travel[1]['post_title'])!!}</a>
                                 <p>
                                     {!! htmlspecialchars_decode($travel[1]['description'])!!}
                                 </p>
                             </div>
                             <div class="paper-blog2-button">
-                                <a href="{{route('detail', ['id' => $travel[1]['id']])}}"><button class="read-more">Daha çox
+                                <a href="{{route('detail', ['post' => $travel[1]['id']])}}"><button class="read-more">Daha çox
                                     
                                         <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                     </button>
@@ -101,14 +101,14 @@
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $travel[2]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[2]['id']]) }}" style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($travel[2]['post_title'])!!}</a>
                                 <p>
                                     {!! htmlspecialchars_decode($travel[2]['description'])!!}
                                 </p>
                             </div>
                             <div class="paper-blog2-button">
-                                <a href="{{route('detail', ['id' => $travel[2]['id']])}}"><button class="read-more">Daha çox
+                                <a href="{{route('detail', ['post' => $travel[2]['id']])}}"><button class="read-more">Daha çox
                                     
                                     <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                 </button>
@@ -144,12 +144,12 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $travel[3]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[3]['id']]) }}" style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($travel[3]['post_title'])!!}</a>
                             <p>{!! htmlspecialchars_decode($travel[3]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
-                            <a href="{{route('detail', ['id' => $travel[3]['id']])}}"><button class="read-more">
+                            <a href="{{route('detail', ['post' => $travel[3]['id']])}}"><button class="read-more">
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="">
                             </button>
@@ -189,14 +189,14 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $travel[4]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[4]['id']]) }}" style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($travel[4]['post_title'])!!}</a>
                             <p>
                                 {!! htmlspecialchars_decode($travel[4]['description'])!!}
                             </p>
                         </div>
                         <div class="paper-blog2-button">
-                            <a href="{{route('detail', ['id' => $travel[4]['id']])}}"><button>
+                            <a href="{{route('detail', ['post' => $travel[4]['id']])}}"><button>
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="more" />
                             </button>
@@ -229,12 +229,12 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $travel[5]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[5]['id']]) }}" style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($travel[5]['post_title'])!!}</a>
                             <p>{!! htmlspecialchars_decode($travel[5]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
-                            <a href="{{route('detail', ['id' => $travel[5]['id']])}}"><button class="read-more">
+                            <a href="{{route('detail', ['post' => $travel[5]['id']])}}"><button class="read-more">
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="">
                             </button>
@@ -272,12 +272,12 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $travel[6]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[6]['id']]) }}" style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($travel[6]['post_title'])!!}</a>
                             <p>{!! htmlspecialchars_decode($travel[6]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
-                            <a href="{{route('detail', ['id' => $travel[6]['id']])}}"><button class="read-more">
+                            <a href="{{route('detail', ['post' => $travel[6]['id']])}}"><button class="read-more">
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="">
                             </button>
@@ -316,7 +316,7 @@
                                 </p>
                             </div>
                             <div class="paper-blog2-content">
-                                <a href="{{ route('detail', ['id' => $travel[7]['id']]) }}" style="color: #020202; text-decoration:none">
+                                <a href="{{ route('detail', ['post' => $travel[7]['id']]) }}" style="color: #020202; text-decoration:none">
                                     @if(mb_strlen($travel[7]['post_title']) > 40)
                                         {{ html_entity_decode(mb_substr($travel[7]['post_title'], 0, 40)) . '...' }}
                                     @else
@@ -353,14 +353,14 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $travel[8]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[8]['id']]) }}" style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($travel[8]['post_title'])!!}</a>
                             <p>
                                 {!! htmlspecialchars_decode($travel[8]['description'])!!}
                             </p>
                         </div>
                         <div class="paper-blog2-button">
-                            <a href="{{route('detail', ['id' => $travel[8]['id']])}}"><button>
+                            <a href="{{route('detail', ['post' => $travel[8]['id']])}}"><button>
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="more" />
                             </button>
@@ -394,7 +394,7 @@
                         </div>
                         <div class="paper-blog2-content">
                              
-                            <a href="{{ route('detail', ['id' => $travel[9]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[9]['id']]) }}" style="color: #020202; text-decoration:none">
                                 @if(mb_strlen($travel[9]['post_title']) > 40)
                                     {{ html_entity_decode(mb_substr($travel[9]['post_title'], 0, 40)) . '...' }}
                                 @else
@@ -410,7 +410,7 @@
                             </p>
                         </div>
                         <div class="paper-blog2-button">
-                            <a href="{{route('detail', ['id' => $travel[9]['id']])}}"><button>
+                            <a href="{{route('detail', ['post' => $travel[9]['id']])}}"><button>
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="more">
                             </button>
@@ -443,7 +443,7 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $travel[10]['id']]) }}" style="color: #020202; text-decoration:none">
+                            <a href="{{ route('detail', ['post' => $travel[10]['id']]) }}" style="color: #020202; text-decoration:none">
                                 @if(mb_strlen($travel[10]['post_title']) > 40)
                                     {{ html_entity_decode(mb_substr($travel[10]['post_title'], 0, 40)) . '...' }}
                                 @else
@@ -459,7 +459,7 @@
                             </p>
                         </div>
                         <div class="blog-det-3">
-                            <a href="{{route('detail', ['id' => $travel[10]['id']])}}"><button class="read-more">
+                            <a href="{{route('detail', ['post' => $travel[10]['id']])}}"><button class="read-more">
                                 Daha çox
                                 <img src="{{asset('back/assets/img/more.png')}}" alt="">
                             </button>

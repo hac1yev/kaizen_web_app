@@ -5,22 +5,22 @@
         <p>Uğur, inkişaf və nailiyyətə gedən yolda fəaliyyət göstərən
             Fərdi İnkişaf platforması kaizen.az</p>
         <div class="foot-social">
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->facebook}}">
                 <img src="{{asset('back/assets/img/fb.png')}}" alt="">
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->twitter}}">
                 <img src="{{asset('back/assets/img/tw.png')}}" alt="">
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->instagram}}">
                 <img src="{{asset('back/assets/img/in.png')}}" alt="">
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->linkedin}}">
                 <img src="{{asset('back/assets/img/lin.png')}}" alt="">
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->telegram}}">
                 <img src="{{asset('back/assets/img/tg.png')}}" alt="">
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="{{$social->tiktok}}">
                 <img src="{{asset('back/assets/img/tk.png')}}" alt="">
             </a>
         </div>

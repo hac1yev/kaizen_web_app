@@ -47,4 +47,13 @@ class CategoryController extends Controller
         $category->slug = $slug;
         return redirect()->back()->with($category->save() ? 'success' : 'error',true);
     }
+
+    public function categoriesStatus(Request $request){
+        $categories = Categories::find($request->id);
+        if(!$categories){
+            return response()->json('0');
+        }
+        $categories->status = $categories->status == '1' ? '0' : '1';
+        return $categories->save() ? response()->json('1') : response()->json('0');
+    }
 }

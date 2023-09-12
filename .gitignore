@@ -13,5 +13,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-kaizen.zip
-.git
+/public/assets/images/posts

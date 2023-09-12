@@ -9258,6 +9258,12 @@ a.card-tabs-item.active {
     background-color: #fff;
 }
 
+.error {
+    color: rgb(250, 68, 68)!important;
+    font-size: 14px;
+    margin-top: 5px!important;
+}
+
 .carousel-caption {
     position: absolute;
     right: 15%;
