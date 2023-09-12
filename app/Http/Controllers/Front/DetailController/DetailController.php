@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Front\DetailController;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Posts;
 use App\Models\Comment;
 use App\Models\Contact;
-use App\Models\Posts;
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Models\AdvertFooter;
 use App\Models\PostLike;
+use Illuminate\View\View;
+use App\Models\AdvertFooter;
 use App\Models\PostBookmark;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class DetailController extends Controller
@@ -48,6 +50,26 @@ class DetailController extends Controller
 
 
         return view('front.Details.detail',get_defined_vars());
+    }
+
+    public function showPost(Posts $post): View
+    {
+        $book = [];
+        $likes = [];
+
+        $this->increaseViewCount($post);
+
+        return view('front.Details.detail2', compact(
+            'post',
+            'book',
+            'likes'
+        ));
+    }
+
+    public function increaseViewCount(Posts $post): void 
+    {
+        $post->view += 1;
+        $post->save();
     }
 
     public function commentPost(Request $request){
