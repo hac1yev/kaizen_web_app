@@ -116,6 +116,9 @@ class PostController extends Controller
             $name = $directory.$name;
             $post->image = $name;
         }
+        
+        $post->reading_time = estimatedReadingTime($post->content, 200);
+
         return redirect()->route('postListIndex')->with($post->save() ? 'success' : 'error',true);
 
     }
