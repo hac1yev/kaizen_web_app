@@ -17,12 +17,12 @@ class SocialSeeder extends Seeder
     {
         $datas = [
         	[
-        		'facebook' => 'facebook',
-        		'twitter' => 'twitter',
-        		'instagram' => 'instagram',
-        		'linkedin' => 'linkedin',
-        		'telegram' => 'telegram',
-        		'tiktok' => 'tiktok',
+        		'facebook' => 'https://www.facebook.com/kaizenazerbaycan/',
+        		'twitter' => 'https://twitter.com/kaizenaz_',
+        		'instagram' => 'https://www.instagram.com/kaizen.az/',
+        		'linkedin' => 'https://www.linkedin.com/company/kaizenaz',
+        		'telegram' => 'https://t.me/kaizen_az',
+        		'tiktok' => 'https://www.tiktok.com/@kaizen.az?is_from_webapp=1&sender_device=pc',
         		'status' => 1,
         	],
         	
