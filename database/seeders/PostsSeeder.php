@@ -35,6 +35,7 @@ class PostsSeeder extends Seeder
                 'image' => $data['baslik'],
                 'note' => $data['note'],
                 'view' => $data['clicked'],
+                'reading_time' => estimatedReadingTime($data['more'], 200),
                 'status' => '1',
     			'created_at' => $data['created_at'],
                 'updated_at' => $data['created_at']

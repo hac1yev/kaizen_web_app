@@ -40,7 +40,7 @@
                                     </div>
                                     <div>
                                         <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                        2 dəq
+                                        {{ $post->reading_time }} dəq
                                     </div>
                                 </span>
                             </div>
