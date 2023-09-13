@@ -37,7 +37,11 @@
                                         <span>{{$post->getCategory->title}}</span>
                                     </div>
                                 <span class="paper-minute">
-                                    <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
+                                    @if($post->getUser()->is_admin == 1)
+                                    <a href="{{route('editPost', $post->id)}}">
+                                        <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
+                                    </a>
+                                    @endif
                                     <div class="tooltip">
                                         <p class="tooltiptext">Baxış sayı</p>
 
