@@ -12,16 +12,22 @@
                             <img src="{{ $ferdi[0]['image'] }}" alt="blog2" />
                         </div>
                         <div class="paper-blog2-under">
-                            <p class="paper-blog2-time">
                                 @php
                                     use Carbon\Carbon;
 
                                 @endphp
                                 <span
-                                    class="paper-date">{{ \Carbon\Carbon::parse($ferdi[0]['created_at'])->format('d.m.Y') }}</span>
-                                <span>{{ $ferdi[0]['cat_title'] }}</span>
-                            </p>
-                            <span class="paper-minute">
+                                    class="paper-date">
+                                    <div class="tooltip">
+                                        <p class="tooltiptextdate">Dərc olunma tarixi</p>
+                                        {{ \Carbon\Carbon::parse($ferdi[0]['created_at'])->format('d.m.Y') }} |
+                                        <span>
+                                    {{ $ferdi[0]['cat_title'] }}</span>
+                                    </div>
+                                </span>
+                                
+                            <span class="paper-minute tooltip">
+                                <p class="tooltiptextminute">Oxunma müddəti</p>
                                 <img src="{{ asset('back/assets/img/clock.png') }}" alt="clock" />
                                 2 dəq
                             </span>
@@ -42,7 +48,8 @@
                                 </button>
                             </a>
                             <div>
-                                <span>
+                                <span class="tooltip">
+                                    <p class="tooltiptext">Baxış sayı</p>
                                     <img src="{{ asset('back/assets/img/look.png') }}" alt="look" />
                                     {{ $ferdi[0]['view'] }}
                                 </span>
@@ -62,7 +69,8 @@
                                         class="paper-bottom-date">{{ \Carbon\Carbon::parse($ferdi[1]['created_at'])->format('d.m.Y') }}</span>
                                     <span>{{ $ferdi[1]['cat_title'] }}</span>
                                 </p>
-                                <span class="paper-minute">
+                                <span class="paper-minute tooltip">
+                                    <p class="tooltiptextminute">Oxunma müddəti</p>
                                     <img src="{{ asset('back/assets/img/clock.png') }}"
                                         alt="clock" />
                                     2 dəq
