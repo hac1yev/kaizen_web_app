@@ -11,13 +11,11 @@
                             <h3>MƏQALƏ PAYLAŞIN</h3>
                         </div>
                         <div class="col-12 mt-2 row">
-                            <div class="col-md-6">
-                                <input type="file" name="image" id="actual-btn" hidden onchange="updateFileName(this)"/>
+                            <div class="col-md-12">
+                                <input type="file" name="image" id="image"/>
                                 <label for="actual-btn" class="file-label">Kiçik başlıq şəkli</label>
                             </div>
-                            <div class="col-md-6">
-                                <span id="file-chosen">Şəkil seçilməyib*</span>
-                            </div>
+                           
                         </div>
     
                         <div class="col-12 mt-2 row">
