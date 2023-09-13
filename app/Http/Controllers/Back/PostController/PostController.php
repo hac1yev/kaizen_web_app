@@ -92,14 +92,7 @@ class PostController extends Controller
         return view('back.posts.add',compact('categories'));
     }
     public function postAddPost(Request $request){
-        $request->validate([
-            'category'=>'required|numeric',
-            'title'=>'required|min:3|max:255',
-            'description'=>'required|min:3',
-            'contentt'=>'required',
-            'tags'=>'required',
-            'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif|max:1024',
-        ]);
+        
         $post = new Posts();
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
@@ -111,7 +104,10 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->tags = $request->tags;
+        $selectedTags = $request->input('tags');
+        $tagsAsString = implode(',', $selectedTags);
+        $post->tags = $tagsAsString;
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();

@@ -19,7 +19,7 @@ class CommentController extends Controller
             return response()->json('0');
         }
         $array = array();
-        $user = $comment->getUser()->fullname;
+        $user = $comment->getUser->fullname;
         $post = $comment->getPost()->title;
         array_push($array,$comment,$user,$post);
         return $array ?? response()->json('0');

@@ -45,11 +45,11 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$category->title}}</td>
-                                    <td>{{count($category->getPosts())}}</td>
+                                    <td>{{count($category->getPosts)}}</td>
                                     <td>{{ \Carbon\Carbon::parse($category->created_at)->format('j F, Y') }}</td>
                                     <td>
                                         <div class="main-toggle-group">
-                                            <div class="toggle @if($category->status == '1') on @else off @endif" onclick="ChangeStatus()">
+                                            <div class="toggle @if($category->status == '1') on @else off @endif" onclick="ChangeStatus({{$category->id}})">
                                                 <span></span>
                                             </div>
                                         </div>
@@ -152,8 +152,29 @@
             })
 
         }
-        const ChangeStatus = () => {
-            swal("Üzr istəyirik", "Status dəyişilməsinə icazə verilməyib!", "error");
+        const ChangeStatus = (id) => {
+            const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                type: "POST",
+                url: "/admin/categories/status",
+                data: {
+                    _token: CSRF_TOKEN,
+                    id,
+                },
+                success: function (data) {
+                    if(data !== '0'){
+                        swal("Uğurlu", "Status uğurla dəyişdirildi", "success");
+                        setTimeout(()=>{
+                            location.reload();
+                        },1500)
+                    }else{
+                        swal("Xəta", "Yükləmə zamanı problem yaşandı", "error");
+                    }
+                },
+                error: function () {
+                    swal("Xəta", "Gözlənilməyən xəta baş verdi!", "error");
+                }
+            })
         }
         const deleteUser = (id) => {
             swal({

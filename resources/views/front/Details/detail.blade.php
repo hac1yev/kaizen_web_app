@@ -34,6 +34,7 @@
                                     <span>{{$post->getCategory->title}}</span>
                                 </p>
                                 <span class="paper-minute">
+                                    <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
                                     <div>
                                         <img src="{{asset('back/assets/img/travel_eye.png')}}" alt="eye" />
                                         {{ $post->view }}
@@ -87,34 +88,64 @@
                         </div>
                         
                     </div>
-                    <div class="col-md-3 travel-paper3-col px-0">
-                        <div class="travel-paper3-header text-center">
-                            <h2>Əlaqəli məqalələr</h2>
+                    
+                    <div class="col-md-3 px-0">
+                        <div class='profile-detail mb-3'>
+                            <header>
+                                <h5 class='text-center py-3 fw-bold'>Yazar</h5>
+                            </header>
+                            <main class='d-flex flex-column align-items-center'>
+                                <div class="w-100 d-flex justify-content-center border py-2">
+                                    <img src='https://dummyimage.com/64x64/000/fff' class='border rounded-circle' />
+                                </div>
+                                <div class="w-100">
+                                    <ul class="list-group list-group-flush w-100">
+                                        <li class="list-group-item">
+                                            <p>İstifadəçi adı:</p>
+                                            <span>Hac1yev</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <p>Ad Soyad:</p>
+                                            <span>İlkin Hacıyev</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <p>Məqalə sayı:</p>
+                                            <span>25</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </main>
                         </div>
-                        @foreach ($post->getCategory->getPosts->take(5) as $e)
-                            <div class="paper-4 p-2">
-                                <img class="paper-1-img" src="{{asset($e->image)}}" alt="paper-1-img" />
-                                <div class="blog-det">
-                                    <div class="blog-date">
-                                        <p>{{($e->created_at)->format('d.m.Y')}}</p>
-                                        <span></span>
-                                        <p>{{$e->cat_title}}</p>
+
+                        <div class="post-detail3-wrapper">
+                            <div class="travel-paper3-header text-center">
+                                <h2>Əlaqəli məqalələr</h2>
+                            </div>
+                            @foreach ($post->getCategory->getPosts->take(5) as $e)
+                                <div class="paper-4 p-2">
+                                    <img class="paper-1-img" src="{{asset($e->image)}}" alt="paper-1-img" />
+                                    <div class="blog-det">
+                                        <div class="blog-date">
+                                            <p>{{($e->created_at)->format('d.m.Y')}}</p>
+                                            <span></span>
+                                            <p>{{$e->cat_title}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="blog-det-2">
+                                        <a href="{{route('detail', $e->id)}}" style="color: #020202;text-decoration:none">{!! htmlspecialchars_decode($e->post_title) !!}</a>
+                                        <p>{!! htmlspecialchars_decode($e->description) !!}</p>
+                                    </div>
+                                    <div class="blog-det-3">
+                                        
+                                        <a href="{{route('detail', $e->id)}}"><button class="read-more">Daha çox
+                                            
+                                            <img src="{{asset('back/assets/img/more.png')}}" alt="">
+                                        </button>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="blog-det-2">
-                                    <a href="{{route('detail', $e->id)}}" style="color: #020202;text-decoration:none">{!! htmlspecialchars_decode($e->post_title) !!}</a>
-                                    <p>{!! htmlspecialchars_decode($e->description) !!}</p>
-                                </div>
-                                <div class="blog-det-3">
-                                    
-                                    <a href="{{route('detail', $e->id)}}"><button class="read-more">Daha çox
-                                        
-                                        <img src="{{asset('back/assets/img/more.png')}}" alt="">
-                                    </button>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $film[0]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[0]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[0]['post_title'] )!!}</a>
                             <p>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="paper-blog2-button">
                             <a
-                                href="{{ route('detail', ['id' => $film[0]['id']]) }}"><button>
+                                href="{{ route('detail', ['post' => $film[0]['id']]) }}"><button>
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="more" />
                                 </button>
@@ -69,7 +69,7 @@
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
-                                <a href="{{ route('detail', ['id' => $film[1]['id']]) }}"
+                                <a href="{{ route('detail', ['post' => $film[1]['id']]) }}"
                                     style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($film[1]['post_title'])!!}</a>
                                 <p>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="paper-blog2-button">
                                 <a
-                                    href="{{ route('detail', ['id' => $film[1]['id']]) }}"><button
+                                    href="{{ route('detail', ['post' => $film[1]['id']]) }}"><button
                                         class="read-more">Daha çox
 
                                         <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -113,7 +113,7 @@
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
-                                <a href="{{ route('detail', ['id' => $film[2]['id']]) }}"
+                                <a href="{{ route('detail', ['post' => $film[2]['id']]) }}"
                                     style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($film[2]['post_title'])!!}</a>
                                 <p>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="paper-blog2-button">
                                 <a
-                                    href="{{ route('detail', ['id' => $film[2]['id']]) }}"><button
+                                    href="{{ route('detail', ['post' => $film[2]['id']]) }}"><button
                                         class="read-more">Daha çox
 
                                         <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -162,14 +162,14 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $film[3]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[3]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[3]['post_title'])!!}</a>
                             <p>{!! htmlspecialchars_decode($film[3]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
                             <a
-                                href="{{ route('detail', ['id' => $film[3]['id']]) }}"><button
+                                href="{{ route('detail', ['post' => $film[3]['id']]) }}"><button
                                     class="read-more">
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -212,7 +212,7 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $film[4]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[4]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[4]['post_title'])!!}</a>
                             <p>
@@ -221,7 +221,7 @@
                         </div>
                         <div class="paper-blog2-button">
                             <a
-                                href="{{ route('detail', ['id' => $film[4]['id']]) }}"><button>
+                                href="{{ route('detail', ['post' => $film[4]['id']]) }}"><button>
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="more" />
                                 </button>
@@ -256,14 +256,14 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $film[5]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[5]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[5]['post_title'])!!}</a>
                             <p>{!! htmlspecialchars_decode($film[5]['description'])!!}</p>
                         </div>
                         <div class="blog-det-3">
                             <a
-                                href="{{ route('detail', ['id' => $film[5]['id']]) }}"><button
+                                href="{{ route('detail', ['post' => $film[5]['id']]) }}"><button
                                     class="read-more">
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -303,14 +303,14 @@
                         </div>
                     </div>
                     <div class="blog-det-2">
-                        <a href="{{ route('detail', ['id' => $film[6]['id']]) }}"
+                        <a href="{{ route('detail', ['post' => $film[6]['id']]) }}"
                             style="color: #020202; text-decoration:none">
                             {!! htmlspecialchars_decode($film[6]['post_title'])!!}</a>
                         <p>{!! htmlspecialchars_decode($film[6]['description'])!!}</p>
                     </div>
                     <div class="blog-det-3">
                         <a
-                            href="{{ route('detail', ['id' => $film[6]['id']]) }}"><button
+                            href="{{ route('detail', ['post' => $film[6]['id']]) }}"><button
                                 class="read-more">
                                 Daha çox
                                 <img src="{{ asset('back/assets/img/more.png') }}" alt="">
@@ -351,7 +351,7 @@
                                 </p>
                             </div>
                             <div class="paper-blog2-content">
-                                <a href="{{ route('detail', ['id' => $film[7]['id']]) }}"
+                                <a href="{{ route('detail', ['post' => $film[7]['id']]) }}"
                                     style="color: #020202; text-decoration:none">
                                     {!! htmlspecialchars_decode($film[7]['post_title'])!!}</a>
                                 <p>
@@ -381,7 +381,7 @@
                             </span>
                         </div>
                         <div class="paper-blog2-content">
-                            <a href="{{ route('detail', ['id' => $film[8]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[8]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[8]['post_title'])!!}</a>
                             <p>
@@ -390,7 +390,7 @@
                         </div>
                         <div class="paper-blog2-button">
                             <a
-                                href="{{ route('detail', ['id' => $film[8]['id']]) }}"><button>
+                                href="{{ route('detail', ['post' => $film[8]['id']]) }}"><button>
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="more" />
                                 </button>
@@ -425,7 +425,7 @@
                         </div>
                         <div class="paper-blog2-content">
 
-                            <a href="{{ route('detail', ['id' => $film[9]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[9]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 {!! htmlspecialchars_decode($film[9]['post_title'])!!}</a>
                             <p>
@@ -434,7 +434,7 @@
                         </div>
                         <div class="paper-blog2-button">
                             <a
-                                href="{{ route('detail', ['id' => $film[9]['id']]) }}"><button>
+                                href="{{ route('detail', ['post' => $film[9]['id']]) }}"><button>
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="more">
                                 </button>
@@ -469,7 +469,7 @@
                             </div>
                         </div>
                         <div class="blog-det-2">
-                            <a href="{{ route('detail', ['id' => $film[10]['id']]) }}"
+                            <a href="{{ route('detail', ['post' => $film[10]['id']]) }}"
                                 style="color: #020202; text-decoration:none">
                                 @if(mb_strlen($film[10]['post_title']) > 500)
                                     {{ html_entity_decode(mb_substr($film[10]['post_title'], 0, 500)) . '...' }}
@@ -487,7 +487,7 @@
                         </div>
                         <div class="blog-det-3">
                             <a
-                                href="{{ route('detail', ['id' => $film[10]['id']]) }}"><button
+                                href="{{ route('detail', ['post' => $film[10]['id']]) }}"><button
                                     class="read-more">
                                     Daha çox
                                     <img src="{{ asset('back/assets/img/more.png') }}" alt="">
