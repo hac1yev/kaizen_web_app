@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Emoji;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Posts extends Model
 {
@@ -19,5 +20,10 @@ class Posts extends Model
     }
     public function comments() {
         return $this->hasMany('App\Models\Comment', 'post_id', 'id');
+    }
+
+    public function emoji(): BelongsTo
+    {
+        return $this->belongsTo(Emoji::class);
     }
 }
