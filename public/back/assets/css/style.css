@@ -387,6 +387,56 @@ nav ul li a {
   margin-top: 5px;
 }
 
+.redakte_et {
+  padding: 2px 5px;
+  font-size: 14px;
+}
+
+.profile-detail {
+  border: 1px solid #000;
+}
+
+.profile-detail header {
+  display: flex;
+  justify-content: center;
+  padding: 19px 21px!important;
+  border-bottom: 1px solid #000;
+}
+
+.profile-detail header h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-bottom: 0;
+  padding: 0!important;
+}
+
+.profile-detail ul li {
+  padding: 0.3rem!important;
+  background-color: transparent!important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-detail ul li p {
+  font-size: 13px!important;
+  font-weight: 700;
+  width: 60%;
+}
+
+.profile-detail ul li span {
+  font-weight: 400;
+  font-size: 13px!important ;
+  width: 40%;
+}
+
+.post-detail3-wrapper {
+  border: 1px solid #000;
+}
+
 .blog-det-2 p {
   font-family: "Poppins";
   font-style: normal;

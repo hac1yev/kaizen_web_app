@@ -114,8 +114,7 @@
   
   .file-label {
     display: flex;
-    max-width: 459px;
-    width: 100%;
+      width: 100%;
     padding: 17px 0px 17px 20px;
     align-items: center;
     border: 1px solid #020202;
@@ -240,7 +239,10 @@
     align-items: center;
   }
 
-
+  #actual-btn {
+    visibility: hidden;
+    position: absolute;
+  }
 
   .dropdown__filter::after,
   .dropdown__filter2::after {
@@ -374,6 +376,20 @@
   .custom-select2:focus {
     border: none!important;
     box-shadow: none!important;
+  }
+
+  .select-aaa {
+    width: 100%;  
+    background-color: transparent;
+    min-height: 65px;
+    font-size: 20px;
+    border-radius: 1px 2px 1px 0px;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+    background: #d9d9d9;
+    margin-top: 6px;
+    padding: 15px;
   }
 
   @media screen and (max-width: 800px) {
