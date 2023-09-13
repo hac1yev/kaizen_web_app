@@ -3,9 +3,8 @@
 @section('content')
     <section class="mt-2 post-share">
             <div class="container">
-                <form method="POST" action="{{ route('editPostpost') }}" enctype="multipart/form-data" id="postedit">
-                    @csrf 
-
+                <form method="POST" action="{{ route('editPostpost') }}" enctype="multipart/form-data" id="postadd">
+                    @csrf
                     <div class="row">
                         <div class="col-12">
                             <h3>MƏQALƏ PAYLAŞIN</h3>
@@ -15,6 +14,7 @@
                                 <input type="file" name="image" class="w-100" id="actual-btn" onchange="updateFileName(this)"/>
                                 <label for="actual-btn" class="file-label w-100">Kiçik başlıq şəkli</label>
                             </div>
+                            
                         </div>
     
                         <div class="col-12 mt-2 row">
@@ -53,10 +53,9 @@
                                 <label for="select_category" class="dropdown__kategory-label" style="margin-bottom: 0;">Kateqoriya seçin <span class="text-danger">*</span></label>
                                 <input type="checkbox" class="dropdown__switch" id="filter-switch" hidden />
                                 <select class="select-aaa" name="category" id="select_category">
-                                    <option value="" selected disabled>Kateqoriyalar</option>
-                                        {{-- @foreach($categories as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->title}}</option>
-                                        @endforeach --}}
+                                    @foreach($categories as $cat)
+                                    <option value="{{$cat->id}}" @if($post->category_id == $cat->id) selected @endif>{{$cat->title}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <div class="col-md-8">
@@ -68,9 +67,15 @@
                                             <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
                                                 {{-- @php
                                                     $uniqueTags = []; 
-                                                @endphp
-                                                @foreach ($tags as $tag)
-                                                    @if ($tag->tags)
+                                                @endphp --}}
+                                                @foreach ($activePosts as $post)
+                                                    @if($post->tags)
+                                                        @foreach(array_unique(explode(",", $post->tags)) as $tag)
+                                                            <option class="dropdown__select-option2" role="option">{{ $tag }}</option>
+                                                        @endforeach
+                                                    @endif
+
+                                                {{-- @if ($tag->tags)
                                                         @php
                                                             $tagsArray = explode(',', $tag->tags);
                                                         @endphp
@@ -79,12 +84,13 @@
                                                                 @php
                                                                     $uniqueTags[] = $singleTag; 
                                                                 @endphp
-                                                                <option class="dropdown__select-option2" role="option">{{ $singleTag }}</option>
                                                             @endif
                                                         @endforeach
-                                                    @endif
-                                                @endforeach --}}
+                                                    @endif --}}
+                                                @endforeach
                                             </select>
+
+                                            
                                         </li>
                                     </ul>
                                 </label>
@@ -97,7 +103,7 @@
                     </div>
                 </form>
             </div>                
-        
+       
     </section>
        
 @endsection
@@ -119,8 +125,12 @@
 
             };
         
-            $("#postedit").validate({
+            $("#postadd").validate({
                 rules: {
+                    image: {
+                        required: true,
+
+                    },
                     title: {
                         required: true,
 
@@ -143,6 +153,10 @@
 
                 },
                 messages: {
+                    image: {
+                        required: errorMessages.required,
+
+                    },
                     title: {
                         required: errorMessages.required,
 

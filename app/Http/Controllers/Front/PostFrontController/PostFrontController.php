@@ -68,7 +68,19 @@ class PostFrontController extends Controller
         if(!$post){
             return redirect()->back()->with('error',true);
         }
-        $categories = Categories::all();
+        $activePosts = Posts::where('status','1')->get();
+        $categories = Categories::get();
+        return view('front.Postadd.edit',get_defined_vars());
+    }
+
+    public function postEditPost(Request $request){
+        dd(implode(",", $request->tags));
+        $post = Posts::find($id);
+        if(!$post){
+            return redirect()->back()->with('error',true);
+        }
+        $activePosts = Posts::where('status','1')->get();
+        $categories = Categories::get();
         return view('front.Postadd.edit',get_defined_vars());
     }
 
