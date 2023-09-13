@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             // LikeSeeder::class,
             // BookmarkSeeder::class,
             // Whydeleteds::class,
+            // EmojiSeeder::class
 
 
 
