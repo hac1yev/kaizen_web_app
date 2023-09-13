@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Emoji;
 use App\Models\AdvertFooter;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,12 @@ class ViewServiceProvider extends ServiceProvider
 
             View::share('adverts', AdvertFooter::get());
             
+        });
+
+        View::composer('index', function() {
+
+            View::share('emojis', Emoji::get());
+
         });
     }
 }
