@@ -62,4 +62,13 @@ class PostFrontController extends Controller
 
     }
 
+    public function postEdit($id){
+        $post = Posts::find($id);
+        if(!$post){
+            return redirect()->back()->with('error',true);
+        }
+        $categories = Categories::all();
+        return view('front.Postadd.edit',get_defined_vars());
+    }
+
 }
