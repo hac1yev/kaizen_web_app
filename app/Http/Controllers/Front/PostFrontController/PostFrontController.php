@@ -36,6 +36,7 @@ class PostFrontController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->content;
+        $post->emoji_id = $request->emoji_id;
         
         $selectedTags = $request->input('tags');
         $tagsAsString = implode(',', $selectedTags);

@@ -20,31 +20,14 @@
                 <div class="col-lg-12 smile-sec">
                     <h2>Default əhvalınızı seçin, məqalə generate edək</h2>
                         <div class="smile-block">
-                            <div class="smile-card">
-                                <button>
-                                    <img src="{{asset('back/assets/img/1.png')}}" alt="">
-                                </button>
-                            </div>
-                            <div class="smile-card">
-                                <button>
-                                    <img src="{{asset('back/assets/img/2.png')}}" alt="">
-                                </button>
-                            </div>
-                            <div class="smile-card">
-                                <button>
-                                    <img src="{{asset('back/assets/img/3.png')}}" alt="">
-                                </button>
-                            </div>
-                            <div class="smile-card">
-                                <button>
-                                    <img src="{{asset('back/assets/img/4.png')}}" alt="">
-                                </button>
-                            </div>
-                            <div class="smile-card">
-                                <button>
-                                    <img src="{{asset('back/assets/img/5.png')}}" alt="">
-                                </button>
-                            </div>
+                            @foreach($emojis as $emoji)
+                                <div class="smile-card">
+                                    <button>
+                                        <img src="{{asset($emoji->src)}}" alt="">
+                                    </button>
+                                </div>
+                            @endforeach
+
                         </div>
                 </div>
             </div>

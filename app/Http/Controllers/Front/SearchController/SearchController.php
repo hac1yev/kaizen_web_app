@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Front\SearchController;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Posts;
+use App\Models\Search;
 use App\Models\PostLike;
-use App\Models\PostBookmark;
 use Illuminate\Support\Str;
+use App\Models\PostBookmark;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
@@ -18,6 +19,20 @@ class SearchController extends Controller
 
         $searchingVal = $request->searching;
         if ($searchingVal) {
+            
+            if ($searchValue = Search::where('word', $searchingVal)->first())
+            {
+                $searchValue->count += 1;
+                $searchValue->save();
+            }
+            else
+            {
+                $searchValue = Search::create([
+                    'word' => $searchingVal,
+                    'count' => 1
+                ]);
+            }
+
             $posts = Posts::with('getCategory')
                 ->where(function ($query) use ($searchingVal) {
                     $query->where('title', 'like', '%' . $searchingVal . '%')
@@ -42,6 +57,7 @@ class SearchController extends Controller
             else {
             $book = [];
         }
+
         return view('front.Search.search',get_defined_vars());
     }
 
