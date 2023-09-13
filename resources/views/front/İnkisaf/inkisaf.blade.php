@@ -19,7 +19,6 @@
                                 <span
                                     class="paper-date">
                                     <div class="tooltip">
-                                        <p class="tooltiptextdate">Dərc olunma tarixi</p>
                                         {{ \Carbon\Carbon::parse($ferdi[0]['created_at'])->format('d.m.Y') }} |
                                         <span>
                                     {{ $ferdi[0]['cat_title'] }}</span>
@@ -27,7 +26,6 @@
                                 </span>
                                 
                             <span class="paper-minute tooltip">
-                                <p class="tooltiptextminute">Oxunma müddəti</p>
                                 <img src="{{ asset('back/assets/img/clock.png') }}" alt="clock" />
                                 2 dəq
                             </span>
