@@ -11,13 +11,11 @@
                             <h3>MƏQALƏ PAYLAŞIN</h3>
                         </div>
                         <div class="col-12 mt-2 row">
-                            <div class="col-md-6">
-                                <input type="file" name="image" id="actual-btn" hidden onchange="updateFileName(this)"/>
-                                <label for="actual-btn" class="file-label">Kiçik başlıq şəkli</label>
+                            <div class="col-md-12">
+                                <input type="file" name="image" class="w-100" id="actual-btn" onchange="updateFileName(this)"/>
+                                <label for="actual-btn" class="file-label w-100">Kiçik başlıq şəkli</label>
                             </div>
-                            <div class="col-md-6">
-                                <span id="file-chosen">Şəkil seçilməyib*</span>
-                            </div>
+                            
                         </div>
     
                         <div class="col-12 mt-2 row">
@@ -40,21 +38,27 @@
                         </div>
 
                         <div class="col-12 mt-2 row">
+                            <div class="col-md-12">
+                            <label for="select_aaa" class="dropdown__kategory-label" style="margin-bottom: 0;">Kateqoriya seçin <span class="text-danger">*</span></label>
+
+                                <select class="select-aaa" name="" id="select_aaa">
+                                    <option value="aaa">AAA</option>
+                                    <option value="bbb">BBB</option>
+                                    <option value="ccc">CCC</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-2 row">
                             <div class="col-md-4">
-                                <label for="" class="dropdown__kategory-label">Kateqoriya seçin <span class="text-danger">*</span></label>
+                                <label for="select_category" class="dropdown__kategory-label" style="margin-bottom: 0;">Kateqoriya seçin <span class="text-danger">*</span></label>
                                 <input type="checkbox" class="dropdown__switch" id="filter-switch" hidden />
-                                <label for="filter-switch" class="dropdown__options-filter">
-                                    <ul class="dropdown__filter select__kategory" role="listbox" tabindex="-1">
-                                        <li class="dropdown__filter-selected" aria-selected="true" id="selected-category">
-                                        </li>
-                                        <select class="form-control custom-select2" name="category">
-                                            <option value="" selected disabled>Kateqoriyalar</option>
-                                                @foreach($categories as $cat)
-                                                    <option value="{{$cat->id}}">{{$cat->title}}</option>
-                                                @endforeach
-                                        </select>
-                                    </ul>
-                                </label>
+                                <select class="select-aaa" name="category" id="select_category">
+                                    <option value="" selected disabled>Kateqoriyalar</option>
+                                        @foreach($categories as $cat)
+                                            <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="col-md-8">
                                 <label for="" class="dropdown__switch2-label">Heşteq seçin <span class="text-danger">*</span></label>
