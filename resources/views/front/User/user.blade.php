@@ -13,7 +13,7 @@
                 @foreach ($users as $u)
                     <div class="col-md-3 col-sm-6 mt-2">
                         <div class="card">
-                            <img class="card-img" src="{{$u->image}}" alt="user1" />
+                            <img class="card-img user-img" src="{{$u->image}}" alt="user1" />
                             <h6 class="card-title">{{$u->fullname}}</h6>
                             <span>{{$u->username}}</span>
                         </div>
