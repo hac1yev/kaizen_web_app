@@ -36,6 +36,7 @@ class PostFrontController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->content;
+        $post->emoji_id = $request->emoji_id;
         
         $selectedTags = $request->input('tags');
         $tagsAsString = implode(',', $selectedTags);
@@ -60,6 +61,27 @@ class PostFrontController extends Controller
 
         return redirect()->route('share')->with('success','Məqalə uğurla əlavə edildi');
 
+    }
+
+    public function postEdit($id){
+        $post = Posts::find($id);
+        if(!$post){
+            return redirect()->back()->with('error',true);
+        }
+        $activePosts = Posts::where('status','1')->get();
+        $categories = Categories::get();
+        return view('front.Postadd.edit',get_defined_vars());
+    }
+
+    public function postEditPost(Request $request){
+        dd(implode(",", $request->tags));
+        $post = Posts::find($id);
+        if(!$post){
+            return redirect()->back()->with('error',true);
+        }
+        $activePosts = Posts::where('status','1')->get();
+        $categories = Categories::get();
+        return view('front.Postadd.edit',get_defined_vars());
     }
 
 }
