@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use App\Models\Emoji;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Posts extends Model
 {
@@ -25,5 +27,10 @@ class Posts extends Model
     public function emoji(): BelongsTo
     {
         return $this->belongsTo(Emoji::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }
