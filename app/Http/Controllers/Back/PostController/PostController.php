@@ -112,6 +112,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->content = $request->contentt;
         $post->tags = $request->tags;
+        $post->emoji_id = $request->emoji_id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
