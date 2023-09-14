@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Front\PostFrontController;
 
-use App\Http\Controllers\Controller;
-use App\Models\Posts;
 use App\Models\User;
+use App\Models\Emoji;
+use App\Models\Posts;
+use App\Mail\SendPostMail;
 use App\Models\Categories;
 use Illuminate\Support\Str;
-use App\Mail\SendPostMail;
-use Illuminate\Support\Facades\Mail; 
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail; 
 
 class PostFrontController extends Controller
 {
@@ -20,6 +21,7 @@ class PostFrontController extends Controller
 
         $categories = Categories::where('status','1')->get();
         $tags = Posts::where('status','1')->get();
+        $emoji = Emoji::get();
 
         return view('front.Postadd.add',get_defined_vars());
     }
