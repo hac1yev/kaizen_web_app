@@ -60,11 +60,11 @@
                         <div class="settings-notifications">
                             <h3>BİLDİRİŞLƏR</h3>
                             <p class="confirm-wait-posts" data-toggle="modal" data-target="#confirmWaitPosts">
-                                Təsdiqi gözləyən postlar <span></span>
+                                Təsdiqlənən postlar <span></span>
                             </p>
 
                             <p class="confirmed-posts" data-toggle="modal" data-target="#confirmWaitPosts"> x
-                                Təsdiqlənən postlar <span></span>
+                                Təsdiqi gözləyən postlar <span></span>
                             </p>
                         </div>
                     </div>
@@ -92,6 +92,8 @@
                     </div>
                 </div>
             </div>
+
+            
             <div class="col-md-4 px-0 settings-change-wrap">
                 <div class="settings-change-email">
                     <h3>E-MAİLİ DƏYİŞDİRİN</h3>
@@ -188,6 +190,48 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+        <!-- CONFIRM WAIT POSTS  -->
+
+    <div  class="modal fade" id="confirmWaitPosts" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="accordion" id="accordionExample">
+                <h3 id="collapseButton1" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Təsdiqlənən postlar
+                </h3>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            @foreach ($status1 as $sta)
+                                <li>{{$sta->title}}</li><br>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <h3 id="collapseButton2" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Təsdiqi gözləyən postlar
+                </h3>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            @foreach ($status0 as $sta)
+                                <li>{{$sta->title}}</li><br>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
         </div>
     </div>
 @endsection
