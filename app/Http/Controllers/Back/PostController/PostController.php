@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Back\PostController;
 
-use App\Http\Controllers\Controller;
-use App\Models\Categories;
-use App\Models\Comment;
 use App\Models\Posts;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
+use App\Models\Categories;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -92,7 +93,11 @@ class PostController extends Controller
         return view('back.posts.add',compact('categories'));
     }
     public function postAddPost(Request $request){
-        
+        saasas
+        $request->validate([
+            'tags' => 'required|array'
+        ]);
+
         $post = new Posts();
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
@@ -104,8 +109,23 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->tags = $request->tags;
         $post->emoji_id = $request->emoji_id;
+        
+        foreach($request->tags as $tag)
+        {
+            $tagSlug = Str::slug($tag);
+            
+            if (!$tag = Tag::where('slug', $tagSlug)->first())
+            {
+                $tag = Tag::create([
+                    'label' => $tag,
+                    'slug'  => $tagSlug
+                ]);
+            }
+
+            $post->tags()->attach($tag->id);
+        }
+        
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
