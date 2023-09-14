@@ -40,10 +40,10 @@
                             <div class="col-md-12">
                             <label for="select_aaa" class="dropdown__kategory-label" style="margin-bottom: 0;">Kateqoriya seçin <span class="text-danger">*</span></label>
 
-                                <select class="select-aaa" name="" id="select_aaa">
-                                    <option value="aaa">AAA</option>
-                                    <option value="bbb">BBB</option>
-                                    <option value="ccc">CCC</option>
+                                <select class="select-aaa" name="emoji_id" id="select_aaa">
+                                    @foreach($emoji as $emo)
+                                        <option value="{{$emo->id}}" @if($post->emoji_id == $emo->id) selected @endif>{{$emo->label}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
                                 <input type="checkbox" class="dropdown__switch" id="filter-switch" hidden />
                                 <select class="select-aaa" name="category" id="select_category">
                                     @foreach($categories as $cat)
-                                    <option value="{{$cat->id}}" @if($post->category_id == $cat->id) selected @endif>{{$cat->title}}</option>
-                                        @endforeach
+                                        <option value="{{$cat->id}}" @if($post->category_id == $cat->id) selected @endif>{{$cat->title}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-8">
