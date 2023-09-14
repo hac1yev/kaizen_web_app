@@ -78,7 +78,6 @@
                                     </ul>
                                 </label>
                             </div>
-                            <input type="hidden" name="post_id" value="{{ $post->id }}">
 
                             <div class="col-12">
                                 <div class="content-button">
