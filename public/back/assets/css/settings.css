@@ -296,6 +296,47 @@
     cursor: pointer;
 }
 
+.confirm-wait-posts,
+.confirmed-posts {
+    cursor: pointer;
+}
+
+.confirm-wait-posts:hover,
+.confirmed-posts:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+#collapseButton1,
+#collapseButton2 {
+    color: #020202;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#collapseOne .card-body,
+#collapseTwo .card-body {
+    color: #020202;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-top: 0!important;
+}
+
+.modal-body {
+    padding: 20px!important;
+    padding-top: 0!important;
+    border-radius: 0!important;
+}
+
+.modal-header {
+    background-color: #e2e2e2!important;
+}
 
 @media screen and (max-width: 767.5px) {
     .settings-verification-col,
