@@ -29,6 +29,10 @@ class PostFrontController extends Controller
     }
 
     public function postadd(Request $request){
+        $request->validate([
+            'tags' => 'required|array'
+        ]);
+
         $post = new Posts();
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
@@ -45,6 +49,7 @@ class PostFrontController extends Controller
         
         $selectedTags = $request->input('tags');
         $tagsAsString = implode(',', $selectedTags);
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
@@ -53,8 +58,23 @@ class PostFrontController extends Controller
             $name = $directory.$name;
             $post->image = $name;
         }
-        dd($post);
+
         $post->save();
+
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
+            
+            if (!$tag = Tag::where('slug', $tagSlug)->first())
+            {
+                $tag = Tag::create([
+                    'label' => $tagValue,
+                    'slug'  => $tagSlug
+                ]);
+            }
+
+            $post->tags()->attach($tag->id);
+        }
 
         $data = [
             'email_name' => 'Kaizen.az',
@@ -62,7 +82,10 @@ class PostFrontController extends Controller
             'text' => 'Sizin məqaləniz uğurla yaradıldı',
         ];
 
-        Mail::to(Auth::user()->email)->send(new SendPostMail($data));
+        if (app()->environment('production'))
+        {
+            Mail::to(Auth::user()->email)->send(new SendPostMail($data));
+        }
 
         return redirect()->route('share')->with('success','Məqalə uğurla əlavə edildi');
 

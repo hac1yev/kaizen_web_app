@@ -67,10 +67,10 @@
                                 <label for="filter-switch2" class="dropdown__options-filter2">
                                     <ul class="dropdown__filter2" role="listbox" tabindex="-2">
                                         <li>
-                                            <select class="form-control" multiple="multiple" id="tagSelect" name="tag[]">
+                                            <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
                                                 
                                             @foreach($tags as $tag)
-                                                <option class="dropdown__select-option2" role="option" value="{{$tag->id}}">{{$tag->label}}</option>
+                                                <option class="dropdown__select-option2" role="option" value="{{$tag->label}}">{{$tag->label}}</option>
                                             @endforeach
                                                             
                                             </select>
@@ -78,7 +78,6 @@
                                     </ul>
                                 </label>
                             </div>
-                            <input type="hidden" name="post_id" value="{{ $post->id }}">
 
                             <div class="col-12">
                                 <div class="content-button">
