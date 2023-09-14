@@ -38,7 +38,6 @@ class SearchController extends Controller
                     $query->where('title', 'like', '%' . $searchingVal . '%')
                           ->orWhere('slug', 'like', '%' . $searchingVal . '%')
                           ->orWhere('description', 'like', '%' . $searchingVal . '%')
-                          ->orWhere('tags', 'like', '%' . $searchingVal . '%')
                           ->orWhere('content', 'like', '%' . $searchingVal . '%');
                 })
                 ->get();
