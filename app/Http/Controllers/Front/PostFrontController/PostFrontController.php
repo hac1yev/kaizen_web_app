@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Front\PostFrontController;
 
-use App\Http\Controllers\Controller;
-use App\Models\Posts;
 use App\Models\User;
+use App\Models\Emoji;
+use App\Models\Posts;
+use App\Models\Tag;
+
+use App\Mail\SendPostMail;
 use App\Models\Categories;
 use Illuminate\Support\Str;
-use App\Mail\SendPostMail;
-use Illuminate\Support\Facades\Mail; 
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail; 
 
 class PostFrontController extends Controller
 {
@@ -19,7 +22,8 @@ class PostFrontController extends Controller
         $user = Auth::user();
 
         $categories = Categories::where('status','1')->get();
-        $tags = Posts::where('status','1')->get();
+        $tags = Tag::distinct()->get(['label']);
+        $emoji = Emoji::get();
 
         return view('front.Postadd.add',get_defined_vars());
     }
@@ -37,10 +41,10 @@ class PostFrontController extends Controller
         $post->description = $request->description;
         $post->content = $request->content;
         $post->emoji_id = $request->emoji_id;
+        $post->reading_time = estimatedReadingTime($post->content, 200);
         
         $selectedTags = $request->input('tags');
         $tagsAsString = implode(',', $selectedTags);
-        $post->tags = $tagsAsString;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
@@ -49,6 +53,7 @@ class PostFrontController extends Controller
             $name = $directory.$name;
             $post->image = $name;
         }
+        dd($post);
         $post->save();
 
         $data = [
@@ -70,18 +75,42 @@ class PostFrontController extends Controller
         }
         $activePosts = Posts::where('status','1')->get();
         $categories = Categories::get();
+        $emoji = Emoji::get();
+
         return view('front.Postadd.edit',get_defined_vars());
     }
 
     public function postEditPost(Request $request){
-        dd(implode(",", $request->tags));
-        $post = Posts::find($id);
-        if(!$post){
-            return redirect()->back()->with('error',true);
+        $post = Posts::find($request->id);
+        
+        $post->category_id = $request->category;
+        $post->title = $request->title;
+        $slug = Str::slug($request->title);
+        if(Posts::where([['slug',$slug],['id','<>',$post->id]])->first()){
+            $slug = $slug.'_'.rand(1000,9999);
         }
-        $activePosts = Posts::where('status','1')->get();
-        $categories = Categories::get();
-        return view('front.Postadd.edit',get_defined_vars());
+        $post->slug = $slug;
+        $post->description = $request->description;
+        $post->content = $request->contentt;
+        $post->tags = $request->tags;
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif|max:1024',
+            ]);
+            $image = $request->file('image');
+            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
+            $directory = 'assets/images/posts/';
+            $old_image = $post->image;
+            if(file_exists($old_image)){
+                unlink($old_image);
+            }
+            $image->move($directory, $name);
+            $name = $directory.$name;
+            $post->image = $name;
+        }
+        $post->save();
+
+        return redirect()->route('editPost')->with('success','Məqalə uğurla yeniləndi');
     }
 
 }

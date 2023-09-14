@@ -39,12 +39,13 @@
 
                         <div class="col-12 mt-2 row">
                             <div class="col-md-12">
-                            <label for="select_aaa" class="dropdown__kategory-label" style="margin-bottom: 0;">Kateqoriya seçin <span class="text-danger">*</span></label>
+                            <label for="select_aaa" class="dropdown__kategory-label" style="margin-bottom: 0;">Posta uyğun emosiya seçin <span class="text-danger">*</span></label>
 
-                                <select class="select-aaa" name="" id="select_aaa">
-                                    <option value="aaa">AAA</option>
-                                    <option value="bbb">BBB</option>
-                                    <option value="ccc">CCC</option>
+                                <select class="select-aaa" name="emoji_id" id="select_aaa">
+                                    <option value="" selected disabled>Emosiya</option>
+                                        @foreach($emoji as $emo)
+                                            <option value="{{$emo->id}}">{{$emo->label}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -66,30 +67,19 @@
                                 <label for="filter-switch2" class="dropdown__options-filter2">
                                     <ul class="dropdown__filter2" role="listbox" tabindex="-2">
                                         <li>
-                                            <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
-                                                @php
-                                                    $uniqueTags = []; 
-                                                @endphp
-                                                @foreach ($tags as $tag)
-                                                    @if ($tag->tags)
-                                                        @php
-                                                            $tagsArray = explode(',', $tag->tags);
-                                                        @endphp
-                                                        @foreach ($tagsArray as $singleTag)
-                                                            @if (!in_array($singleTag, $uniqueTags))
-                                                                @php
-                                                                    $uniqueTags[] = $singleTag; 
-                                                                @endphp
-                                                                <option class="dropdown__select-option2" role="option">{{ $singleTag }}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-                                                @endforeach
+                                            <select class="form-control" multiple="multiple" id="tagSelect" name="tag[]">
+                                                
+                                            @foreach($tags as $tag)
+                                                <option class="dropdown__select-option2" role="option" value="{{$tag->id}}">{{$tag->label}}</option>
+                                            @endforeach
+                                                            
                                             </select>
                                         </li>
                                     </ul>
                                 </label>
                             </div>
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+
                             <div class="col-12">
                                 <div class="content-button">
                                     <button type="submit">Paylaş</button>

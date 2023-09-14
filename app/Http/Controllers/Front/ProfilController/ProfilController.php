@@ -20,14 +20,14 @@ class ProfilController extends Controller
         $users = User::where('id', $userId)->first();
         $posts = Posts::join('categories', 'categories.id', '=', 'posts.category_id')
         ->where('user_id', $userId)
-        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+        ->select('posts.id','posts.description','posts.content','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
         ->orderBy('posts.created_at','DESC')
         ->get();
 
         $favorits = User::join('post_like', 'post_like.user_id', '=', 'users.id')
             ->join('posts', 'post_like.post_id', '=', 'posts.id')
             ->join('categories','categories.id','=','posts.category_id')
-            ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+            ->select('posts.id','posts.description','posts.content','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
             ->where('post_like.user_id', $userId)
             ->distinct('post_like.post_id')
             ->get();
@@ -35,7 +35,7 @@ class ProfilController extends Controller
         $marks = User::join('post_bookmark', 'post_bookmark.user_id', '=', 'users.id')
         ->join('posts', 'post_bookmark.post_id', '=', 'posts.id')
         ->join('categories','categories.id','=','posts.category_id')
-        ->select('posts.id','posts.description','posts.content','posts.tags','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
+        ->select('posts.id','posts.description','posts.content','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at')
         ->where('post_bookmark.user_id', $userId)
         ->distinct('post_bookmark.post_id')
         ->get();
