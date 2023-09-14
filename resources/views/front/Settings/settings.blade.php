@@ -59,12 +59,12 @@
                         </div>
                         <div class="settings-notifications">
                             <h3>BİLDİRİŞLƏR</h3>
-                            <p>
+                            <p class="confirm-wait-posts" data-toggle="modal" data-target="#confirmWaitPosts">
                                 Təsdiqi gözləyən postlar <span></span>
                             </p>
 
-                            <p>
-                                Təsdiqi gözləyən postlar <span></span>
+                            <p class="confirmed-posts" data-toggle="modal" data-target="#confirmWaitPosts"> x
+                                Təsdiqlənən postlar <span></span>
                             </p>
                         </div>
                     </div>
