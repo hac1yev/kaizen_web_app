@@ -20,6 +20,8 @@ class SettingController extends Controller
 {
     public function settings(){
         $user = Auth::user();
+        $status1 = Posts::where('status','1')->where('user_id',$user->id)->get();
+        $status0 = Posts::where('status','0')->where('user_id',$user->id)->get();
 
         return view('front.Settings.settings',get_defined_vars());
     }
@@ -166,105 +168,6 @@ class SettingController extends Controller
         return redirect()->back()->with('success', $message);
     }
     
-
-    // public function forget()
-    //     {
-
-    //     return view('front.Account.forget');
-    // }
-
-    // public function confirmpass()
-    //     {
-    //     return view('front.Account.confirmpass');
-    // }
-    
-    // public function forget_post(Request $request)
-    //     {
-    //         $request->validate([
-    //             'email' => 'required|email|max:255',
-    //         ]);
-
-    //         $user = User::where('email', $request->email)->first();
-
-    //         if (!$user) {
-    //             return redirect()->route('forget')->with('error', __('messages.melyox'));
-    //         }
-
-    //         $user->email_verification_code = Str::random(40);
-    //         $user->save();
-
-    //         $data = [
-    //             'email_name' => '1is.az',
-    //             'subject' => 'Şifrə yeniləmə',
-    //             'text' => 'Şifrənizi yeniləmək üçün bu linkə tıklayın:',
-    //             'link' => env('APP_URL') . '/reset-password/' . $user->email_verification_code,
-    //         ];
-
-    //         Mail::to($user->email)->send(new SendForgetMail($data));
-
-    //         return redirect()->route('forget')->with('success', __('messages.sendpass'));
-    // }
-
-    
-
-    // public function forget_verification(Request $request)
-    //     {
-    //         $verification = $request->verification;
-
-    //         try {
-    //             DB::beginTransaction();
-
-    //             $user_verification = User::where('email_verification_code', $verification)->first();
-
-    //             if ($user_verification && $user_verification->status !== NULL) {
-    //                 $user_verification->email_verification_code = "";
-    //                 $user_verification->status = 1;
-    //                 $user_verification->save();
-
-    //                 DB::commit();
-
-    //                 return redirect()->route('confirmpass')->with('success', __('messages.passyaz'));
-    //             }
-    //             else {
-    //                 return redirect()->route('login');
-    //             }
-
-    //             DB::commit();
-    //         } catch (\Exception $e) {
-    //             DB::rollBack();
-    //         }
-
-    //         return redirect()->route('confirmpass');
-    // }
-
-    // public function confirm_post(Request $request)
-    //     {
-    //         $request->validate([
-    //             'password' => 'required|min:8|confirmed',
-    //         ]);
-
-    //         try {
-    //             DB::beginTransaction();
-
-    //             $user = User::where('email', $request->email)->first();
-
-    //             if ($user) {
-    //                 $user->email_verification_code = "";
-    //                 $user->password = bcrypt($request->password);
-    //                 $user->save();
-
-    //                 DB::commit();
-
-    //                 return redirect()->route('index')->with('success', __('messages.parollogin'));
-    //             }
-
-    //             DB::commit();
-    //         } catch (\Exception $e) {
-    //             DB::rollBack();
-    //         }
-
-    //         return redirect()->back()->with('error', __('messages.errorpasyeni'));
-    // }
 
 
 }
