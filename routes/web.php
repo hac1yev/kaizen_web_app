@@ -224,23 +224,25 @@ Route::get('/axtar', [UsersController::class, "useraxtar"])->name('useraxtar');
 Route::get('/posts/{post}', [DetailController::class, "showPost"])
     ->name('detail')
     ->middleware('showPost');
-
 Route::post('/comment', [DetailController::class, "commentPost"])->name('commentPost');
 Route::post('/detaillike', [DetailController::class, 'like'])->name('detaillike');
 Route::post('/detaildislike', [DetailController::class, 'dislike'])->name('detaildislike');
 Route::post('/detailbook', [DetailController::class, 'book'])->name('detailbook');
 Route::post('/detaildisbook', [DetailController::class, 'disbook'])->name('detaildisbook');
 
+
 Route::post('/contact', [AccountController::class, "contactpost"])->name('contact');
 Route::post('/loginpost', [AccountController::class, "loginpost"])->name('loginpost');
 Route::post('/registerpost', [AccountController::class, "registerpost"])->name('registerpost');
 Route::get('/logout', [AccountController::class, "logout"])->name('logouts');
-
-Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
-Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
 Route::post('/forget_post', [AccountController::class, 'forget_post'])->name('forget_post');
 Route::get('/email-verification/{verification}',[AccountController::class,'forget_verification'])->name('forget_verification');
 Route::post('/confirm_post', [AccountController::class, 'confirm_post'])->name('confirm_post');
+
+Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
+Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
+Route::get('/posts/edit/{id}', [PostFrontController::class, "postEdit"])->name('editPost');
+Route::post('/posts/edit', [PostFrontController::class, "postEditPost"])->name('editPostpost');
 
 
 Route::get('/search', [PostSearchController::class, "action"])->name('search');

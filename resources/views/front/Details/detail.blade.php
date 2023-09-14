@@ -29,17 +29,28 @@
                         <div class="">
                             <img src="{{asset($post->image)}}" class="w-100" alt="" />
                             <div class="paper-blog2-under">
-                                <p class="paper-blog2-bottom-time">
-                                    <span class="paper-bottom-date">{{($post->created_at)->format('d.m.Y')}}</span>
-                                    <span>{{$post->getCategory->title}}</span>
-                                </p>
+                                    <div class="tooltip">
+
+                                        <p class="tooltiptextdate">Dərc olunma tarixi</p>
+
+                                        <span class="paper-bottom-date">{{($post->created_at)->format('d.m.Y')}}</span>
+                                        <span>{{$post->getCategory->title}}</span>
+                                    </div>
                                 <span class="paper-minute">
-                                    <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
-                                    <div>
+                                    @if($post->getUser()->is_admin == 1)
+                                    <a href="{{route('editPost', $post->id)}}">
+                                        <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
+                                    </a>
+                                    @endif
+                                    <div class="tooltip">
+                                        <p class="tooltiptext">Baxış sayı</p>
+
                                         <img src="{{asset('back/assets/img/travel_eye.png')}}" alt="eye" />
                                         {{ $post->view }}
                                     </div>
-                                    <div>
+                                    <div class="tooltip">
+                                        <p class="tooltiptextminute">Oxunma müddəti</p>
+
                                         <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
                                         {{ $post->reading_time }} dəq
                                     </div>
@@ -102,15 +113,15 @@
                                     <ul class="list-group list-group-flush w-100">
                                         <li class="list-group-item">
                                             <p>İstifadəçi adı:</p>
-                                            <span>Hac1yev</span>
+                                            <span>{{($post->getUser()->username) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Ad Soyad:</p>
-                                            <span>İlkin Hacıyev</span>
+                                            <span>{{($post->getUser()->fullname) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Məqalə sayı:</p>
-                                            <span>25</span>
+                                            <span>{{count($postscount)}}</span>
                                         </li>
                                     </ul>
                                 </div>
