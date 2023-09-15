@@ -66,13 +66,21 @@
                                 <label for="content" class="form-label mb-1">Məzmun <span class="text-danger">*</span></label>
                             </div><!-- main-form-group -->
                         </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="form-group">
-                                <label for="tags" class="form-label">Açar sözlər <span class="text-danger">*</span></label>
-                                <div class="chips">
-                                    <input name='tags' value='{{$post->tags}}' class="form-control" autofocus>
-                                </div>
-                             </div>
+                        <div class="col-md-12">
+                            <label for="" class="dropdown__switch2-label">Heşteq seçin <span class="text-danger">*</span></label>
+                            <input type="checkbox" class="dropdown__switch2" id="filter-switch2" hidden />
+                            <label for="filter-switch2" class="dropdown__options-filter2">
+                                <ul class="dropdown__filter2" role="listbox" tabindex="-2">
+                                    <li>
+                                        <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
+                                            
+                                            <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
+                                            <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
+                                                        
+                                        </select>
+                                    </li>
+                                </ul>
+                            </label>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
@@ -140,6 +148,14 @@
         height: 48px;
         margin-right: 8px;
         float: left;
+    }
+
+    .dropdown__options-filter2 {
+        width: 100%;
+    }
+
+    .dropdown__filter2 li span {
+        width: 100%!important;
     }
 </style>
 @endsection
@@ -225,6 +241,27 @@
                 event.preventDefault();
                 return false;
             }
+        });
+    </script>
+
+<script>
+        $(document).ready(function() {
+            $('#tagSelect').select2({
+                tags: true,
+                insertTag: function (data, tag) {
+                    data.push(tag);
+                }
+            });
+            
+            $('#tagSelect').on('select2:open', function () {
+                $('#selected-hashtags-placeholder').hide();
+            });
+            
+            $('#tagSelect').on('change', function() {
+                const selectedOptions = $(this).val();
+                const selectedText = selectedOptions && selectedOptions.length ? selectedOptions.join(', ') : 'Haştaglar seçin';
+                $('#selected-hashtags-placeholder').text(selectedText).show();
+            });
         });
     </script>
 
