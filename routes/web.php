@@ -27,6 +27,7 @@ use App\Http\Controllers\Front\UsersController\UsersController;
 use App\Http\Controllers\Front\DetailController\DetailController;
 use App\Http\Controllers\Front\AccountController\AccountController;
 use App\Http\Controllers\Front\PostFrontController\PostFrontController;
+use App\Http\Controllers\Front\EmojiController\EmojiController;
 use App\Http\Controllers\Front\SearchController\SearchController as PostSearchController;
 
 use Illuminate\Support\Facades\Route;
@@ -250,3 +251,5 @@ Route::post('/searchlike', [PostSearchController::class, 'like'])->name('searchl
 Route::post('/searchdislike', [PostSearchController::class, 'dislike'])->name('searchdislike');
 Route::post('/searchbook', [PostSearchController::class, 'book'])->name('searchbook');
 Route::post('/searchdisbook', [PostSearchController::class, 'disbook'])->name('searchdisbook');
+
+Route::get('/emoji/{emojiId}', [EmojiController::class, "emoji"])->name('emoji');

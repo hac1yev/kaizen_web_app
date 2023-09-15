@@ -22,11 +22,12 @@
                         <div class="smile-block">
                             @foreach($emojis as $emoji)
                                 <div class="smile-card">
-                                    <button>
-                                        <img src="{{asset($emoji->src)}}" alt="">
-                                    </button>
+                                    <a href="{{ route('emoji', ['emojiId' => $emoji->id]) }}">
+                                        <img src="{{ asset($emoji->src) }}" alt="">
+                                    </a>
                                 </div>
                             @endforeach
+
 
                         </div>
                 </div>
@@ -844,6 +845,26 @@
                 default:
                     break;
             }
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".emoji-button").click(function () {
+                var emojiId = $(this).data("emoji-id");
+
+                $.ajax({
+                    url: "/emoji/" + emojiId,
+                    method: "GET",
+                    success: function (data) {
+                        console.log(data.posts); 
+                    },
+                    error: function (error) {
+                        console.error("Hata oluştu: " + error);
+                    }
+                });
+            });
         });
 
     </script>

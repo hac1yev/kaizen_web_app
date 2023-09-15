@@ -93,7 +93,6 @@ class PostController extends Controller
         return view('back.posts.add',compact('categories'));
     }
     public function postAddPost(Request $request){
-        saasas
         $request->validate([
             'tags' => 'required|array'
         ]);
