@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail; 
+use Illuminate\Support\Facades\Storage;
 
 class PostFrontController extends Controller
 {
@@ -37,10 +38,7 @@ class PostFrontController extends Controller
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
         $post->title = $request->title;
-        $slug = Str::slug($request->title);
-        if(Posts::where('slug',$slug)->first()){
-            $slug = $slug.'_'.rand(1000,9999);
-        }
+        $post->slug = Str::slug($request->title . "-" . uniqid());
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->content;
@@ -91,33 +89,30 @@ class PostFrontController extends Controller
             'tags' => 'required|array'
         ]);
 
-        dd($request);
-
         $post->category_id = $request->category;
         $post->title = $request->title;
-        $slug = Str::slug($request->title);
-        if(Posts::where([['slug',$slug],['id','<>',$post->id]])->first()){
-            $slug = $slug.'_'.rand(1000,9999);
-        }
-        $post->slug = $slug;
+        $post->slug = Str::slug($request->title . "-" . uniqid());
         $post->description = $request->description;
-        $post->content = $request->contentt;
+        $post->content = $request->content;
 
-        if ($request->hasFile('image')) {
-            $request->validate([
-                'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif|max:1024',
-            ]);
-            $image = $request->file('image');
-            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
-            $directory = 'assets/images/posts/';
-            $old_image = $post->image;
-            if(file_exists($old_image)){
-                unlink($old_image);
-            }
-            $image->move($directory, $name);
-            $name = $directory.$name;
-            $post->image = $name;
+        if ($request->hasFile('image'))
+        {
+            Storage::disk('post-images')->delete($post->image);
+            
+            $path = $request->file('image')->store('', 'post-images');
+
+            $post->image = $path;
         }
+        else
+        {
+            if (!Storage::disk('post-images')->exists($post->image))
+            {
+                return redirect()->route('editPost', ['post' => $post->id])->with([
+                    'error' => 'Xəta baş verdi'
+                ]);
+            }
+        }
+
         $post->save();
 
         foreach($request->tags as $tagValue)
@@ -135,7 +130,6 @@ class PostFrontController extends Controller
             $post->tags()->attach($tag->id);
         }
 
-        return redirect()->route('editPost')->with('success','Məqalə uğurla yeniləndi');
+        return redirect()->route('editPost', ['post' => $post->id])->with('success','Məqalə uğurla yeniləndi');
     }
-
 }

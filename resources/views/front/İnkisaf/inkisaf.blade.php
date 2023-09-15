@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="paper-col6">
                         <div class="paper-blog2-img">
-                            <img src="{{ $ferdi[0]['image'] }}" alt="blog2" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/{$ferdi[0]['image']}" }}" alt="blog2" />
                         </div>
                         <div class="paper-blog2-under">
                                 @php
