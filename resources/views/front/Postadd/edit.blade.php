@@ -3,7 +3,7 @@
 @section('content')
     <section class="mt-2 post-share">
             <div class="container">
-                <form method="POST" action="{{ route('editPostpost') }}" enctype="multipart/form-data" id="postadd">
+                <form method="POST" action="{{ route('editPostpost', ['post' => $post->id]) }}" enctype="multipart/form-data" id="postadd">
                     @csrf
                     <div class="row">
                         <div class="col-12">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-12 mt-2 row">
                             <div class="col-md-12">
-                                <input type="file" name="image" class="w-100" id="actual-btn" onchange="updateFileName(this)"/>
+                                <input type="file" value="/{{ $post->image }}" name="image" class="w-100" id="actual-btn" />
                                 <label for="actual-btn" class="file-label w-100">Kiçik başlıq şəkli</label>
                             </div>
                             
@@ -65,29 +65,11 @@
                                     <ul class="dropdown__filter2" role="listbox" tabindex="-2">
                                         <li>
                                             <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
-                                                {{-- @php
-                                                    $uniqueTags = []; 
-                                                @endphp --}}
-                                                @foreach ($activePosts as $post)
-                                                    @if($post->tags)
-                                                        @foreach(array_unique(explode(",", $post->tags)) as $tag)
-                                                            <option class="dropdown__select-option2" role="option">{{ $tag }}</option>
-                                                        @endforeach
-                                                    @endif
-
-                                                {{-- @if ($tag->tags)
-                                                        @php
-                                                            $tagsArray = explode(',', $tag->tags);
-                                                        @endphp
-                                                        @foreach ($tagsArray as $singleTag)
-                                                            @if (!in_array($singleTag, $uniqueTags))
-                                                                @php
-                                                                    $uniqueTags[] = $singleTag; 
-                                                                @endphp
-                                                            @endif
-                                                        @endforeach
-                                                    @endif --}}
+                                                
+                                                @foreach($tags as $tag)
+                                                    <option class='dropdown__select-option2' role='option' @if($post->tags->contains($tag->id)) selected @endif>{{ $tag->label }}</option>
                                                 @endforeach
+
                                             </select>
 
                                             
@@ -280,10 +262,7 @@
     </script>
 
     <script>
-        function updateFileName(input) {
-            const fileName = input.files[0].name;
-            document.getElementById('file-chosen').textContent = fileName;
-        }
+        
     </script>
  
 @endsection
