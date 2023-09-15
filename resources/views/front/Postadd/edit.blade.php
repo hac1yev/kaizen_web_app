@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-12 mt-2 row">
                             <div class="col-md-12">
-                                <input type="file" value="/{{ $post->image }}" name="image" class="w-100" id="actual-btn" />
+                                <input type="file" name="image" class="w-100" id="actual-btn" />
                                 <label for="actual-btn" class="file-label w-100">Kiçik başlıq şəkli</label>
                             </div>
                             
@@ -170,10 +170,6 @@
         
             $("#postadd").validate({
                 rules: {
-                    image: {
-                        required: true,
-
-                    },
                     title: {
                         required: true,
 
