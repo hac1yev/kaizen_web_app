@@ -46,7 +46,7 @@ class ViewServiceProvider extends ServiceProvider
 
         });
 
-        View::composer('back.posts.add', function() {
+        View::composer(['back.posts.add', 'back.posts.edit'], function() {
 
             View::share('categories', Categories::get());
             View::share('emojis', Emoji::get());
