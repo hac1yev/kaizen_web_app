@@ -61,20 +61,7 @@ class PostFrontController extends Controller
 
         $post->save();
 
-        foreach($request->tags as $tagValue)
-        {
-            $tagSlug = Str::slug($tagValue);
-            
-            if (!$tag = Tag::where('slug', $tagSlug)->first())
-            {
-                $tag = Tag::create([
-                    'label' => $tagValue,
-                    'slug'  => $tagSlug
-                ]);
-            }
-
-            $post->tags()->attach($tag->id);
-        }
+        
 
         $data = [
             'email_name' => 'Kaizen.az',
@@ -91,11 +78,7 @@ class PostFrontController extends Controller
 
     }
 
-    public function postEdit($id){
-        $post = Posts::find($id);
-        if(!$post){
-            return redirect()->back()->with('error',true);
-        }
+    public function postEdit(Posts $post){
         $activePosts = Posts::where('status','1')->get();
         $categories = Categories::get();
         $emoji = Emoji::get();
@@ -103,9 +86,13 @@ class PostFrontController extends Controller
         return view('front.Postadd.edit',get_defined_vars());
     }
 
-    public function postEditPost(Request $request){
-        $post = Posts::find($request->id);
-        
+    public function postEditPost(Request $request, Posts $post){
+        $request->validate([
+            'tags' => 'required|array'
+        ]);
+
+        dd($request);
+
         $post->category_id = $request->category;
         $post->title = $request->title;
         $slug = Str::slug($request->title);
@@ -115,7 +102,7 @@ class PostFrontController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->tags = $request->tags;
+
         if ($request->hasFile('image')) {
             $request->validate([
                 'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif|max:1024',
@@ -132,6 +119,21 @@ class PostFrontController extends Controller
             $post->image = $name;
         }
         $post->save();
+
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
+            
+            if (!$tag = Tag::where('slug', $tagSlug)->first())
+            {
+                $tag = Tag::create([
+                    'label' => $tagValue,
+                    'slug'  => $tagSlug
+                ]);
+            }
+
+            $post->tags()->attach($tag->id);
+        }
 
         return redirect()->route('editPost')->with('success','Məqalə uğurla yeniləndi');
     }
