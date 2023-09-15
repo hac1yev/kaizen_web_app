@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Tag;
 use App\Models\Emoji;
+use App\Models\Categories;
 use App\Models\AdvertFooter;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -33,7 +34,7 @@ class ViewServiceProvider extends ServiceProvider
             
         });
 
-        View::composer('index', function() {
+        View::composer(['index'], function() {
 
             View::share('emojis', Emoji::get());
 
@@ -44,5 +45,13 @@ class ViewServiceProvider extends ServiceProvider
             View::share('tags', Tag::get());
 
         });
+
+        View::composer('back.posts.add', function() {
+
+            View::share('categories', Categories::get());
+            View::share('emojis', Emoji::get());
+            View::share('tags', Tag::get());
+
+        });;
     }
 }

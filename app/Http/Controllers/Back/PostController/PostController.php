@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back\PostController;
 
+use App\Models\Tag;
 use App\Models\Posts;
 use App\Models\Comment;
 use App\Models\Categories;
@@ -89,8 +90,7 @@ class PostController extends Controller
         return redirect()->route('postEdit',$post->id)->with($post->save() ? 'success' : 'error',true);
     }
     public function postAdd(){
-        $categories = Categories::all();
-        return view('back.posts.add',compact('categories'));
+        return view('back.posts.add');
     }
     public function postAddPost(Request $request){
         $request->validate([
@@ -101,42 +101,42 @@ class PostController extends Controller
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
         $post->title = $request->title;
-        $slug = Str::slug($request->title);
-        if(Posts::where('slug',$slug)->first()){
-            $slug = $slug.'_'.rand(1000,9999);
-        }
-        $post->slug = $slug;
+        $post->slug = Str::slug($request->title . '-' . uniqid());
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->emoji_id = $request->emoji_id;
-        
-        foreach($request->tags as $tag)
+        $post->emoji_id = $request->emoji;
+        $post->reading_time = estimatedReadingTime($post->content, 200);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image'=>'image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif',
+            ]);
+
+            $path = $request->file('image')->store('', 'post-images');
+            $post->image = $path;
+        }
+        else
         {
-            $tagSlug = Str::slug($tag);
+            return redirect()->route('postListIndex')->with(['error' => 'Xəta baş verdi']);
+        }
+
+        $post->save();
+
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
             
             if (!$tag = Tag::where('slug', $tagSlug)->first())
             {
                 $tag = Tag::create([
-                    'label' => $tag,
+                    'label' => $tagValue,
                     'slug'  => $tagSlug
                 ]);
             }
 
             $post->tags()->attach($tag->id);
         }
-        
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
-            $directory = 'assets/images/posts/';
-            $image->move($directory, $name);
-            $name = $directory.$name;
-            $post->image = $name;
-        }
-        
-        $post->reading_time = estimatedReadingTime($post->content, 200);
 
         return redirect()->route('postListIndex')->with($post->save() ? 'success' : 'error',true);
-
     }
 }

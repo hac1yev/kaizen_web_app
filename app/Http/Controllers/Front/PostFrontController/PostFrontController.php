@@ -43,9 +43,6 @@ class PostFrontController extends Controller
         $post->content = $request->content;
         $post->emoji_id = $request->emoji_id;
         $post->reading_time = estimatedReadingTime($post->content, 200);
-        
-        $selectedTags = $request->input('tags');
-        $tagsAsString = implode(',', $selectedTags);
 
         if ($request->hasFile('image')) {
             $request->validate([
@@ -54,6 +51,10 @@ class PostFrontController extends Controller
 
             $path = $request->file('image')->store('', 'post-images');
             $post->image = $path;
+        }
+        else
+        {
+            return redirect()->route('share')->with(['error' => 'Xəta baş verdi']);
         }
 
         $post->save();
