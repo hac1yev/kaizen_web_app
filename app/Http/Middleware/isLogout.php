@@ -17,9 +17,9 @@ class isLogout
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return redirect()->route('admin');
-        }
+        if (auth()->check())
+            return abort(404);
+
         return $next($request);
     }
 }

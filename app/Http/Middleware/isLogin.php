@@ -17,9 +17,13 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()){
-            return redirect()->route('loginIndex');
-        }
+        if (!auth()->check())
+            return abort(404);
+
+        if (!auth()->user()->is_admin)
+            return abort(404);
+
+
         return $next($request);
     }
 }
