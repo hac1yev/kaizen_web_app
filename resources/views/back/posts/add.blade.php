@@ -37,6 +37,17 @@
                         </div>
                     </div>
                     <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">Emoji <span class="text-danger">*</span></label>
+                            <select class="form-control select2 form-select" name="emoji" data-placeholder="Emoji seçin">
+                                <option label="Choose one"></option>
+                                @foreach($emojis as $emoji)
+                                    <option value="{{$emoji->id}}">{{$emoji->label}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
                         <div class="main-form-group">
                             <input class="form-control border-0" id="title" name="title" placeholder="Başlıq daxil edin" type="text">
                             <label for="title" class="form-label mb-1">Başlıq <span class="text-danger">*</span></label>
@@ -62,10 +73,9 @@
                                     <ul class="dropdown__filter2" role="listbox" tabindex="-2">
                                         <li>
                                             <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
-                                                
-                                                <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
-                                                <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
-                                                            
+                                                @foreach($tags as $tag)
+                                                    <option class="dropdown__select-option2" role="option" value="{{ $tag->label }}">{{ $tag->label }}</option>
+                                                @endforeach
                                             </select>
                                         </li>
                                     </ul>

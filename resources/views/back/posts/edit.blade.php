@@ -21,14 +21,14 @@
                 <div class="card-header border-bottom">
                     <h3 class="card-title">Məqalə redaktə</h3>
                 </div>
-                <form class="card-body" action="{{route('postEditPost')}}" id="editPost" method="POST" enctype="multipart/form-data">
+                <form class="card-body" action="{{route('postEditPost', ['post' => $post->id])}}" id="editPost" method="POST" enctype="multipart/form-data">
                     @include('back.layouts.message')
                     @csrf
                     <input type="hidden" name="id" value="{{$post->id}}">
                     <div class="row row-xs form-group-wrapper">
                         <div class="col-md-12 mb-3 text-center">
                             <p>Cari şəkil:</p>
-                            <img src="{{asset($post->image)}}" alt="" style="width: 200px;height: 200px">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" alt="" style="width: 200px;height: 200px">
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="main-form-group">
@@ -42,7 +42,18 @@
                                 <select class="form-control select2 form-select" name="category" data-placeholder="Kateqoriya seçin">
                                     <option label="Choose one"></option>
                                     @foreach($categories as $category)
-                                    <option value="{{$category->id}}" @if($category->id == $post->category_id) selected @endif>{{$category->title}}</option>
+                                        <option value="{{$category->id}}" @if($category->id == $post->category_id) selected @endif>{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Emoji <span class="text-danger">*</span></label>
+                                <select class="form-control select2 form-select" name="emoji" data-placeholder="Emoji seçin">
+                                    <option label="Choose one"></option>
+                                    @foreach($emojis as $emoji)
+                                    <option value="{{$emoji->id}}" @if($post->emoji_id == $emoji->id) selected @endif>{{$emoji->label}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -74,8 +85,9 @@
                                     <li>
                                         <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
                                             
-                                            <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
-                                            <option class="dropdown__select-option2" role="option" value="asdsad">taglabe</option>
+                                            @foreach($tags as $tag)
+                                                <option @if($post->tags->contains($tag->id)) selected @endif class="dropdown__select-option2" role="option" value="{{ $tag->slug }}">{{ $tag->label }}</option>
+                                            @endforeach
                                                         
                                         </select>
                                     </li>

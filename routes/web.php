@@ -70,8 +70,8 @@ Route::middleware('isLogin')->group(function () {
     Route::get('/admin/posts/list', [PostController::class, "postListIndex"])->name('postListIndex');
     Route::post('/admin/posts/list', [PostController::class, "postStatus"])->name('postStatus');
     Route::post('/admin/posts/list/delete', [PostController::class, "postDelete"])->name('postDelete');
-    Route::get('/admin/posts/edit/{id}', [PostController::class, "postEdit"])->name('postEdit');
-    Route::post('/admin/posts/edit', [PostController::class, "postEditPost"])->name('postEditPost');
+    Route::get('/admin/posts/edit/{post}', [PostController::class, "postEdit"])->name('postEdit');
+    Route::post('/admin/posts/edit/{post}', [PostController::class, "postEditPost"])->name('postEditPost');
     Route::get('/admin/posts/add', [PostController::class, "postAdd"])->name('postAdd');
     Route::post('/admin/posts/add', [PostController::class, "postAddPost"])->name('postAddPost');
     //End Posts
