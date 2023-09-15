@@ -27,7 +27,7 @@
                     <div class="col-md-9">
                         <h2 class="travel-title"> {!! htmlspecialchars_decode($post->post_title) !!}</h2>
                         <div class="">
-                            <img src="{{asset($post->image)}}" class="w-100" alt="" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" class="w-100" alt="" />
                             <div class="paper-blog2-under">
                                     <div class="tooltip">
 
