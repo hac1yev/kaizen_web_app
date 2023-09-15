@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\Emoji;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +15,8 @@ class Posts extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function getUser(){
-        return $this->belongsTo('App\Models\User','user_id','id')->first();
+    public function getUser() {
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function getCategory(){
         return $this->belongsTo('App\Models\Categories','category_id','id');
