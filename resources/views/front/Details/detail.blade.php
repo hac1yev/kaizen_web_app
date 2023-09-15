@@ -37,7 +37,7 @@
                                         <span>{{$post->getCategory->title}}</span>
                                     </div>
                                 <span class="paper-minute">
-                                    @if($post->getUser()->is_admin == 1)
+                                    @if($post->getUser->is_admin == 1)
                                     <a href="{{route('editPost', $post->id)}}">
                                         <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
                                     </a>
@@ -113,11 +113,11 @@
                                     <ul class="list-group list-group-flush w-100">
                                         <li class="list-group-item">
                                             <p>İstifadəçi adı:</p>
-                                            <span>{{($post->getUser()->username) ?? ''}}</span>
+                                            <span>{{($post->getUser->username) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Ad Soyad:</p>
-                                            <span>{{($post->getUser()->fullname) ?? ''}}</span>
+                                            <span>{{($post->getUser->fullname) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Məqalə sayı:</p>

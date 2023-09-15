@@ -19,9 +19,17 @@ class ShowPost
     {
         $post = $request->route('post');
         
-        if ($post->status)
+        // dd($post->getUser);
+
+        if (!$post->status)
         {
-            return $next($request);
+            if (auth()->check())
+            {
+                if ($post->getUser->id === auth()->user()->id)
+                {
+                    return $next($request);
+                }
+            }
         }
 
         return abort(404);
