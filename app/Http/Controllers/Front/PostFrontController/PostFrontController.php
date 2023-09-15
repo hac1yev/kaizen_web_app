@@ -39,7 +39,6 @@ class PostFrontController extends Controller
         $post->category_id = $request->category;
         $post->title = $request->title;
         $post->slug = Str::slug($request->title . "-" . uniqid());
-        $post->slug = $slug;
         $post->description = $request->description;
         $post->content = $request->content;
         $post->emoji_id = $request->emoji_id;
@@ -49,26 +48,39 @@ class PostFrontController extends Controller
         $tagsAsString = implode(',', $selectedTags);
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
-            $directory = 'assets/images/posts/';
-            $image->move($directory, $name);
-            $name = $directory.$name;
-            $post->image = $name;
+            $request->validate([
+                'image'=>'image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif',
+            ]);
+
+            $path = $request->file('image')->store('', 'post-images');
+            $post->image = $path;
         }
 
         $post->save();
 
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
+            
+            if (!$tag = Tag::where('slug', $tagSlug)->first())
+            {
+                $tag = Tag::create([
+                    'label' => $tagValue,
+                    'slug'  => $tagSlug
+                ]);
+            }
+
+            $post->tags()->attach($tag->id);
+        }        
+
         
-
-        $data = [
-            'email_name' => 'Kaizen.az',
-            'subject' => 'Məqalə yaratmaq',
-            'text' => 'Sizin məqaləniz uğurla yaradıldı',
-        ];
-
         if (app()->environment('production'))
         {
+            $data = [
+                'email_name' => 'Kaizen.az',
+                'subject' => 'Məqalə yaratmaq',
+                'text' => 'Sizin məqaləniz uğurla yaradıldı',
+            ];
             Mail::to(Auth::user()->email)->send(new SendPostMail($data));
         }
 
@@ -97,6 +109,10 @@ class PostFrontController extends Controller
 
         if ($request->hasFile('image'))
         {
+            $request->validate([
+                'image'=>'image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif',
+            ]);
+
             Storage::disk('post-images')->delete($post->image);
             
             $path = $request->file('image')->store('', 'post-images');
@@ -114,6 +130,8 @@ class PostFrontController extends Controller
         }
 
         $post->save();
+
+        $post->tags()->detach();
 
         foreach($request->tags as $tagValue)
         {
