@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Tag;
 use App\Models\Emoji;
 use App\Models\AdvertFooter;
 use Illuminate\Support\Facades\View;
@@ -35,6 +36,12 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('index', function() {
 
             View::share('emojis', Emoji::get());
+
+        });
+
+        View::composer('front.Postadd.edit', function() {
+            
+            View::share('tags', Tag::get());
 
         });
     }

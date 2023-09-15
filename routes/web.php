@@ -241,8 +241,8 @@ Route::post('/confirm_post', [AccountController::class, 'confirm_post'])->name('
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
-Route::get('/posts/edit/{id}', [PostFrontController::class, "postEdit"])->name('editPost');
-Route::post('/posts/edit', [PostFrontController::class, "postEditPost"])->name('editPostpost');
+Route::get('/posts/edit/{post}', [PostFrontController::class, "postEdit"])->name('editPost');
+Route::post('/posts/edit/{post}', [PostFrontController::class, "postEditPost"])->name('editPostpost');
 
 
 Route::get('/search', [PostSearchController::class, "action"])->name('search');
