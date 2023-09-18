@@ -32,6 +32,7 @@ class PostsSeeder extends Seeder
     			'description' => $data['description'],
     			'content' => $data['more'],
                 // 'tags' => $data['hashtags'],
+                'emoji_id' => 1,
                 'image' => $data['baslik'],
                 'note' => $data['note'],
                 'view' => $data['clicked'],
