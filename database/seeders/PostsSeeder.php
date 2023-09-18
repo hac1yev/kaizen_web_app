@@ -31,7 +31,7 @@ class PostsSeeder extends Seeder
                 'slug' => Str::slug($data['title']),
     			'description' => $data['description'],
     			'content' => $data['more'],
-                'tags' => $data['hashtags'],
+                // 'tags' => $data['hashtags'],
                 'image' => $data['baslik'],
                 'note' => $data['note'],
                 'view' => $data['clicked'],
