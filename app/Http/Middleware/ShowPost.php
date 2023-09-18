@@ -21,6 +21,11 @@ class ShowPost
         
         // dd($post->getUser);
 
+        if ($post->status)
+        {
+            return $next($request);
+        }
+
         if (!$post->status)
         {
             if (auth()->check())
