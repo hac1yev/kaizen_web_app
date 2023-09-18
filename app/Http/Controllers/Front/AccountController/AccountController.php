@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Front\AccountController;
 
-use App\Http\Controllers\Controller;
+use Redirect;
+use App\Models\User;
+use App\Models\Posts;
+use App\Mail\SendMail;
 use App\Models\Comment;
 use App\Models\Contact;
-use App\Models\Posts;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Mail\SendForgetMail ;
 use App\Mail\SendContactMail ;
-use Illuminate\Support\Str;
-use Redirect;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 
 
