@@ -44,8 +44,8 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                            @if($post && $post->getUser())
-                                                <a href="{{ route('userEdit', $post->getUser()->id) }}" target="_blank">{{ $post->getUser()->fullname }}</a>
+                                            @if($post && $post->getUser)
+                                                <a href="{{ route('userEdit', $post->getUser->id) }}" target="_blank">{{ $post->getUser->fullname }}</a>
                                             @else
                                                 <a href="#"></a>
                                             @endif
