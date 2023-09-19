@@ -13,7 +13,7 @@
                         <div class="col-12 mt-2 row">
                             <div class="col-md-12">
                                 <input type="file" name="image" class="w-100" id="actual-btn" onchange="updateFileName(this)"/>
-                                <label for="actual-btn" class="file-label w-100">Kiçik başlıq şəkli</label>
+                                <label for="actual-btn" class="file-label w-100" id="sekil">Kiçik başlıq şəkli</label>
                             </div>
                             
                         </div>
@@ -276,7 +276,7 @@
     <script>
         function updateFileName(input) {
             const fileName = input.files[0].name;
-            document.getElementById('file-chosen').textContent = fileName;
+            document.getElementById('sekil').textContent = fileName;
         }
     </script>
  
