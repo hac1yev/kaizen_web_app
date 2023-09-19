@@ -8,7 +8,7 @@
                 <div class="col-md-6">
                     <div class="paper-col6">
                         <div class="paper-blog2-img">
-                            <img src="{{$story[0]['image']}}" alt="blog2" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/{$story[0]['image']}" }}" alt="blog2" />
                         </div>
                         <div class="paper-blog2-under">
                             <p class="paper-blog2-time">
@@ -21,7 +21,7 @@
                             </p>
                             <span class="paper-minute">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                2 dəq
+                                {{$story[0]['reading_time']}} dəq
                             </span>
                         </div>
                         <div class="paper-blog2-content">
@@ -60,7 +60,7 @@
                                 </p>
                                 <span class="paper-minute">
                                      <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                    2 dəq
+                                     {{$story[1]['reading_time']}} dəq
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
@@ -98,7 +98,7 @@
                                 </p>
                                 <span class="paper-minute">
                                      <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                    2 dəq
+                                     {{$story[2]['reading_time']}} dəq
                                 </span>
                             </div>
                             <div class="paper-blog2-content">
@@ -132,7 +132,7 @@
                 </div>
                 <div class="col-md-3 col-5">
                     <div class="paper-1">
-                        <img class="paper-1-img" src="{{$story[3]['image']}}" alt="paper-1-img" />
+                        <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/{$story[3]['image']}" }}" alt="paper-1-img" />
                         <div class="blog-det">
                             <div class="blog-date">
                                 <p>{{ \Carbon\Carbon::parse($story[3]['created_at'])->format('d.m.Y') }}</p>
@@ -141,7 +141,7 @@
                             </div>
                             <div class="blog-time">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                <span>2 dəq</span>
+                                <span>{{$story[3]['reading_time']}} dəq</span>
                             </div>
                         </div>
                         <div class="blog-det-2">
@@ -186,7 +186,7 @@
                             </p>
                             <span class="paper-minute">
                                  <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                2 dəq
+                                {{$story[4]['reading_time']}} dəq
                             </span>
                         </div>
                         <div class="paper-blog2-content">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                     <div class="paper-2">
-                        <img class="paper-1-img" src="{{$story[5]['image']}}" alt="paper-1-img" />
+                        <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/{$story[5]['image']}" }}" alt="paper-1-img" />
                         <div class="blog-det">
                             <div class="blog-date">
                                 <p>{{ \Carbon\Carbon::parse($story[5]['created_at'])->format('d.m.Y') }}</p>
@@ -226,7 +226,7 @@
                             </div>
                             <div class="blog-time">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                <span>2 dəq</span>
+                                <span>{{$story[5]['reading_time']}} dəq</span>
                             </div>
                         </div>
                         <div class="blog-det-2">
@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <div class="col-12 mobile-paper-2">
-                    <img class="paper-1-img" src="{{$story[6]['image']}}" alt="paper-1-img" />
+                    <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/{$story[6]['image']}" }}" alt="paper-1-img" />
                         <div class="blog-det">
                             <div class="blog-date">
                                 <p>{{ \Carbon\Carbon::parse($story[6]['created_at'])->format('d.m.Y') }}</p>
@@ -269,7 +269,7 @@
                             </div>
                             <div class="blog-time">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                <span>2 dəq</span>
+                                <span>{{$story[6]['reading_time']}} dəq</span>
                             </div>
                         </div>
                         <div class="blog-det-2">
@@ -307,7 +307,7 @@
                 <div class="col-md-3 mt-4">
                     <div class="paper-elizabeth-wrapper">
                         <div class="d-flex align-items-center justify-content-center paper-elizabeth-img">
-                            <img class="w-100" src="{{$story[7]['image']}}" alt="elizabeth" />
+                            <img class="w-100" src="{{ config('filesystems.disks.post-images.url') . "/{$story[7]['image']}" }}" alt="elizabeth" />
                         </div>
                         <div class="paper-blog3-bottom-left">
                             <div class="paper-blog2-under">
@@ -341,7 +341,7 @@
                 <div class="col-md-6 mt-4">
                     <div class="paper-col6">
                         <div class="paper-blog2-img">
-                            <img src="{{$story[8]['image']}}" alt="blog2" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/{$story[8]['image']}" }}" alt="blog2" />
                         </div>
                         <div class="paper-blog2-under">
                             <p class="paper-blog2-time">
@@ -350,7 +350,7 @@
                             </p>
                             <span class="paper-minute">
                                  <img src="{{asset('back/assets/img/clock.png')}}" alt="clock" />
-                                2 dəq
+                                {{$story[8]['reading_time']}} dəq
                             </span>
                         </div>
                         <div class="paper-blog2-content">
@@ -390,7 +390,7 @@
                             </p>
                             <span class="paper-minute">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="clock">
-                                2 dəq
+                                {{$story[9]['reading_time']}} dəq
                             </span>
                         </div>
                         <div class="paper-blog2-content">
@@ -431,7 +431,7 @@
                         </div>
                     </div>
                     <div class="paper-1">
-                        <img class="paper-1-img" src="{{$story[10]['image']}}" alt="paper-1-img">
+                        <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/{$story[10]['image']}" }}" alt="paper-1-img">
                         <div class="blog-det">
                             <div class="blog-date">
                                 <p>{{ \Carbon\Carbon::parse($story[10]['created_at'])->format('d.m.Y') }}</p>
@@ -440,7 +440,7 @@
                             </div>
                             <div class="blog-time">
                                 <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                <span>2 dəq</span>
+                                <span>{{$story[10]['reading_time']}} dəq</span>
                             </div>
                         </div>
                         <div class="blog-det-2">
@@ -492,7 +492,7 @@
                     <div class="col-12">
                         <div class="paper-carousel row">
                             <div class="paper-carousel-img col-md-5">
-                                <img src="{{$s->image}}" alt="blog2" />
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$s->image" }}" alt="blog2" />
                             </div>
                             <div class="paper-carousel-content col-md-7">
                                 <span>{{ ($s->created_at)->format('d.m.Y') }}</span>
