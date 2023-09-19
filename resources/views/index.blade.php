@@ -45,7 +45,7 @@
                         @foreach ($sonposts as $son)
                             
                         <div class="blog-1">
-                            <img src="{{$son->image}}" alt="">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$son->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{ ($son->created_at)->format('d.m.Y') }}</p>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="blog-time">
                                     <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                    <span>2 dəq</span>
+                                    <span>{{$son->reading_time}} dəq</span>
                                 </div>
                             </div>
                             <div class="blog-det-2">
@@ -113,7 +113,7 @@
                         @foreach ($diger1 as $diger1)
                             
                             <div class="blog-1">
-                                <img src="{{$diger1->image}}" alt="">
+                                <img class="other-blog-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$diger1->image" }}" alt="">
                                 <div class="blog-det">
                                     <div class="blog-date">
                                         <p>{{ ($diger1->created_at)->format('d.m.Y') }}</p>
@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="blog-time">
                                         <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                        <span>2 dəq</span>
+                                        <span>{{$diger1->reading_time}} dəq</span>
                                     </div>
                                 </div>
                                 <div class="blog-det-2">
@@ -161,7 +161,7 @@
                         
                             <div class="col-lg-6">
                                 <div class="blog-1">
-                                    <img src="{{$diger2->image}}" alt="">
+                                    <img src="{{ config('filesystems.disks.post-images.url') . "/$diger2->image" }}" alt="">
                                     <div class="blog-det">
                                         <div class="blog-date">
                                             <p>{{ ($diger2->created_at)->format('d.m.Y') }}</p>
@@ -170,7 +170,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$diger2->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">
@@ -211,7 +211,7 @@
                         @foreach ($diger3 as $diger3)
                             
                         <div class="blog-1">
-                            <img src="{{$diger3->image}}" alt="">
+                            <img class="other-blog-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$diger3->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{ ($diger3->created_at)->format('d.m.Y') }}</p>
@@ -220,7 +220,7 @@
                                 </div>
                                 <div class="blog-time">
                                     <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                    <span>2 dəq</span>
+                                    <span>{{$diger3->reading_time}} dəq</span>
                                 </div>
                             </div>
                             <div class="blog-det-2">
@@ -272,7 +272,7 @@
                         @foreach ($famous as $fam)
                             
                         <div class="blog-1">
-                            <img src="{{$fam->image}}" alt="">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$fam->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{ ($fam->created_at)->format('d.m.Y') }}</p>
@@ -281,7 +281,7 @@
                                 </div>
                                 <div class="blog-time">
                                     <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                    <span>2 dəq</span>
+                                    <span>{{$fam->reading_time}} dəq</span>
                                 </div>
                             </div>
                             <div class="blog-det-2">
@@ -366,7 +366,7 @@
                     <div class="tab-pane fade show active" id="ferdi" role="tabpanel" aria-labelledby="home-tab">
                         @foreach ($ferdi as $ferdi)
                             <div class="blog-1">
-                                <img src="{{$ferdi->image}}" alt="">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$ferdi->image" }}" alt="">
                                 <div class="total-detail">
                                     <div class="blog-det">
                                         <div class="blog-date">
@@ -376,7 +376,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$ferdi->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">
@@ -426,7 +426,7 @@
                     <div class="tab-pane fade" id="seyahet" role="tabpanel" aria-labelledby="profile-tab"> 
                         @foreach ($travel as $travel)
                             <div class="blog-1">
-                                <img src="{{$travel->image}}" alt="">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$travel->image" }}" alt="">
                                     <div class="total-detail">
                                     <div class="blog-det">
                                         <div class="blog-date">
@@ -436,7 +436,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$travel->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">
@@ -486,7 +486,7 @@
                     <div class="tab-pane fade" id="hekayeler" role="tabpanel" aria-labelledby="contact-tab">
                         @foreach ($story as $story)
                             <div class="blog-1">
-                                <img src="{{$story->image}}" alt="">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$story->image" }}" alt="">
                                 <div class="total-detail">
                                     <div class="blog-det">
                                         <div class="blog-date">
@@ -496,7 +496,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$story->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">
@@ -545,7 +545,7 @@
                     <div class="tab-pane fade" id="film" role="tabpanel" aria-labelledby="film-tab">
                         @foreach ($film as $film)
                             <div class="blog-1">
-                                <img src="{{$film->image}}" alt="">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$film->image" }}" alt="">
                                 <div class="total-detail">
                                     <div class="blog-det">
                                         <div class="blog-date">
@@ -555,7 +555,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$film->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">
@@ -604,7 +604,7 @@
                     <div class="tab-pane fade" id="biznes" role="tabpanel" aria-labelledby="biznes-tab">
                         @foreach ($biznes as $biznes)
                             <div class="blog-1">
-                                <img src="{{$biznes->image}}" alt="">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$biznes->image" }}" alt="">
                                 <div class="total-detail">
                                     <div class="blog-det">
                                         <div class="blog-date">
@@ -614,7 +614,7 @@
                                         </div>
                                         <div class="blog-time">
                                             <img src="{{asset('back/assets/img/clock.png')}}" alt="">
-                                            <span>2 dəq</span>
+                                            <span>{{$biznes->reading_time}} dəq</span>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">

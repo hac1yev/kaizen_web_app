@@ -114,62 +114,62 @@
 
 @section('css')
     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-<style>
+    <style>
 
-    textarea#mentions {
-        height: 350px;
-    }
+        textarea#mentions {
+            height: 350px;
+        }
 
-    div.card,
-    .tox div.card {
-        width: 240px;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        box-shadow: 0 4px 8px 0 rgba(34, 47, 62, .1);
-        padding: 8px;
-        font-size: 14px;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card,
+        .tox div.card {
+            width: 240px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 0 4px 8px 0 rgba(34, 47, 62, .1);
+            padding: 8px;
+            font-size: 14px;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card::after,
-    .tox div.card::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+        div.card::after,
+        .tox div.card::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
-    div.card h1,
-    .tox div.card h1 {
-        font-size: 14px;
-        font-weight: bold;
-        margin: 0 0 8px;
-        padding: 0;
-        line-height: normal;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card h1,
+        .tox div.card h1 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 8px;
+            padding: 0;
+            line-height: normal;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card p,
-    .tox div.card p {
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card p,
+        .tox div.card p {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card img.avatar,
-    .tox div.card img.avatar {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
-        float: left;
-    }
+        div.card img.avatar,
+        .tox div.card img.avatar {
+            width: 48px;
+            height: 48px;
+            margin-right: 8px;
+            float: left;
+        }
 
-    .dropdown__options-filter2 {
-        width: 100%;
-    }
+        .dropdown__options-filter2 {
+            width: 100%;
+        }
 
-    .dropdown__filter2 li span {
-        width: 100%!important;
-    }
-</style>
+        .dropdown__filter2 li span {
+            width: 100%!important;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -246,6 +246,7 @@
         });
 
     </script>
+
     <script>
         $("#editPost").on("keypress", function (event) {
             var keyPressed = event.keyCode || event.which;
@@ -256,7 +257,7 @@
         });
     </script>
 
-<script>
+    <script>
         $(document).ready(function() {
             $('#tagSelect').select2({
                 tags: true,

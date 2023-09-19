@@ -253,3 +253,7 @@ Route::post('/searchbook', [PostSearchController::class, 'book'])->name('searchb
 Route::post('/searchdisbook', [PostSearchController::class, 'disbook'])->name('searchdisbook');
 
 Route::get('/emoji/{emojiId}', [EmojiController::class, "emoji"])->name('emoji');
+Route::post('/emojilike', [EmojiController::class, 'like'])->name('emojilike');
+Route::post('/emojidislike', [EmojiController::class, 'dislike'])->name('emojidislike');
+Route::post('/emojibook', [EmojiController::class, 'book'])->name('emojibook');
+Route::post('/emojidisbook', [EmojiController::class, 'disbook'])->name('emojidisbook');

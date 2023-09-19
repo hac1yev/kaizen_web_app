@@ -17,7 +17,7 @@
                 <div class="col-md-6 mt-4">
                     <div class="paper-col6">
                         <div class="paper-blog2-img">
-                            <img src="{{$post->image}}" alt="blog2" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" alt="blog2" />
                         </div>
                         <div class="paper-blog2-under">
                             <p class="paper-blog2-time">
@@ -29,7 +29,7 @@
                             <span class="paper-minute">
                                 <img src="{{ asset('back/assets/img/clock.png') }}"
                                     alt="clock" />
-                                2 dəq
+                                    {{$post->reading_time}} dəq
                             </span>
                         </div>
                         <div class="paper-blog2-content">

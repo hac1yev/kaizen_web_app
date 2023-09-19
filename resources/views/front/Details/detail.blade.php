@@ -134,12 +134,12 @@
                             </div>
                             @foreach ($post->getCategory->getPosts->take(5) as $e)
                                 <div class="paper-4 p-2">
-                                    <img class="paper-1-img" src="{{asset($e->image)}}" alt="paper-1-img" />
+                                    <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$e->image" }}" alt="paper-1-img" />
                                     <div class="blog-det">
                                         <div class="blog-date">
                                             <p>{{($e->created_at)->format('d.m.Y')}}</p>
                                             <span></span>
-                                            <p>{{$e->cat_title}}</p>
+                                            <p>{{$e->getCategory->title}}</p>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">

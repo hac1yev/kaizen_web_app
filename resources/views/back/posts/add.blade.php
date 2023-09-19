@@ -170,11 +170,7 @@
                 console.error( error );
             } );
 
-        ClassicEditor
-        .create( document.querySelector( '#description' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+       
     </script>
     <script>
         var input = document.querySelector('input[name="tags[]"]',{
