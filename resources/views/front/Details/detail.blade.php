@@ -56,7 +56,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <div class="mt-3 text-justify">
+                            <div class="detail-blade-content mt-3 text-justify">
                                 {!! htmlspecialchars_decode($post->content) !!}
                             </div>
                         </div>

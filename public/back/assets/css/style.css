@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.detail-blade-content img {
+  max-width:100%;
+  height:auto
+}
+
 .container {
   max-width: 940px;
   width: 100%;
