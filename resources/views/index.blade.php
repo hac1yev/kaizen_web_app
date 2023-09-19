@@ -113,7 +113,7 @@
                         @foreach ($diger1 as $diger1)
                             
                             <div class="blog-1">
-                                <img src="{{ config('filesystems.disks.post-images.url') . "/$diger1->image" }}" alt="">
+                                <img class="other-blog-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$diger1->image" }}" alt="">
                                 <div class="blog-det">
                                     <div class="blog-date">
                                         <p>{{ ($diger1->created_at)->format('d.m.Y') }}</p>
@@ -211,7 +211,7 @@
                         @foreach ($diger3 as $diger3)
                             
                         <div class="blog-1">
-                            <img src="{{ config('filesystems.disks.post-images.url') . "/$diger3->image" }}" alt="">
+                            <img class="other-blog-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$diger3->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{ ($diger3->created_at)->format('d.m.Y') }}</p>
