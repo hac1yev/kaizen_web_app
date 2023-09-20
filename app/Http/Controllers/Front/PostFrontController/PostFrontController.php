@@ -75,7 +75,7 @@ class PostFrontController extends Controller
         }        
 
         
-        if (app()->environment('production'))
+        if (app()->environment('production') && Auth::user()->subscribed == 1)
         {
             $data = [
                 'email_name' => 'Kaizen.az',
