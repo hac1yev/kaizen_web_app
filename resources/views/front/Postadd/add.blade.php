@@ -202,6 +202,10 @@
                         required: true,
 
                     },
+                    emoji_id: {
+                        required: true,
+
+                    },
                     'tags[]': {
                         required: true
                     }
@@ -223,6 +227,9 @@
                         required: errorMessages.required,
                     },
                     category: {
+                        required: errorMessages.required,
+                    },
+                    emoji_id: {
                         required: errorMessages.required,
                     },
                     'tags[]': {
