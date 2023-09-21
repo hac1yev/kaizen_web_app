@@ -40,34 +40,35 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($posts as $key=>$post)
-                                <tr>
-                                    <td>{{$key+1}}</td>
-                                    <td>
-                                        @if($post && $post->getUser())
-                                            <a href="{{ route('userEdit', $post->getUser()->id) }}" target="_blank">{{ $post->getUser()->fullname }}</a>
-                                        @else
-                                            <a href="#"></a>
-                                        @endif
-                                    </td>
-                                    
-                                    <td>{{$post->getCategory->title}}</td>
-                                    <td>{{$post->title}}</td>
-                                    <td>{{$post->view}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y') }}</td>
-                                    <td>
-                                        <div class="main-toggle-group">
-                                            <div class="toggle @if($post->status == '1') on @else off @endif" onclick="ChangeStatus({{$post->id}})">
-                                                <span></span>
+                                @foreach($posts as $key=>$post)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>
+                                            @if($post && $post->getUser)
+                                                <a href="{{ route('userEdit', $post->getUser->id) }}" target="_blank">{{ $post->getUser->fullname }}</a>
+                                            @else
+                                                <a href="#"></a>
+                                            @endif
+                                        </td>
+
+                                        <td>{{$post->getCategory->title}}</td>
+                                        <td>{{$post->title}}</td>
+                                        <td>{{$post->view}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y') }}</td>
+                                        <td>
+                                            <div class="main-toggle-group">
+                                                <div class="toggle @if($post->status == '1') on @else off @endif" onclick="ChangeStatus({{$post->id}})">
+                                                    <span></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('postEdit',$post->id)}}" class="btn btn-radius btn-warning-light " target="_blank"><i class="fa fa-pencil"></i></a>
-                                        <button class="btn btn-radius btn-danger-light " id="delete" onclick="deleteUser({{$post->id}})"><i class="fa fa-trash-o"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        </td>
+                                        <td>
+                                            <a href="{{route('postEdit',$post->id)}}" class="btn btn-radius btn-warning-light " target="_blank"><i class="fa fa-pencil"></i></a>
+                                            <button class="btn btn-radius btn-danger-light " id="delete" onclick="deleteUser({{$post->id}})"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

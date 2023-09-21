@@ -71,7 +71,7 @@
                         <a href="{{ route('film') }}">Filmlər</a>
                     </li>
                     <li>
-                        <a href="#">Kateqoriyalar</a>
+                        <a href="#">Texnologiya</a>
                     </li>
                     <li>
                         <a href="{{ route('biznes') }}">Biznes Dünyası</a>

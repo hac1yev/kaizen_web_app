@@ -40,7 +40,7 @@ class SearchController extends Controller
                           ->orWhere('description', 'like', '%' . $searchingVal . '%')
                           ->orWhere('content', 'like', '%' . $searchingVal . '%');
                 })
-                ->get();
+                ->where('status','1')->get();
         } else {
             $posts = collect(); 
         }

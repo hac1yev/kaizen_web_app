@@ -42,7 +42,7 @@
                     </div>
                     @foreach ($favorits as $fav)
                         <div class="blog-1">
-                            <img src="{{$fav->image}}" alt="">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$fav->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{($fav->created_at)->format('d.m.Y')}}</p>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="blog-time">
                                     <img src="back/assets/img/clock.png" alt="">
-                                    <span>2 dəq</span>
+                                    <span>{{$fav->reading_time}} dəq</span>
                                 </div>
                             </div>
                             <div class="blog-det-2">
@@ -110,7 +110,7 @@
                     </div>
                     @foreach ($posts as $p)  
                         <div class="blog-1">
-                            <img src="{{$p->image}}" alt="">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$p->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{($p->created_at)->format('d.m.Y')}}</p>
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="blog-time">
                                     <img src="back/assets/img/clock.png" alt="">
-                                    <span>2 dəq</span>
+                                    <span>{{$p->reading_time}} dəq</span>
                                 </div>
                             </div>
                             <div class="blog-det-2">
@@ -167,7 +167,7 @@
                     @foreach ($marks as $m)
                         
                     <div class="blog-1">
-                        <img src="{{$m->image}}" alt="">
+                        <img src="{{ config('filesystems.disks.post-images.url') . "/$m->image" }}" alt="">
                         <div class="blog-det">
                             <div class="blog-date">
                                 <p>{{($m->created_at)->format('d.m.Y')}}</p>
@@ -176,7 +176,7 @@
                             </div>
                             <div class="blog-time">
                                 <img src="back/assets/img/clock.png" alt="">
-                                <span>2 dəq</span>
+                                <span>{{$m->reading_time}} dəq</span>
                             </div>
                         </div>
                         <div class="blog-det-2">

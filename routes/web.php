@@ -70,8 +70,8 @@ Route::middleware('isLogin')->group(function () {
     Route::get('/admin/posts/list', [PostController::class, "postListIndex"])->name('postListIndex');
     Route::post('/admin/posts/list', [PostController::class, "postStatus"])->name('postStatus');
     Route::post('/admin/posts/list/delete', [PostController::class, "postDelete"])->name('postDelete');
-    Route::get('/admin/posts/edit/{id}', [PostController::class, "postEdit"])->name('postEdit');
-    Route::post('/admin/posts/edit', [PostController::class, "postEditPost"])->name('postEditPost');
+    Route::get('/admin/posts/edit/{post}', [PostController::class, "postEdit"])->name('postEdit');
+    Route::post('/admin/posts/edit/{post}', [PostController::class, "postEditPost"])->name('postEditPost');
     Route::get('/admin/posts/add', [PostController::class, "postAdd"])->name('postAdd');
     Route::post('/admin/posts/add', [PostController::class, "postAddPost"])->name('postAddPost');
     //End Posts
@@ -242,8 +242,8 @@ Route::post('/confirm_post', [AccountController::class, 'confirm_post'])->name('
 
 Route::get('/share-post', [PostFrontController::class, "share"])->name('share');
 Route::post('/posts', [PostFrontController::class, "postadd"])->name('postadd');
-Route::get('/posts/edit/{post}', [PostFrontController::class, "postEdit"])->name('editPost');
-Route::post('/posts/edit/{post}', [PostFrontController::class, "postEditPost"])->name('editPostpost');
+Route::get('/posts/edit/{post}', [PostFrontController::class, "postEdit"])->name('editPost')->middleware('editPost');
+Route::post('/posts/edit/{post}', [PostFrontController::class, "postEditPost"])->name('editPostpost')->middleware('editPost');
 
 
 Route::get('/search', [PostSearchController::class, "action"])->name('search');
@@ -253,3 +253,7 @@ Route::post('/searchbook', [PostSearchController::class, 'book'])->name('searchb
 Route::post('/searchdisbook', [PostSearchController::class, 'disbook'])->name('searchdisbook');
 
 Route::get('/emoji/{emojiId}', [EmojiController::class, "emoji"])->name('emoji');
+Route::post('/emojilike', [EmojiController::class, 'like'])->name('emojilike');
+Route::post('/emojidislike', [EmojiController::class, 'dislike'])->name('emojidislike');
+Route::post('/emojibook', [EmojiController::class, 'book'])->name('emojibook');
+Route::post('/emojidisbook', [EmojiController::class, 'disbook'])->name('emojidisbook');

@@ -58,7 +58,7 @@ class DetailController extends Controller
         $likes = [];
 
         $this->increaseViewCount($post);
-        $userId = $post->getUser()->id;
+        $userId = $post->getUser->id;
         $postscount = Posts::where('user_id', $userId)->get();
 
         return view('front.Details.detail', compact(

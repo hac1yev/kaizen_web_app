@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back\PostController;
 
+use App\Models\Tag;
 use App\Models\Posts;
 use App\Models\Comment;
 use App\Models\Categories;
@@ -9,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -48,49 +50,64 @@ class PostController extends Controller
         $categories = Categories::all();
         return view('back.posts.edit',compact('post','categories'));
     }
-    public function postEditPost(Request $request){
+    public function postEditPost(Request $request, Posts $post){
+        
         $request->validate([
-            'id'=>'required|numeric',
-            'category'=>'required|numeric',
-            'title'=>'required|min:3|max:255',
-            'description'=>'required|min:3',
-            'contentt'=>'required',
-            'tags'=>'required'
+            'tags' => 'required|array'
         ]);
-        $post = Posts::find($request->id);
-        if(!$post){
-            return redirect()->route('postListIndex')->with('error',true);
-        }
+
         $post->category_id = $request->category;
         $post->title = $request->title;
-        $slug = Str::slug($request->title);
-        if(Posts::where([['slug',$slug],['id','<>',$post->id]])->first()){
-            $slug = $slug.'_'.rand(1000,9999);
-        }
-        $post->slug = $slug;
+        $post->slug = Str::slug($request->title . '-' . uniqid());
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->tags = $request->tags;
-        if ($request->hasFile('image')) {
+        $post->emoji_id = $request->emoji;
+
+        if ($request->hasFile('image'))
+        {
             $request->validate([
-                'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif|max:1024',
+                'image'=>'image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif',
             ]);
-            $image = $request->file('image');
-            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
-            $directory = 'assets/images/posts/';
-            $old_image = $post->image;
-            if(file_exists($old_image)){
-                unlink($old_image);
-            }
-            $image->move($directory, $name);
-            $name = $directory.$name;
-            $post->image = $name;
+
+            Storage::disk('post-images')->delete($post->image);
+            
+            $path = $request->file('image')->store('', 'post-images');
+
+            $post->image = $path;
         }
+        else
+        {
+            if (!Storage::disk('post-images')->exists($post->image))
+            {
+                return redirect()->route('postEdit', ['post' => $post->id])->with([
+                    'error' => 'Xəta baş verdi'
+                ]);
+            }
+        }
+        
+        $post->save();
+
+        $post->tags()->detach();
+
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
+            
+            if (!$tag = Tag::where('slug', $tagSlug)->first())
+            {
+                $tag = Tag::create([
+                    'label' => $tagValue,
+                    'slug'  => $tagSlug
+                ]);
+            }
+
+            $post->tags()->attach($tag->id);
+        }
+        
         return redirect()->route('postEdit',$post->id)->with($post->save() ? 'success' : 'error',true);
     }
     public function postAdd(){
-        $categories = Categories::all();
-        return view('back.posts.add',compact('categories'));
+        return view('back.posts.add');
     }
     public function postAddPost(Request $request){
         $request->validate([
@@ -101,42 +118,42 @@ class PostController extends Controller
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->category;
         $post->title = $request->title;
-        $slug = Str::slug($request->title);
-        if(Posts::where('slug',$slug)->first()){
-            $slug = $slug.'_'.rand(1000,9999);
-        }
-        $post->slug = $slug;
+        $post->slug = Str::slug($request->title . '-' . uniqid());
         $post->description = $request->description;
         $post->content = $request->contentt;
-        $post->emoji_id = $request->emoji_id;
-        
-        foreach($request->tags as $tag)
+        $post->emoji_id = $request->emoji;
+        $post->reading_time = estimatedReadingTime($post->content, 200);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image'=>'image|mimes:jpg,png,jpeg,gif,svg,webp,jfif,avif',
+            ]);
+
+            $path = $request->file('image')->store('', 'post-images');
+            $post->image = $path;
+        }
+        else
         {
-            $tagSlug = Str::slug($tag);
+            return redirect()->route('postListIndex')->with(['error' => 'Xəta baş verdi']);
+        }
+
+        $post->save();
+
+        foreach($request->tags as $tagValue)
+        {
+            $tagSlug = Str::slug($tagValue);
             
             if (!$tag = Tag::where('slug', $tagSlug)->first())
             {
                 $tag = Tag::create([
-                    'label' => $tag,
+                    'label' => $tagValue,
                     'slug'  => $tagSlug
                 ]);
             }
 
             $post->tags()->attach($tag->id);
         }
-        
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = 'post_'.Str::random(13).'.' . $image->getClientOriginalExtension();
-            $directory = 'assets/images/posts/';
-            $image->move($directory, $name);
-            $name = $directory.$name;
-            $post->image = $name;
-        }
-        
-        $post->reading_time = estimatedReadingTime($post->content, 200);
 
         return redirect()->route('postListIndex')->with($post->save() ? 'success' : 'error',true);
-
     }
 }

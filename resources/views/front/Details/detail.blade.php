@@ -27,7 +27,7 @@
                     <div class="col-md-9">
                         <h2 class="travel-title"> {!! htmlspecialchars_decode($post->post_title) !!}</h2>
                         <div class="">
-                            <img src="{{asset($post->image)}}" class="w-100" alt="" />
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" class="w-100" alt="" />
                             <div class="paper-blog2-under">
                                     <div class="tooltip">
 
@@ -37,7 +37,7 @@
                                         <span>{{$post->getCategory->title}}</span>
                                     </div>
                                 <span class="paper-minute">
-                                    @if($post->getUser()->is_admin == 1)
+                                    @if($post->getUser->is_admin == 1)
                                     <a href="{{route('editPost', $post->id)}}">
                                         <button class="btn btn-outline-secondary redakte_et">Redakte et</button>
                                     </a>
@@ -56,7 +56,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <div class="mt-3 text-justify">
+                            <div class="detail-blade-content mt-3 text-justify">
                                 {!! htmlspecialchars_decode($post->content) !!}
                             </div>
                         </div>
@@ -113,11 +113,11 @@
                                     <ul class="list-group list-group-flush w-100">
                                         <li class="list-group-item">
                                             <p>İstifadəçi adı:</p>
-                                            <span>{{($post->getUser()->username) ?? ''}}</span>
+                                            <span>{{($post->getUser->username) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Ad Soyad:</p>
-                                            <span>{{($post->getUser()->fullname) ?? ''}}</span>
+                                            <span>{{($post->getUser->fullname) ?? ''}}</span>
                                         </li>
                                         <li class="list-group-item">
                                             <p>Məqalə sayı:</p>
@@ -134,12 +134,12 @@
                             </div>
                             @foreach ($post->getCategory->getPosts->take(5) as $e)
                                 <div class="paper-4 p-2">
-                                    <img class="paper-1-img" src="{{asset($e->image)}}" alt="paper-1-img" />
+                                    <img class="paper-1-img" src="{{ config('filesystems.disks.post-images.url') . "/$e->image" }}" alt="paper-1-img" />
                                     <div class="blog-det">
                                         <div class="blog-date">
                                             <p>{{($e->created_at)->format('d.m.Y')}}</p>
                                             <span></span>
-                                            <p>{{$e->cat_title}}</p>
+                                            <p>{{$e->getCategory->title}}</p>
                                         </div>
                                     </div>
                                     <div class="blog-det-2">

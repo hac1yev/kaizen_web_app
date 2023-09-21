@@ -12,68 +12,68 @@
 
     <div class="container paper-container mt-4">
         <div class="row">
-            @if(!empty($posts))
+            @if($posts->isNotEmpty())
                 @foreach($posts as $post)
-                <div class="col-md-6 mt-4">
-                    <div class="paper-col6">
-                        <div class="paper-blog2-img">
-                            <img src="{{$post->image}}" alt="blog2" />
-                        </div>
-                        <div class="paper-blog2-under">
-                            <p class="paper-blog2-time">
-                                
-                                <span
-                                    class="paper-date">{{ \Carbon\Carbon::parse($post->created_at)->format('d.m.Y') }}</span>
-                                <span>{{ $post->getCategory->title }}</span>
-                            </p>
-                            <span class="paper-minute">
-                                <img src="{{ asset('back/assets/img/clock.png') }}"
-                                    alt="clock" />
-                                2 dəq
-                            </span>
-                        </div>
-                        <div class="paper-blog2-content">
-                            <a href="{{route('detail', $post->id)}}" style="color: #020202; text-decoration:none">
-                                @if(mb_strlen($post->post_title) > 40)
-                                    {{ html_entity_decode(mb_substr($post->post_title, 0, 40)) . '...' }}
-                                @else
-                                    {!! html_entity_decode($post->post_title) !!}
-                                @endif
-                            </a>
-                            <p>
-                                @if(mb_strlen($post->description) > 80)
-                                    {{ html_entity_decode(mb_substr($post->description, 0, 80)) . '...' }}
-                                @else
-                                    {!! html_entity_decode($post->description) !!}
-                                @endif
-                            </p>
-                        </div>
-                        <div class="paper-blog2-button">
-                            <a href="{{route('detail', $post->id)}}"><button>
-                                    Daha çox
-                                    <img src="{{ asset('back/assets/img/more.png') }}"
-                                        alt="more" />
-                                </button>
-                            </a>
-                            <div>
-                                <span>
-                                    <img src="{{ asset('back/assets/img/look.png') }}"
-                                        alt="look" />
-                                        {{$post->view}}
+                    <div class="col-md-6 mt-4">
+                        <div class="paper-col6">
+                            <div class="paper-blog2-img">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" alt="blog2" />
+                            </div>
+                            <div class="paper-blog2-under">
+                                <p class="paper-blog2-time">
+                                    
+                                    <span
+                                        class="paper-date">{{ \Carbon\Carbon::parse($post->created_at)->format('d.m.Y') }}</span>
+                                    <span>{{ $post->getCategory->title }}</span>
+                                </p>
+                                <span class="paper-minute">
+                                    <img src="{{ asset('back/assets/img/clock.png') }}"
+                                        alt="clock" />
+                                        {{$post->reading_time}} dəq
                                 </span>
-                                <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $post->id }})">
-                                <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $post->id }})" >
+                            </div>
+                            <div class="paper-blog2-content">
+                                <a href="{{route('detail', $post->id)}}" style="color: #020202; text-decoration:none">
+                                    @if(mb_strlen($post->post_title) > 40)
+                                        {{ html_entity_decode(mb_substr($post->post_title, 0, 40)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($post->post_title) !!}
+                                    @endif
+                                </a>
+                                <p>
+                                    @if(mb_strlen($post->description) > 80)
+                                        {{ html_entity_decode(mb_substr($post->description, 0, 80)) . '...' }}
+                                    @else
+                                        {!! html_entity_decode($post->description) !!}
+                                    @endif
+                                </p>
+                            </div>
+                            <div class="paper-blog2-button">
+                                <a href="{{route('detail', $post->id)}}"><button>
+                                        Daha çox
+                                        <img src="{{ asset('back/assets/img/more.png') }}"
+                                            alt="more" />
+                                    </button>
+                                </a>
+                                <div>
+                                    <span>
+                                        <img src="{{ asset('back/assets/img/look.png') }}"
+                                            alt="look" />
+                                            {{$post->view}}
+                                    </span>
+                                    <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $post->id }})">
+                                    <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $post->id }})" >
 
-                                <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $post->id }})">
-                                <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $post->id }})" >
+                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $post->id }})">
+                                    <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $post->id }}" style="{{ in_array($post->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $post->id }})" >
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
             @else
-                   <h1>fdssdsdfsf </h1>        
+                   <h1>Belə bir məqalə yoxdur </h1>        
             @endif
 
 
@@ -94,25 +94,30 @@
     <script>
         function likePost(postId) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
 
-        $.ajax({
-            url: '{{ route('searchlike') }}',
-            method: 'POST',
-            data: {
-                _token: csrfToken,
-                post_id: postId
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) { 
-                    $('#likeButton_' + postId).hide();
-                    $('#dislikeButton_' + postId).show();
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('searchlike') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) { 
+                        $('#likeButton_' + postId).hide();
+                        $('#dislikeButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
+        }
 
         }
     </script>
@@ -120,25 +125,30 @@
     <script>
         function dislikePost(postId) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
 
-        $.ajax({
-            url: '{{ route('searchdislike') }}',
-            method: 'POST',
-            data: {
-                _token: csrfToken,
-                post_id: postId
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    $('#dislikeButton_' + postId).hide();
-                    $('#likeButton_' + postId).show();
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('searchdislike') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        $('#dislikeButton_' + postId).hide();
+                        $('#likeButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
+        }
 
         }
     </script>
@@ -146,25 +156,30 @@
     <script>
         function bookPost(postId) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
 
-        $.ajax({
-            url: '{{ route('searchbook') }}',
-            method: 'POST',
-            data: {
-                _token: csrfToken,
-                post_id: postId
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) { 
-                    $('#bookButton_' + postId).hide();
-                    $('#disbookButton_' + postId).show();
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('searchbook') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) { 
+                        $('#bookButton_' + postId).hide();
+                        $('#disbookButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
+        }
 
         }
     </script>
@@ -172,26 +187,31 @@
     <script>
         function disbookPost(postId) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var isLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; 
 
-        $.ajax({
-            url: '{{ route('searchdisbook') }}',
-            method: 'POST',
-            data: {
-                _token: csrfToken,
-                post_id: postId
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    $('#disbookButton_' + postId).hide();
-                    $('#bookButton_' + postId).show();
+        if (!isLoggedIn) {
+            $('#loginModal').modal('show');
+        } else {
+            $.ajax({
+                url: '{{ route('searchdisbook') }}',
+                method: 'POST',
+                data: {
+                    _token: csrfToken,
+                    post_id: postId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        $('#disbookButton_' + postId).hide();
+                        $('#bookButton_' + postId).show();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
 
+            }
         }
     </script>
 

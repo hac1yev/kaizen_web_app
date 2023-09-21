@@ -21,14 +21,14 @@
                 <div class="card-header border-bottom">
                     <h3 class="card-title">Məqalə redaktə</h3>
                 </div>
-                <form class="card-body" action="{{route('postEditPost')}}" id="editPost" method="POST" enctype="multipart/form-data">
+                <form class="card-body" action="{{route('postEditPost', ['post' => $post->id])}}" id="editPost" method="POST" enctype="multipart/form-data">
                     @include('back.layouts.message')
                     @csrf
                     <input type="hidden" name="id" value="{{$post->id}}">
                     <div class="row row-xs form-group-wrapper">
                         <div class="col-md-12 mb-3 text-center">
                             <p>Cari şəkil:</p>
-                            <img src="{{asset($post->image)}}" alt="" style="width: 200px;height: 200px">
+                            <img src="{{ config('filesystems.disks.post-images.url') . "/$post->image" }}" alt="" style="width: 200px;height: 200px">
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="main-form-group">
@@ -42,7 +42,18 @@
                                 <select class="form-control select2 form-select" name="category" data-placeholder="Kateqoriya seçin">
                                     <option label="Choose one"></option>
                                     @foreach($categories as $category)
-                                    <option value="{{$category->id}}" @if($category->id == $post->category_id) selected @endif>{{$category->title}}</option>
+                                        <option value="{{$category->id}}" @if($category->id == $post->category_id) selected @endif>{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Emoji <span class="text-danger">*</span></label>
+                                <select class="form-control select2 form-select" name="emoji" data-placeholder="Emoji seçin">
+                                    <option label="Choose one"></option>
+                                    @foreach($emojis as $emoji)
+                                    <option value="{{$emoji->id}}" @if($post->emoji_id == $emoji->id) selected @endif>{{$emoji->label}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -66,13 +77,22 @@
                                 <label for="content" class="form-label mb-1">Məzmun <span class="text-danger">*</span></label>
                             </div><!-- main-form-group -->
                         </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="form-group">
-                                <label for="tags" class="form-label">Açar sözlər <span class="text-danger">*</span></label>
-                                <div class="chips">
-                                    <input name='tags' value='{{$post->tags}}' class="form-control" autofocus>
-                                </div>
-                             </div>
+                        <div class="col-md-12">
+                            <label for="" class="dropdown__switch2-label">Heşteq seçin <span class="text-danger">*</span></label>
+                            <input type="checkbox" class="dropdown__switch2" id="filter-switch2" hidden />
+                            <label for="filter-switch2" class="dropdown__options-filter2">
+                                <ul class="dropdown__filter2" role="listbox" tabindex="-2">
+                                    <li>
+                                        <select class="form-control" multiple="multiple" id="tagSelect" name="tags[]">
+                                            
+                                            @foreach($tags as $tag)
+                                                <option @if($post->tags->contains($tag->id)) selected @endif class="dropdown__select-option2" role="option" value="{{ $tag->slug }}">{{ $tag->label }}</option>
+                                            @endforeach
+                                                        
+                                        </select>
+                                    </li>
+                                </ul>
+                            </label>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
@@ -94,54 +114,62 @@
 
 @section('css')
     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-<style>
+    <style>
 
-    textarea#mentions {
-        height: 350px;
-    }
+        textarea#mentions {
+            height: 350px;
+        }
 
-    div.card,
-    .tox div.card {
-        width: 240px;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        box-shadow: 0 4px 8px 0 rgba(34, 47, 62, .1);
-        padding: 8px;
-        font-size: 14px;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card,
+        .tox div.card {
+            width: 240px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 0 4px 8px 0 rgba(34, 47, 62, .1);
+            padding: 8px;
+            font-size: 14px;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card::after,
-    .tox div.card::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+        div.card::after,
+        .tox div.card::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
-    div.card h1,
-    .tox div.card h1 {
-        font-size: 14px;
-        font-weight: bold;
-        margin: 0 0 8px;
-        padding: 0;
-        line-height: normal;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card h1,
+        .tox div.card h1 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 8px;
+            padding: 0;
+            line-height: normal;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card p,
-    .tox div.card p {
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    }
+        div.card p,
+        .tox div.card p {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        }
 
-    div.card img.avatar,
-    .tox div.card img.avatar {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
-        float: left;
-    }
-</style>
+        div.card img.avatar,
+        .tox div.card img.avatar {
+            width: 48px;
+            height: 48px;
+            margin-right: 8px;
+            float: left;
+        }
+
+        .dropdown__options-filter2 {
+            width: 100%;
+        }
+
+        .dropdown__filter2 li span {
+            width: 100%!important;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -218,6 +246,7 @@
         });
 
     </script>
+
     <script>
         $("#editPost").on("keypress", function (event) {
             var keyPressed = event.keyCode || event.which;
@@ -225,6 +254,27 @@
                 event.preventDefault();
                 return false;
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tagSelect').select2({
+                tags: true,
+                insertTag: function (data, tag) {
+                    data.push(tag);
+                }
+            });
+            
+            $('#tagSelect').on('select2:open', function () {
+                $('#selected-hashtags-placeholder').hide();
+            });
+            
+            $('#tagSelect').on('change', function() {
+                const selectedOptions = $(this).val();
+                const selectedText = selectedOptions && selectedOptions.length ? selectedOptions.join(', ') : 'Haştaglar seçin';
+                $('#selected-hashtags-placeholder').text(selectedText).show();
+            });
         });
     </script>
 

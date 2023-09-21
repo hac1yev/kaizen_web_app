@@ -14,7 +14,7 @@ class EmojiController extends Controller
    
     public function emoji($emojiId)
     {
-        $posts = Posts::where('emoji_id', $emojiId)->get();
+        $posts = Posts::where('emoji_id', $emojiId)->where('status', '1')->get();
 
         if(auth()->check()){
             $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
