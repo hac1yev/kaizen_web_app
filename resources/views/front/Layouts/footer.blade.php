@@ -315,4 +315,34 @@
     });
 </script>
 
+<script>
+    const password_eye = document.querySelector('#password_eye');
+    const passwords = document.querySelector('#passwords');
+    const register_password_eye = document.querySelector('#register_password_eye');
+    const register_passwords = document.querySelector('#register_passwords');
+
+    password_eye.addEventListener('click', () => {
+        passwords.classList.toggle('add_input_type');
+
+        if (passwords.classList.contains("add_input_type")) {
+            passwords.setAttribute("type", "text");
+            password_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eyeslash.png'
+        } else {
+            passwords.setAttribute("type", "password");
+            password_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
+        }
+    });
+
+    register_password_eye.addEventListener('click', () => {
+        register_passwords.classList.toggle('add_input_type');
+
+        if (register_passwords.classList.contains("add_input_type")) {
+            register_passwords.setAttribute("type", "text");
+            register_password_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eyeslash.png'
+        } else {
+            register_passwords.setAttribute("type", "password");
+            register_password_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
+        }
+    });
+</script>
 
