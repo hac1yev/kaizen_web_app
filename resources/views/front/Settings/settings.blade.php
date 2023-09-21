@@ -145,7 +145,7 @@
                             @csrf
                             <div class="forget-password-div">
                                 <label for="new_pass">Yeni şifrə</label>
-                                <input type="password" id="new_pass" placeholder="Parolu daxil edin" name="password" />
+                                <input type="password" id="new_passs" placeholder="Parolu daxil edin" name="password" />
                             </div>
                             <div class="forget-password-div">
                                 <label for="again_pass">Yenidən daxil edin</label>
@@ -347,7 +347,7 @@
                     password_confirmation: {
                         required: true,
                         minlength: 8,
-                        equalTo: "#new_pass"
+                        equalTo: "#new_passs"
 
                     }
                 },

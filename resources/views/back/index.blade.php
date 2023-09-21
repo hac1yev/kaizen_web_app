@@ -110,7 +110,13 @@
                             <tbody class="table-body">
                             @foreach($home_posts as $key=>$post)
                             <tr>                                                                                               
-                                <td>{!! isset($post->getUser()->id) ? '<a href="'.route('userEdit', $post->getUser()->id).'" target="_blank">'.$post->getUser()->fullname.'</a>' : '' !!}</td>
+                                <td>
+                                    @if($post && $post->getUser)
+                                        <a href="{{ route('userEdit', $post->getUser->id) }}" target="_blank">{{ $post->getUser->fullname }}</a>
+                                    @else
+                                        <a href="#"></a>
+                                    @endif
+                                </td>
                                 <td>{{$post->getCategory->title}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->view}}</td>

@@ -128,7 +128,7 @@
                         <div class="input-group">
                             <input type="password" name="password" placeholder="Enter your password" class="form-control"
                             type="text" id="passwords" >
-                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                            <img id="password_eye" src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
                     <button class="mt-4">Daxil olun</button>
@@ -169,11 +169,11 @@
                             id="email" />
                     </div>
                     <div class="input-group login-form-div mt-2 login-div-password mt-4">
-                        <label for="password">Password</label>
+                        <label for="register_passwords">Password</label>
                         <div class="input-group">
-                            <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
+                            <input type="password" id="register_passwords" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
                             id="passwordss" />
-                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                            <img id="register_password_eye" src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
                     <button class="mt-4">Qeydiyyatdan keç</button>
