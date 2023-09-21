@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins' sans-serif;
 }
 
 .detail-blade-content img {
@@ -459,7 +463,7 @@ nav ul li a {
 
 .blog-1 > img {
   width: 100%;
-  height: 128px;
+  height: 290px;
   object-fit: cover;
 }
 
@@ -532,6 +536,7 @@ nav ul li a {
   position: relative;
   display: inline-block;
   opacity: 1!important;
+  z-index: 10!important;
 }
 
 /* Tooltip text */

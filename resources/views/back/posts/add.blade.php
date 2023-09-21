@@ -63,7 +63,6 @@
                     <div class="col-md-12 mb-3">
                         <div class="main-form-group">
                             <textarea name="contentt" id="content" cols="30" rows="10" class="form-control border-0 editor" placeholder="Məzmun"></textarea>
-                            <label for="content" class="form-label mb-1">Məzmun <span class="text-danger">*</span></label>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -172,6 +171,7 @@
 
        
     </script>
+
     <script>
         var input = document.querySelector('input[name="tags[]"]',{
             maxTags: 10,
@@ -222,6 +222,10 @@
                         required: true,
 
                     },
+                    emoji: {
+                        required: true,
+
+                    },
                     'tags[]': {
                         required: true
                     }
@@ -243,6 +247,9 @@
                         required: errorMessages.required,
                     },
                     category: {
+                        required: errorMessages.required,
+                    },
+                    emoji: {
                         required: errorMessages.required,
                     },
                     'tags[]': {

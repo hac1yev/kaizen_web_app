@@ -37,16 +37,16 @@ class DetailController extends Controller
     //     $adverts = AdvertFooter::all();
 
     //     $comments = $post->comments;
-    //     if(auth()->check()){
-    //         $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
-    //         else {
-    //         $likes = [];
-    //     }
-    //     if(auth()->check()){
-    //         $book = PostBookmark::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
-    //         else {
-    //         $book = [];
-    //     }
+        // if(auth()->check()){
+        //     $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+        //     else {
+        //     $likes = [];
+        // }
+        // if(auth()->check()){
+        //     $book = PostBookmark::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+        //     else {
+        //     $book = [];
+        // }
 
 
     //     return view('front.Details.detail',get_defined_vars());
@@ -60,7 +60,17 @@ class DetailController extends Controller
         $this->increaseViewCount($post);
         $userId = $post->getUser->id;
         $postscount = Posts::where('user_id', $userId)->get();
-
+        if(auth()->check()){
+            $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+            else {
+            $likes = [];
+        }
+        if(auth()->check()){
+            $book = PostBookmark::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
+            else {
+            $book = [];
+        }
+        
         return view('front.Details.detail', compact(
             'post',
             'book',
