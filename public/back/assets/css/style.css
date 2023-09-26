@@ -409,6 +409,10 @@ nav ul li a {
   border: 1px solid #000;
 }
 
+.profil-middle-img {
+  height: 246px!important;
+}
+
 .profile-detail header {
   display: flex;
   justify-content: center;

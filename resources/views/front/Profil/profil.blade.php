@@ -110,7 +110,7 @@
                     </div>
                     @foreach ($posts as $p)  
                         <div class="blog-1">
-                            <img src="{{ config('filesystems.disks.post-images.url') . "/$p->image" }}" alt="">
+                            <img class="profil-middle-img" src="{{ config('filesystems.disks.post-images.url') . "/$p->image" }}" alt="">
                             <div class="blog-det">
                                 <div class="blog-date">
                                     <p>{{($p->created_at)->format('d.m.Y')}}</p>

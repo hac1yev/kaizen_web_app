@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae8bfd0c271540de9033043206627a42723e8099efb9a1ec66e0d67a24cfb862
-size 826
+
+
+// DEMO Swticher Base
+jQuery('.demo-icon').click(function() {
+    if ($('.demo_changer').hasClass("active")) {
+        $('.demo_changer').animate({ "right": "-270px" }, function() {
+            $('.demo_changer').removeClass("active");
+        });
+    } else {
+        $('.demo_changer').animate({ "right": "0px" }, function() {
+            $('.demo_changer').addClass("active");
+        });
+    }
+});
+
+//p-scroll bar
+// const ps5 = new PerfectScrollbar('.sidebar-right1', {
+//     useBothWheelAxes: true,
+//     suppressScrollX: true,
+// });
+
+
+// Switcher Close //
+$(document).on("click", ".page", function() {
+    if ($('.demo_changer').hasClass("active")) {
+        $('.demo_changer').animate({ "right": "-270px" }, function() {
+            $('.demo_changer').removeClass("active");
+        });
+    }
+});
