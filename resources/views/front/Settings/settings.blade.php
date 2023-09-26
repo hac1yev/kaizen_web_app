@@ -104,7 +104,7 @@
                         <form method="POST" action="{{ route('changeEmail') }}" id="emaildeyis">
                             @csrf
                             <div class="input-group">
-                                <input placeholder="E-poçt daxil edin!" type="email" name="email" />
+                                <input class="disable-on-click" placeholder="E-poçt daxil edin!" type="email" name="email" />
 
                             </div>
                             <button>Dəyiş</button>
@@ -121,15 +121,15 @@
                             @csrf
                             <div class="change-pass-div">
                                 <label for="current_pass">Hazırki şifrə</label>
-                                <input type="password" id="current_pass" placeholder="Parolu daxil edin" name="password" />
+                                <input class="disable-on-click" type="password" id="current_pass" placeholder="Parolu daxil edin" name="password" />
                             </div>
                             <div class="change-pass-div">
                                 <label for="new_pass">Yeni şifrə</label>
-                                <input type="password" id="new_pass" placeholder="Parolu daxil edin" name="newpass" />
+                                <input class="disable-on-click" type="password" id="new_pass" placeholder="Parolu daxil edin" name="newpass" />
                             </div>
                             <div class="change-pass-div">
                                 <label for="again_pass">Yenidən daxil edin</label>
-                                <input type="password" id="again_pass" placeholder="Parolu daxil edin" name="connewpass" />
+                                <input class="disable-on-click" type="password" id="again_pass" placeholder="Parolu daxil edin" name="connewpass" />
                             </div>
                             <button>Dəyiş</button>
                         </form>
@@ -145,11 +145,11 @@
                             @csrf
                             <div class="forget-password-div">
                                 <label for="new_pass">Yeni şifrə</label>
-                                <input type="password" id="new_passs" placeholder="Parolu daxil edin" name="password" />
+                                <input class="disable-on-click" type="password" id="new_passs" placeholder="Parolu daxil edin" name="password" />
                             </div>
                             <div class="forget-password-div">
                                 <label for="again_pass">Yenidən daxil edin</label>
-                                <input type="password" id="again_pass" placeholder="Parolu daxil edin"
+                                <input class="disable-on-click" type="password" id="again_pass" placeholder="Parolu daxil edin"
                                     name="password_confirmation" />
                             </div>
                             <button>Dəyiş</button>
@@ -184,7 +184,7 @@
                     <form action="{{ route('whydelete') }}" method="POST" id="niye">
                         @csrf
                         <div class="input-group">
-                            <input type="text" name="reason" placeholder="Səbəb yazın ..." />
+                            <input class="disable-on-click" type="text" name="reason" placeholder="Səbəb yazın ..." />
                         </div>
                         <button>Sil</button>
                     </form>
@@ -443,15 +443,29 @@
             },
         ]
 
+        const inputsToDisable = document.querySelectorAll('.disable-on-click');
+
         function resetBlockBackgrounds() {
             arr.forEach(item => {
-                item.block.style.backgroundColor = ''; 
+                item.block.style.filter = 'blur(5px)'; 
+                
             });
         }
 
         function handleButtonClick(button, block) {
             resetBlockBackgrounds(); 
             block.style.backgroundColor = '#b3b3b3';
+            block.style.filter = 'blur(0px)';
+
+            const inputsWithinBlock = block.querySelectorAll('.disable-on-click');
+            inputsToDisable.forEach(input => {
+                input.disabled = true;
+                
+            });
+
+            inputsWithinBlock.forEach(input => {
+                input.disabled = false;
+            });
         }
 
         arr.forEach(item => {
