@@ -4,26 +4,26 @@
 
     <div class="settings-head mt-2">
         <ul>
-            <li>
-                <a href="#">VERİFİKASİYA</a>
+            <li id="verification">
+                VERİFİKASİYA
             </li>
-            <li>
-                <a href="#">BİLDİRİŞLƏR</a>
+            <li id="notification">
+                BİLDİRİŞLƏR
             </li>
-            <li>
-                <a href="#">E-MAİLİ DƏYİŞDİRİN</a>
+            <li id="change_email">
+                E-MAİLİ DƏYİŞDİRİN
             </li>
-            <li>
-                <a href="#">ŞİFRƏNİZİ DƏYİŞDİRİN</a>
+            <li id="change_password">
+                ŞİFRƏNİZİ DƏYİŞDİRİN
             </li>
-            <li>
-                <a href="#">ŞİFRƏNİZİ UNUTMUSUNUZ?</a>
+            <li id="forget_password">
+                ŞİFRƏNİZİ UNUTMUSUNUZ?
             </li>
-            <li>
-                <a href="#">İSTİFADƏÇİ MƏLUMATLARINI YÜKLƏYİN</a>
+            <li id="load_information">
+                İSTİFADƏÇİ MƏLUMATLARINI YÜKLƏYİN
             </li>
-            <li>
-                <a href="#">HESABI SİLİN</a>
+            <li id="delete_account"> 
+                HESABI SİLİN
             </li>
         </ul>
     </div>
@@ -33,7 +33,7 @@
             <div class="col-md-8 settings-ver-wrap">
                 <div class="row">
                     <div class="col-md-6 px-0 settings-verification-col">
-                        <div class="settings-verification">
+                        <div id="verification_block" class="settings-verification">
                             <h3>Verifikasiya</h3>
                             <span>
                                 Təsdiqləmə sizin post paylaşmağınıza icazə verir və sizi platformamızın daimi istifadəçisinə
@@ -57,7 +57,7 @@
                         <div class="verification-image">
                             <img class="img-fluid w-100" src="back/assets/img/settings.png" alt="settings" />
                         </div>
-                        <div class="settings-notifications">
+                        <div class="settings-notifications" id="notification_block">
                             <h3>BİLDİRİŞLƏR</h3>
                             <p class="confirm-wait-posts" data-toggle="modal" data-target="#confirmWaitPosts">
                                 Təsdiqlənən postlar <span></span>
@@ -95,7 +95,7 @@
 
             
             <div class="col-md-4 px-0 settings-change-wrap">
-                <div class="settings-change-email">
+                <div class="settings-change-email" id="change_email_block">
                     <h3>E-MAİLİ DƏYİŞDİRİN</h3>
                     <span>Verifikasiya edilmiş hesab ilə e-poçtanızı dəyişə bilərsiniz</span>
                     @if($user->verified == 0)
@@ -111,7 +111,7 @@
                         </form>
                     @endif
                 </div>
-                <div class="settings-change-password">
+                <div class="settings-change-password" id="change_password_block">
                     <h3>ŞİFRƏNİZİ DƏYİŞDİRİN</h3>
                     <span>Verifikasiya edilmiş hesab ilə e-poçtanızı dəyişə bilərsiniz</span>
                     @if($user->verified == 0)
@@ -135,7 +135,7 @@
                         </form>
                     @endif
                 </div>
-                <div class="settings-forget-password">
+                <div class="settings-forget-password" id="forget_password_block">
                     <h3>ŞİFRƏNİZİ UNUTMUSUNUZ?</h3>
                     <span>Verifikasiya edilmiş hesab ilə e-poçtanızı dəyişə bilərsiniz</span>
                     @if($user->verified == 0)
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class="col-md-6 px-0">
-                <div class="settings-footer-verification">
+                <div class="settings-footer-verification" id="load_information_block">
                     <h3>Verifikasiya</h3>
                     <span>Verifikasiya edilmiş hesab ilə bilgilərinizi yükləyə bilərsiniz</span>
                     @if($user->verified == 0)
@@ -177,7 +177,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center delete-account-col">
+            <div id="delete-account-block" class="col-md-6 d-flex align-items-center justify-content-center delete-account-col">
                 <div class="delete-account">
                     <h3>HESABI SİLİN</h3>
                     <span>Nəyə görə bizdən ayrılırsınız? 😪</span>
@@ -394,6 +394,72 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        const verification = document.querySelector('#verification');
+        const notification = document.querySelector('#notification');
+        const change_email = document.querySelector('#change_email');
+        const change_password = document.querySelector('#change_password');
+        const forget_password = document.querySelector('#forget_password');
+        const load_information = document.querySelector('#load_information');
+        const delete_account = document.querySelector('#delete_account');
+        const verification_block = document.querySelector('#verification_block');
+        const notification_block = document.querySelector('#notification_block');
+        const change_email_block = document.querySelector('#change_email_block');
+        const change_password_block = document.querySelector('#change_password_block');
+        const forget_password_block = document.querySelector('#forget_password_block');
+        const delete_account_block = document.querySelector('#delete-account-block');
+        const load_information_block = document.querySelector('#load_information_block');
+
+        let arr = [
+            {
+                button: verification,
+                block: verification_block
+            },
+            {
+                button: notification,
+                block: notification_block
+            },
+            {
+                button: change_email,
+                block: change_email_block
+            },
+            {
+                button: change_password,
+                block: change_password_block
+            },
+            {
+                button: forget_password,
+                block: forget_password_block
+            },
+            {
+                button: load_information,
+                block: load_information_block
+            },
+            {
+                button: delete_account,
+                block: delete_account_block
+            },
+        ]
+
+        function resetBlockBackgrounds() {
+            arr.forEach(item => {
+                item.block.style.backgroundColor = ''; 
+            });
+        }
+
+        function handleButtonClick(button, block) {
+            resetBlockBackgrounds(); 
+            block.style.backgroundColor = '#b3b3b3';
+        }
+
+        arr.forEach(item => {
+            item.button.addEventListener('click', () => {
+                handleButtonClick(item.button, item.block);
+            });
+        });
+
     </script>
 
 @endsection
