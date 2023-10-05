@@ -107,7 +107,7 @@
                             </header>
                             <main class='d-flex flex-column align-items-center'>
                                 <div class="w-100 d-flex justify-content-center border py-2">
-                                    <img src='https://dummyimage.com/64x64/000/fff' class='border rounded-circle' />
+                                    <img src='{{($post->getUser->image)}}' class='border rounded-circle' />
                                 </div>
                                 <div class="w-100">
                                     <ul class="list-group list-group-flush w-100">
