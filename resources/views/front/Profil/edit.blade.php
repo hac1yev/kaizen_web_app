@@ -20,7 +20,7 @@
                                                     Şəkil dəyiş
                                                 </button>
                                                 <div class="dropdown-menu" style="padding: 0 !important;" aria-labelledby="toggle-img">
-                                                    <a class="dropdown-item" href="#" onclick="openAvatarModal()">Avatarı deyiş</a>
+                                                    <a class="dropdown-item" href="#" onclick="openAvatarModal()">Avatarı dəyiş</a>
                                                     <a class="dropdown-item" href="#" onclick="chooseOption('change-img-new')">Öz şəklini seç</a>
                                                 </div>
                                             </div>
