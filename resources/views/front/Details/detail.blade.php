@@ -63,7 +63,7 @@
                         <div class="travel-button-save">
                             <button id="comment-show">
                                 <img src="{{asset('back/assets/img/travel-comment.png')}}" alt="travel-comment" />
-                                <span id="comment-id">{{count($post->comments)}}</span> Comment
+                                <span id="comment-id">{{count($post->comments)}}</span> Şərh
                             </button>
                             <div>
                                 <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $post->id }}" style="{{ in_array($post->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $post->id }})">
@@ -80,7 +80,7 @@
                         <div class="comment-write-section">
                             @csrf
                             <textarea class="comment-textarea"></textarea>
-                            <button data-post="{{ $post->id }}" type="button" class="save-comment">Submit</button>
+                            <button data-post="{{ $post->id }}" type="button" class="save-comment">Təsdiqlə</button>
                         </div>
 
                         <div id="comment-section" class="comment-section-class">
@@ -189,50 +189,55 @@
     
                 return errorMessages[field]['AZ'] || ''; 
             }
-    
+            
             $(".save-comment").on('click', function() {
-                var _comment = $(".comment-textarea").val().trim();
-                var _post = $(this).data('post');
-                var vm = $(this);
-    
-                if (_comment !== "") {
-                    $.ajax({
-                        url: "{{ route('commentPost') }}",
-                        type: "post",
-                        dataType: 'json',
-                        data: {
-                            comment: _comment,
-                            post: _post,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        beforeSend: function() {
-                            vm.text('Saving...').addClass('disabled');
-                        },
-                        success: function(res) {
-                            var _html = '<div class="comment-card">' +
-                                '<div class="comment-card-1">' +
-                                '<img src="' + res.commentData.user_image + '" alt="">' +
-                                '<p>' + res.commentData.user_fullname + '</p>' +
-                                '<span class="saat">' + res.commentData.created_at + '</span>' +
-                                '</div>' +
-                                '<p>' + res.commentData.comment + '</p>' +
-                                '</div>';
-    
-                            if (res.bool == true) {
-                                $("#comment-section").prepend(_html);
-                                $(".comment-textarea").val(''); 
-                                var commentCount = $("#comment-section .comment-card").length;
-                                $(".comment-count").text(commentCount);
-                                $(".no-comments").hide();
-                            }
-    
-                            vm.text('Save').removeClass('disabled');
+            var _comment = $(".comment-textarea").val().trim();
+            var _post = $(this).data('post');
+            var vm = $(this);
+
+            if (_comment !== "") {
+                $.ajax({
+                    url: "{{ route('commentPost') }}",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        comment: _comment,
+                        post: _post,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    beforeSend: function() {
+                        vm.text('Saving...').addClass('disabled');
+                    },
+                    success: function(res) {
+                        var _html = '<div class="comment-card">' +
+                            '<div class="comment-card-1">' +
+                            '<img src="' + res.commentData.user_image + '" alt="">' +
+                            '<p>' + res.commentData.user_fullname + '</p>' +
+                            '<span class="saat">' + res.commentData.created_at + '</span>' +
+                            '</div>' +
+                            '<p>' + res.commentData.comment + '</p>' +
+                            '</div>';
+
+                        if (res.bool == true) {
+                            $("#comment-section").prepend(_html);
+                            $(".comment-textarea").val(''); 
+
+                            // Yorum sayısını güncelle
+                            var commentCount = parseInt($("#comment-id").text()) + 1;
+                            $("#comment-id").text(commentCount);
+
+                            $(".no-comments").hide();
                         }
-                    });
-                } else {
-                    alert(getErrorMessage('required'));
-                }
-            });
+
+                        vm.text('Save').removeClass('disabled');
+                    }
+                });
+            } else {
+                alert(getErrorMessage('required'));
+            }
+        });
+
+            
         });
     </script>
 
