@@ -102,10 +102,9 @@ class SettingController extends Controller
         $user = auth()->user();
         $user->password = bcrypt($newPassword); 
         $user->save();
-        Auth::logout();
 
     
-        return redirect()->route('index')->with('success', 'Şifrə uğurla dəyişdirildi.');
+        return redirect()->back()->with('success', 'Şifrə uğurla dəyişdirildi.');
     }
     
     
@@ -119,12 +118,10 @@ class SettingController extends Controller
     
         $user = auth()->user();
         $user->password = bcrypt($newPassword); 
-        $user->verified = 0; 
         $user->save();
-        Auth::logout();
 
     
-        return redirect()->route('index')->with('success', 'Şifrə uğurla dəyişdirildi.');
+        return redirect()->back()->with('success', 'Şifrə uğurla dəyişdirildi.');
     }
 
     public function whydelete(Request $request) {
