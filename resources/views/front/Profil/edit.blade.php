@@ -20,7 +20,7 @@
                                                     Şəkil dəyiş
                                                 </button>
                                                 <div class="dropdown-menu" style="padding: 0 !important;" aria-labelledby="toggle-img">
-                                                    <a class="dropdown-item" href="#" onclick="openAvatarModal()">Avatarı deyiş</a>
+                                                    <a class="dropdown-item" href="#" onclick="openAvatarModal()">Avatarı dəyiş</a>
                                                     <a class="dropdown-item" href="#" onclick="chooseOption('change-img-new')">Öz şəklini seç</a>
                                                 </div>
                                             </div>
@@ -134,7 +134,7 @@
             let selectElement = document.getElementById('change-image');
             for (let i = 1; i <= 50; i++) {
                 let random = Math.floor(Math.random() * 1000);
-                let avatarUrl = 'https://avatars.dicebear.com/4.5/api/bottts/' + random + '.svg';
+                let avatarUrl = 'https://api.dicebear.com/7.x/bottts/svg?seed=' + random;
                 let option = new Option('Avatar ' + i, avatarUrl);
                 selectElement.appendChild(option);
             }

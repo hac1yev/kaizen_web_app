@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Mail;
 class AccountController extends Controller
 {
     public function registerpost(Request $request){
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->with('error', 'Bu email artıq qeydiyyatdan keçirilib!');
+        }
         $request->validate([
             'fullname' => 'required|max:255',
             'username' => 'required|max:255',
