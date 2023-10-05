@@ -235,17 +235,17 @@
                     <div class="input-group login-form-div mt-2 login-div-password mt-4">
                         <label for="password">Şifrə</label>
                         <div class="input-group">
-                            <input type="password" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
+                            <input type="password" id="confirm_pass" placeholder="Şifrənizi daxil edin" name="password" class="form-control"
                             id="password" />
-                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                            <img id="confirm_pass_eye" src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
                     <div class="input-group login-form-div mt-2 login-div-password mt-4">
                         <label for="password">Şifrənin təkrarı</label>
                         <div class="input-group">
-                            <input type="password" placeholder="Şifrənizi daxil edin" name="password_confirmation" class="form-control"
+                            <input type="password" id="confirm_pass2" placeholder="Şifrənizi daxil edin" name="password_confirmation" class="form-control"
                             id="password_confirmation" />
-                            <img src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
+                            <img id="confirm_pass_eye2" src="https://kaizen.butagrup.az/back/assets/img/profile/eye.png" alt="eye" />
                         </div>
                     </div>
                     

@@ -540,7 +540,7 @@ nav ul li a {
   position: relative;
   display: inline-block;
   opacity: 1!important;
-  z-index: 10!important;
+  z-index: 4!important;
 }
 
 /* Tooltip text */
