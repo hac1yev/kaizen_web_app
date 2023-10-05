@@ -21,7 +21,7 @@
                         </div>
                     @endforeach
                 @else
-                    <h1>Belə bir istifadəçi yoxdur</h1>
+                    <h1 style="margin-bottom: 30%; text-align: center;">Belə bir istifadəçi yoxdur</h1>
                 @endif
             </div>
         </div>
