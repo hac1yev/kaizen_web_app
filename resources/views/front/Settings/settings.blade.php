@@ -113,7 +113,7 @@
                 </div>
                 <div class="settings-change-password">
                     <h3>ŞİFRƏNİZİ DƏYİŞDİRİN</h3>
-                    <span>Verifikasiya edilmiş hesab ilə e-poçtanızı dəyişə bilərsiniz</span>
+                    <span>Verifikasiya edilmiş hesab ilə şifrənizi dəyişə bilərsiniz</span>
                     @if($user->verified == 0)
                         <h4 style="color:red;font-size: 0.83em">Ilk öncə verifikasiyadan keçməlisiniz</h4>
                     @else
@@ -137,7 +137,7 @@
                 </div>
                 <div class="settings-forget-password">
                     <h3>ŞİFRƏNİZİ UNUTMUSUNUZ?</h3>
-                    <span>Verifikasiya edilmiş hesab ilə e-poçtanızı dəyişə bilərsiniz</span>
+                    <span>Verifikasiya edilmiş hesab ilə şifrənizi sıfırlaya bilərsiniz </span>
                     @if($user->verified == 0)
                         <h4 style="color:red;font-size: 0.83em">Ilk öncə verifikasiyadan keçməlisiniz</h4>
                     @else
