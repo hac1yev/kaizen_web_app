@@ -73,7 +73,7 @@
                     </div>
                 @endforeach
             @else
-                   <h1 style="margin-bottom: 25%;">Belə bir məqalə yoxdur </h1>        
+                   <h1 style="margin-bottom: 30%; margin-left: auto; margin-right: auto;">Belə bir məqalə yoxdur </h1>        
             @endif
 
 

@@ -9,7 +9,7 @@
                 <img src="{{asset('back/assets/img/fb.png')}}" alt="">
             </a>
             <a target="_blank" href="{{$social->twitter}}">
-                <img src="{{asset('back/assets/img/tw.png')}}" alt="">
+                <img src="{{asset('back/assets/img/twitter.svg')}}" alt="">
             </a>
             <a target="_blank" href="{{$social->instagram}}">
                 <img src="{{asset('back/assets/img/in.png')}}" alt="">
@@ -320,6 +320,10 @@
     const passwords = document.querySelector('#passwords');
     const register_password_eye = document.querySelector('#register_password_eye');
     const register_passwords = document.querySelector('#register_passwords');
+    const confirm_pass = document.querySelector('#confirm_pass');
+    const confirm_pass_eye = document.querySelector('#confirm_pass_eye');
+    const confirm_pass2 = document.querySelector('#confirm_pass2');
+    const confirm_pass_eye2 = document.querySelector('#confirm_pass_eye2');
 
     password_eye.addEventListener('click', () => {
         passwords.classList.toggle('add_input_type');
@@ -330,6 +334,30 @@
         } else {
             passwords.setAttribute("type", "password");
             password_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
+        }
+    });
+
+    confirm_pass_eye.addEventListener('click', () => {
+        confirm_pass.classList.toggle('add_input_type');
+
+        if (confirm_pass.classList.contains("add_input_type")) {
+            confirm_pass.setAttribute("type", "text");
+            confirm_pass_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eyeslash.png'
+        } else {
+            confirm_pass.setAttribute("type", "password");
+            confirm_pass_eye.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
+        }
+    });
+
+    confirm_pass_eye2.addEventListener('click', () => {
+        confirm_pass2.classList.toggle('add_input_type');
+
+        if (confirm_pass2.classList.contains("add_input_type")) {
+            confirm_pass2.setAttribute("type", "text");
+            confirm_pass_eye2.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eyeslash.png'
+        } else {
+            confirm_pass2.setAttribute("type", "password");
+            confirm_pass_eye2.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
         }
     });
 
