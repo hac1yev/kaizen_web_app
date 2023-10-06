@@ -144,8 +144,8 @@ Route::middleware('isLogin')->group(function () {
 
 Route::middleware('isLogout')->group(function () {
 
-    Route::get('/admin/login', [AuthController::class, "loginIndex"])->name('loginIndex');
-    Route::post('/admin/login', [AuthController::class, "loginPost"])->name('loginPost');
+    Route::get('/admin/login-g70hk83qneyur96', [AuthController::class, "loginIndex"])->name('loginIndex');
+    Route::post('/admin/login-g70hk83qneyur96', [AuthController::class, "loginPost"])->name('loginPost');
 
 });
 
