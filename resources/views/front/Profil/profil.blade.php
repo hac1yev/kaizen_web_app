@@ -5,7 +5,12 @@
     <section class="profile-information-section row m-0 pt-4">
         <div class="profile-information-wrapper col-md-4 pl-4">   
             <div class="profile-photo-img">
-                <img src="{{asset($users->image)}}" alt="profil-photo" />
+                @if (!$users->image || $users->image == NULL)
+                    <img src='https://api.dicebear.com/7.x/bottts/svg?seed=633' class='border rounded-circle' />
+                @else
+                    <img src='{{ asset($post->getUser->image) }}' class='border rounded-circle' />
+                @endif
+
             </div>
             <h6>
                 {{$users->fullname}}

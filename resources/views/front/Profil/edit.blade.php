@@ -13,7 +13,11 @@
                             <div class="col-12">
                                 <div class="card mb-4 mb-xl-0">
                                     <div class="card-body text-center d-flex flex-column align-items-cener">
-                                        <img class="img-account-profile rounded-circle mb-2" src="{{asset($users->image)}}" alt="">
+                                        @if (!$users->image || $users->image == NULL)
+                                            <img class="img-account-profile rounded-circle mb-2" src="https://api.dicebear.com/7.x/bottts/svg?seed=633" alt="">
+                                        @else
+                                            <img class="img-account-profile rounded-circle mb-2" src="{{asset($users->image)}}" alt="">
+                                        @endif
                                         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                                             <div class="dropdown">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="toggle-img" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

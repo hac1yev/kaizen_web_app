@@ -107,7 +107,11 @@
                             </header>
                             <main class='d-flex flex-column align-items-center'>
                                 <div class="w-100 d-flex justify-content-center border py-2">
-                                    <img src='{{($post->getUser->image)}}' class='border rounded-circle' />
+                                    @if ($post->getUser->image)
+                                        <img src='{{ asset($post->getUser->image) }}' class='border rounded-circle' />
+                                    @else
+                                        <img src='https://api.dicebear.com/7.x/bottts/svg?seed=633' class='border rounded-circle' />
+                                    @endif
                                 </div>
                                 <div class="w-100">
                                     <ul class="list-group list-group-flush w-100">
