@@ -1,7 +1,9 @@
     
 <footer class="footer">
     <div class="foot-left">
-        <img src="{{ asset($setting->logo_kaizen_footer) }}" alt="">
+        <a target="_blank" href="https://www.butagrup.com.tr/?lang=az">        
+            <img src="{{ asset($setting->logo_kaizen_footer) }}" alt="">
+        </a>
         <p>Uğur, inkişaf və nailiyyətə gedən yolda fəaliyyət göstərən
             Fərdi İnkişaf platforması kaizen.az</p>
         <div class="foot-social">
@@ -41,6 +43,9 @@
                 </li>
                 <li>
                     <a href="{{route('biznes')}}">Biznes Dünyası</a>
+                </li>
+                <li>
+                    <a href="{{route('tech')}}">Texnologiya</a>
                 </li>
         </div>
         <form action="{{route('contact')}}" method="POST" id="contact">
