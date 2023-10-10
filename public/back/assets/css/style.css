@@ -1623,6 +1623,10 @@ nav.stroke ul li a:hover:after {
   color: #6A6A6A;
 }
 
+.login-dont-account a:hover {
+  text-decoration: underline!important;
+}
+
 .login-forgot {
   position: absolute;
   top: 0px;
