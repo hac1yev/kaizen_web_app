@@ -34,10 +34,10 @@
                             </div>
                             <div class="paper-blog2-content">
                                 <a href="{{route('detail', $post->id)}}" style="color: #020202; text-decoration:none">
-                                    @if(mb_strlen($post->post_title) > 40)
-                                        {{ html_entity_decode(mb_substr($post->post_title, 0, 40)) . '...' }}
+                                    @if(mb_strlen($post->title) > 40)
+                                        {{ html_entity_decode(mb_substr($post->title, 0, 40)) . '...' }}
                                     @else
-                                        {!! html_entity_decode($post->post_title) !!}
+                                        {!! html_entity_decode($post->title) !!}
                                     @endif
                                 </a>
                                 <p>
