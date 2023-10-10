@@ -134,7 +134,7 @@
                     <button class="mt-4">Daxil olun</button>
                     <div class="login-dont-account">
                         Hesabınız yoxdur?
-                        <a data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
+                        <a style="font-weight: 700;" data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
                             data-target="#registerModal">Qeydiyyatdan keçin</a>
                     </div>
                 </form>
@@ -179,7 +179,7 @@
                     <button class="mt-4">Qeydiyyatdan keç</button>
                     <div class="login-dont-account">
                         Artıq hesabınız var?
-                        <a data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
+                        <a style="font-weight: 700;" data-dismiss="modal" id="signupLink" type="button" data-toggle="modal"
                             data-target="#loginModal">Daxil olun</a>
                     </div>
                 </form>
