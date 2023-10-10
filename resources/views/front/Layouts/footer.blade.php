@@ -309,6 +309,7 @@
                 password_confirmation: {
                     required: errorMessages.required,
                     minlength: errorMessages.minlength,
+                    equalTo: errorMessages.equalTo,
 
                 },
                 
@@ -325,9 +326,9 @@
     const passwords = document.querySelector('#passwords');
     const register_password_eye = document.querySelector('#register_password_eye');
     const register_passwords = document.querySelector('#register_passwords');
-    const confirm_pass = document.querySelector('#confirm_pass');
+    const confirm_pass = document.querySelector('#password');
     const confirm_pass_eye = document.querySelector('#confirm_pass_eye');
-    const confirm_pass2 = document.querySelector('#confirm_pass2');
+    const password_confirmation = document.querySelector('#password_confirmation');
     const confirm_pass_eye2 = document.querySelector('#confirm_pass_eye2');
 
     password_eye.addEventListener('click', () => {
@@ -355,13 +356,13 @@
     });
 
     confirm_pass_eye2.addEventListener('click', () => {
-        confirm_pass2.classList.toggle('add_input_type');
+        password_confirmation.classList.toggle('add_input_type');
 
-        if (confirm_pass2.classList.contains("add_input_type")) {
-            confirm_pass2.setAttribute("type", "text");
+        if (password_confirmation.classList.contains("add_input_type")) {
+            password_confirmation.setAttribute("type", "text");
             confirm_pass_eye2.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eyeslash.png'
         } else {
-            confirm_pass2.setAttribute("type", "password");
+            password_confirmation.setAttribute("type", "password");
             confirm_pass_eye2.src = 'https://kaizen.butagrup.az/back/assets/img/profile/eye.png'
         }
     });
