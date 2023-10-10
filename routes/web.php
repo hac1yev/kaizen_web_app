@@ -21,6 +21,7 @@ use App\Http\Controllers\Front\TravelController\TravelController;
 use App\Http\Controllers\Front\StoryController\StoryController;
 use App\Http\Controllers\Front\FilmController\FilmController;
 use App\Http\Controllers\Front\BiznesController\BiznesController;
+use App\Http\Controllers\Front\TechController\TechController;
 use App\Http\Controllers\Front\ProfilController\ProfilController;
 use App\Http\Controllers\Front\SettingController\SettingController;
 use App\Http\Controllers\Front\UsersController\UsersController;
@@ -196,6 +197,15 @@ Route::post('/bizneslike', [BiznesController::class, 'like'])->name('bizneslike'
 Route::post('/biznesdislike', [BiznesController::class, 'dislike'])->name('biznesdislike');
 Route::post('/biznesbook', [BiznesController::class, 'book'])->name('biznesbook');
 Route::post('/biznesdisbook', [BiznesController::class, 'disbook'])->name('biznesdisbook');
+
+
+
+Route::get('/texnologiya', [TechController::class, "tech"])->name('tech');
+Route::get('/texnologiya/all', [TechController::class, "all"])->name('techall');
+Route::post('/techlike', [TechController::class, 'like'])->name('techlike');
+Route::post('/techdislike', [TechController::class, 'dislike'])->name('techdislike');
+Route::post('/techbook', [TechController::class, 'book'])->name('techbook');
+Route::post('/techdisbook', [TechController::class, 'disbook'])->name('techdisbook');
 
 
 Route::get('/profil', [ProfilController::class, "profil"])->name('profil');
