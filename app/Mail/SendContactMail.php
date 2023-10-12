@@ -30,7 +30,7 @@ class SendContactMail extends Mailable
      */
     public function build()
     {
-        return $this->from($address='noreply@domain.com',$name=$this->data['email_name'])
+        return $this->from($address=env("MAIL_FROM_ADDRESS"),$name=env("MAIL_FROM_NAME"))
         ->subject($this->data['subject'])->view('front.Mail.sendcontact')
         ->with('data',$this->data);
         dd($data);
