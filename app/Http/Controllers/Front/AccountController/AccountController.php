@@ -49,7 +49,7 @@ class AccountController extends Controller
             'email_verification_code' => Str::random(40),
         ]);
         $data=[];
-        $data['email_name']='1is.az';
+        $data['email_name']='Kaizen.az';
         $data['subject']='Email verification';
         $data['link']=env('APP_URL').'/user-verification/'.$user->email_verification_code;
         $data['text']='Emailniz tesdiqleyin';
@@ -85,11 +85,10 @@ class AccountController extends Controller
             $contact->message = $request->message;
             $contact->save();
 
-            $data = [
-                'email_name' => 'Kaizen.az',
-                'subject' => 'Abunə olmaq',
-                'text' => 'Təbriklərr, saytımıza uğurla abunə oldunuz',
-            ];
+            $data=[];
+            $data['email_name']='Kaizen.az';
+            $data['subject']='Abunə olmaq';
+            $data['text']='Təbriklər, saytımıza uğurla abunə oldunuz';
     
             Mail::to($contact->email)->send(new SendContactMail($data));
     
