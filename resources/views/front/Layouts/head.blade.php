@@ -32,34 +32,34 @@ $keywords = implode(', ', array_column($settingKeywords, 'value'));
 @hasSection ('og_article_image')
 <meta property="og:image" content="@yield('og_article_image')" />
 @else
-<meta property="og:image" content="{{ asset($setting->favicon) }}" />
+<meta property="og:image" content="{{ asset('/assets/favicons/256x256.png') }}" />
 @endif
 <meta property="og:site_name" content="{{ env("APP_NAME") }}" />
 <meta property="og:locale" content="{{ app()->getLocale()."_".strtoupper(app()->getLocale()) }}" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@kaizenaz_" />
+<meta name="twitter:creator" content="@kaizenaz_" />
 @hasSection ('twitter_article_title')
 <meta name="twitter:title" content="{{ $seo->meta_title }} - @yield('twitter_article_title')" />
 @else
 <meta name="twitter:title" content="{{ $seo->meta_title }}" />
 @endif
 @hasSection('twitter_article_description')
-<meta property="twitter:description" content="@yield('twitter_article_description')" />
+<meta name="twitter:description" content="@yield('twitter_article_description')" />
 @else
-<meta property="twitter:description" content="{{ $seo->meta_description }}" />
+<meta name="twitter:description" content="{{ $seo->meta_description }}" />
 @endif
 @hasSection('twitter_article_image')
 <meta name="twitter:image" content="@yield('twitter_article_image')" />
 @else
-<meta name="twitter:image" content="{{ asset($setting->favicon) }}" />
+<meta name="twitter:image" content="{{ asset('/assets/favicons/256x256.png') }}" />
 @endif
 @hasSection('author')
 @php
 $author = app()->view->getSections()['author']
 @endphp
 <meta property="article:author" content="{{ $author }}">
-<meta property="author" content="{{ $author }}">
-<meta property="author" content="{{ $author }}">
+<meta name="author" content="{{ $author }}">
 <script type="application/ld+json">
 {
 "@context": "http://schema.org",
@@ -83,7 +83,12 @@ $author = app()->view->getSections()['author']
 <link rel="stylesheet" href="{{ asset('back/assets/css/share.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.carousel.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('back/assets/css/edit-profile.css')}}" />
-<link rel="icon" href="{{ asset($setting->favicon) }}" type="image/x-icon" />
+
+<link rel='icon' href='{{ asset('/assets/favicons/32x32.png') }}' sizes='32x32' type='image/png' />
+<link rel='icon' href='{{ asset('/assets/favicons/48x48.png') }}' sizes='48x48' type='image/png' />
+<link rel='icon' href='{{ asset('/assets/favicons/64x64.png') }}' sizes='64x64' type='image/png' />
+<link rel='icon' href='{{ asset('/assets/favicons/128x128.png') }}' sizes='128x128' type='image/png' />
+<link rel='icon' href='{{ asset('/assets/favicons/256x256.png') }}' sizes='256x256' type='image/png' />
 
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.theme.default.min.css') }}" />
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
