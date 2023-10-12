@@ -1,21 +1,75 @@
+@php
+$settingKeywords = json_decode($seo->meta_keywords, true);
+$keywords = implode(', ', array_column($settingKeywords, 'value'));
+@endphp
 <meta charset="UTF-8" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{{$seo->meta_title}}</title>
 <meta name="website" content="https://kaizen.az/" />
-
-@php
-    $settingKeywords = json_decode($seo->meta_keywords, true);
-    $keywords = implode(', ', array_column($settingKeywords, 'value'));
-@endphp
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="keywords" content="{{$keywords}}" />
 <meta name="description" content="{{$seo->meta_description}}" />
-<meta property="og:type" content="Website" />
-<meta property="og:url" content="https://kaizen.az/" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+@hasSection('og_post_title')
+<meta property="og:title" content="{{ $seo->meta_title }} - @yield('og_post_title')" />
+@else
+<meta property="og:title" content="{{ $seo->meta_title }}" />
+@endif
+@hasSection('og_post_description')
+<meta property="og:description" content="@yield('og_post_description')" />
+@else
+<meta property="og:description" content="{{ $seo->meta_description }}" />
+@endif
+@hasSection('og_type_article')
+<meta property="og:type" content="article" />
+@else
+<meta property="og:type" content="website" />
+@endif
+@hasSection ('og_article_url')
+<meta property="og:url" content="@yield('og_article_url')" />    
+@else
+<meta property="og:url" content="{{ env("APP_URL") }}" />    
+@endif
+@hasSection ('og_article_image')
+<meta property="og:image" content="@yield('og_article_image')" />
+@else
+<meta property="og:image" content="{{ asset($setting->favicon) }}" />
+@endif
+<meta property="og:site_name" content="{{ env("APP_NAME") }}" />
+<meta property="og:locale" content="{{ app()->getLocale()."_".strtoupper(app()->getLocale()) }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@kaizenaz_" />
+@hasSection ('twitter_article_title')
+<meta name="twitter:title" content="{{ $seo->meta_title }} - @yield('twitter_article_title')" />
+@else
+<meta name="twitter:title" content="{{ $seo->meta_title }}" />
+@endif
+@hasSection('twitter_article_description')
+<meta property="twitter:description" content="@yield('twitter_article_description')" />
+@else
+<meta property="twitter:description" content="{{ $seo->meta_description }}" />
+@endif
+@hasSection('twitter_article_image')
+<meta name="twitter:image" content="@yield('twitter_article_image')" />
+@else
+<meta name="twitter:image" content="{{ asset($setting->favicon) }}" />
+@endif
+@hasSection('author')
+@php
+$author = app()->view->getSections()['author']
+@endphp
+<meta property="article:author" content="{{ $author }}">
+<meta property="author" content="{{ $author }}">
+<meta property="author" content="{{ $author }}">
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "{{ $author }}"
+}
+</script>
+@endif
+
+<title>{{$seo->meta_title}}</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />

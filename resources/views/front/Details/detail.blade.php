@@ -1,5 +1,15 @@
 @extends('front.Layouts.master')
 
+@section('author', $post->getUser->fullname)
+@section('og_post_title', $post->title)
+@section('og_post_description', $post->description)
+@section('og_type_article', 'true')
+@section('og_article_url', route("detail", ["post" => $post->id]))
+@section('og_article_image', config('filesystems.disks.post-images.url') . "/$post->image")
+
+@section('twitter_article_title', $post->title)
+@section('twitter_article_description', $post->description)
+@section('twitter_article_image', config('filesystems.disks.post-images.url') . "/$post->image")
 
 @section('content')
 
@@ -58,6 +68,7 @@
                                     </div>
                                 </span>
                             </div>
+                            <h2 class='py-3'>{{ $post->title }}</h2>
                             <div class="detail-blade-content mt-3 text-justify">
                                 {!! htmlspecialchars_decode($post->content) !!}
                             </div>
