@@ -87,3 +87,13 @@ $author = app()->view->getSections()['author']
 
 <link rel="stylesheet" href="{{ asset('back/assets/css/owl.theme.default.min.css') }}" />
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1D5G8RFYSL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1D5G8RFYSL');
+</script>
