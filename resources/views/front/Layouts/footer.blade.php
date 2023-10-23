@@ -1,5 +1,5 @@
     
-<footer class="footer">
+<footer class="footer" style="padding: 5px 0;">
     <div class="foot-left">
         <a target="_blank" href="https://www.butagrup.com.tr/?lang=az">        
             <img src="{{ asset($setting->logo_kaizen_footer) }}" alt="">
