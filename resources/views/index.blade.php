@@ -18,7 +18,7 @@
         <section class="second-sec container">
             <div class="row">
                 <div class="col-lg-12 smile-sec">
-                    <h2>Default əhvalınızı seçin, məqalə generate edək</h2>
+                    <h2>Hazırki əhvalınıza uyğun ikon seçin, uyğun məqalə tövsiyəsi alın!</h2>
                         <div class="smile-block">
                             @foreach($emojis as $emoji)
                                 <div class="smile-card">
@@ -74,7 +74,7 @@
                                 </p>
                             </div>
                             <div class="blog-det-3">
-                                <a href="{{route('detail', $son->id)}}"><button class="read-more">Read More
+                                <a href="{{route('detail', $son->id)}}"><button class="read-more">Daha çox
                                     
                                     <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                 </button>
@@ -131,7 +131,7 @@
 
                                 </div>
                                 <div class="blog-det-3">
-                                    <a href="{{route('detail', $diger1->id)}}"><button class="read-more">Read More
+                                    <a href="{{route('detail', $diger1->id)}}"><button class="read-more">Daha çox
                                     
                                         <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                     </button>
@@ -179,7 +179,7 @@
 
                                     </div>
                                     <div class="blog-det-3">
-                                        <a href="{{route('detail', $diger2->id)}}"><button class="read-more">Read More
+                                        <a href="{{route('detail', $diger2->id)}}"><button class="read-more">Daha çox
                                     
                                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                         </button>
@@ -229,7 +229,7 @@
 
                             </div>
                             <div class="blog-det-3">
-                                <a href="{{route('detail', $diger3->id)}}"><button class="read-more">Read More
+                                <a href="{{route('detail', $diger3->id)}}"><button class="read-more">Daha çox
                                     
                                     <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                 </button>
@@ -257,7 +257,7 @@
     
                         <a href="{{route('ferdi')}}">
                         <button class="read-more-mid">
-                            Read More
+                            Daha çox
                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                         </button>
                     </a>
@@ -301,7 +301,7 @@
                                 </p>
                             </div>
                             <div class="blog-det-3">
-                                <a href="{{route('detail', $fam->id)}}"><button class="read-more">Read More
+                                <a href="{{route('detail', $fam->id)}}"><button class="read-more">Daha çox
                                     
                                     <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                 </button>
@@ -337,6 +337,7 @@
         
 
         <section class="blog-cats container">
+            <h2 style="text-align: center;">Texnologiya</h2>
            <div class="row blog-row">
             <div class="blog-cat">
                 <div class="cat-inner">
@@ -396,7 +397,7 @@
                                         </p>
                                     </div>
                                     <div class="blog-det-3">
-                                        <a href="{{route('detail', $ferdi->id)}}"><button class="read-more">Read More
+                                        <a href="{{route('detail', $ferdi->id)}}"><button class="read-more">Daha çox
                                     
                                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                         </button>
@@ -457,7 +458,7 @@
                                     </div>
                                     <div class="blog-det-3">
                                         <a href="{{route('detail', $travel->id)}}">
-                                            <button class="read-more">Read More
+                                            <button class="read-more">Daha çox
                                                 <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                             </button>
                                         </a>
@@ -516,7 +517,7 @@
                                         </p>
                                     </div>
                                     <div class="blog-det-3">
-                                        <a href="{{route('detail', $story->id)}}"><button class="read-more">Read More
+                                        <a href="{{route('detail', $story->id)}}"><button class="read-more">Daha çox
                                         
                                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                         </button>
@@ -575,7 +576,7 @@
                                         </p>
                                     </div>
                                     <div class="blog-det-3">
-                                        <a href="{{route('detail', $film->id)}}"><button class="read-more">Read More
+                                        <a href="{{route('detail', $film->id)}}"><button class="read-more">Daha çox
                                         
                                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                         </button>
@@ -634,7 +635,7 @@
                                         </p>
                                     </div>
                                     <div class="blog-det-3">
-                                        <a href="{{route('detail', $biznes->id)}}"><button class="read-more">Read More
+                                        <a href="{{route('detail', $biznes->id)}}"><button class="read-more">Daha çox
                                         
                                             <img src="{{asset('back/assets/img/more.png')}}" alt="">
                                         </button>
