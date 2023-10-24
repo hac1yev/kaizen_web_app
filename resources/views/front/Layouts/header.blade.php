@@ -1,3 +1,6 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <div class="hidden-menyu">
     <div class="hidden-menyu-container">
         <ul>
@@ -51,7 +54,7 @@
 <div class="all-header">
     <header class="container">
         <a href="{{ route('index') }}">
-            <img src="{{ asset($setting->logo_kaizen_header) }} " alt="">
+            <img src="{{ asset($setting->logo_kaizen_header) }} " alt="" style="width: 100px;">
         </a>
         <nav class="stroke">
             <ul>
@@ -86,11 +89,11 @@
             </button>
             @if(auth()->check())
                 <button id="open-menu">
-                    <img src="{{ asset('back/assets/img/menu.png') }}" alt="">
+                <i class="fa-solid fa-user" style="color: #69707a;"></i>
                 </button>
             @else
                 <button data-toggle="modal" data-target="#loginModal">
-                    <img src="{{ asset('back/assets/img/menu.png') }}" alt="">
+                <i class="fa-solid fa-user" style="color: #69707a;"></i>
                 </button>
             @endif
 
