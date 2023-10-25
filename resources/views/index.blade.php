@@ -340,7 +340,7 @@
            <div class="row blog-row">
             <div class="blog-cat">
                 <div class="cat-inner">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="gap: 3px;">
                         <li class="nav-item">
                           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ferdi" role="tab" aria-controls="home" aria-selected="true">Fərdi inkişaf</a>
                         </li>
