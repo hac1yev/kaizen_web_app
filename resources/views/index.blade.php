@@ -663,6 +663,67 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <div class="tab-pane fade" id="texnologiya" role="tabpanel" aria-labelledby="texnologiya-tab">
+                        @foreach ($techno as $techno)
+                            <div class="blog-1">
+                                <img src="{{ config('filesystems.disks.post-images.url') . "/$techno->image" }}" alt="">
+                                <div class="total-detail">
+                                    <div class="blog-det">
+                                        <div class="blog-date">
+                                            <p>{{ ($techno->created_at)->format('d.m.Y') }}</p>
+                                            <span></span>
+                                            <p>{{$techno->cat_title}}</p>
+                                        </div>
+                                        <div class="blog-time">
+                                            <img src="{{asset('back/assets/img/clock.png')}}" alt="">
+                                            <span>{{$techno->reading_time}} dəq</span>
+                                        </div>
+                                    </div>
+                                    <div class="blog-det-2">
+                                        <a href="{{route('detail', $techno->id)}}" style="color: #020202;text-decoration:none">
+                                            @if(mb_strlen($techno->post_title) > 20)
+                                                {{ html_entity_decode(mb_substr($techno->post_title, 0, 20)) . '...' }}
+                                            @else
+                                                {!! html_entity_decode($techno->post_title) !!}
+                                            @endif
+                                        </a>
+                                        <p>
+                                            @if(mb_strlen($techno->description) > 60)
+                                                {{ html_entity_decode(mb_substr($techno->description, 0, 60)) . '...' }}
+                                            @else
+                                                {!! html_entity_decode($techno->description) !!}
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div class="blog-det-3">
+                                        <a href="{{route('detail', $techno->id)}}"><button class="read-more">Daha çox
+                                        
+                                            <img src="{{asset('back/assets/img/more.png')}}" alt="">
+                                        </button>
+                                        </a>
+                                        <div class="action-sec">
+                                            <div class="look-numb">
+                                                <img src="{{asset('back/assets/img/look.png')}}" alt="">
+                                                <p>{{$techno->view}}</p>
+                                            </div>
+                                            <div class="act-btns">
+                                                <button>
+                                                    <img src="{{ asset('back/assets/img/heart.png') }}" alt="heart" id="likeButton_{{ $techno->id }}" style="{{ in_array($techno->id, $likes) ? 'display: none;' : 'display: inline-block;' }}" onclick="likePost({{ $techno->id }})">
+                                                    <img src="{{ asset('back/assets/img/red-heart.png') }}" alt="redheart" id="dislikeButton_{{ $techno->id }}" style="{{ in_array($techno->id, $likes) ? 'display: inline-block;' : 'display: none;' }}" onclick="dislikePost({{ $techno->id }})" >
+                                                </button>
+                                                <button>
+                                                    <img src="{{ asset('back/assets/img/save.png') }}" alt="save" id="bookButton_{{ $techno->id }}" style="{{ in_array($techno->id, $book) ? 'display: none;' : 'display: inline-block;' }}" onclick="bookPost({{ $techno->id }})">
+                                                    <img src="{{ asset('back/assets/img/blackbook.png') }}" alt="black" id="disbookButton_{{ $techno->id }}" style="{{ in_array($techno->id, $book) ? 'display: inline-block;' : 'display: none;' }}" onclick="disbookPost({{ $techno->id }})" >
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
                   </div>
                </div>
            </div>
@@ -844,6 +905,9 @@
                     break;
                 case 'biznes':
                     window.location.href = '{{route('biznes')}}';
+                    break;
+                case 'texnologiya':
+                    window.location.href = '{{route('tech')}}';
                     break;
                 default:
                     break;
