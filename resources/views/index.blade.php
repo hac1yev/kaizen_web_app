@@ -18,10 +18,10 @@
         <section class="second-sec container">
             <div class="row">
                 <div class="col-lg-12 smile-sec">
-                    <h2>Hazırki əhvalınıza uyğun ikon seçin, uyğun məqalə tövsiyəsi alın!</h2>
+                    <h2>Hazırki əhvalınızı seçin, uyğun məqalə tövsiyəsi alın!</h2>
                         <div class="smile-block">
                             @foreach($emojis as $emoji)
-                                <div class="smile-card">
+                                <div class="smile-card" style="width: 184px;">
                                     <a href="{{ route('emoji', ['emojiId' => $emoji->id]) }}">
                                         <img src="{{ asset($emoji->src) }}" alt="">
                                     </a>
@@ -337,7 +337,6 @@
         
 
         <section class="blog-cats container">
-            <h2 style="text-align: center;">Texnologiya</h2>
            <div class="row blog-row">
             <div class="blog-cat">
                 <div class="cat-inner">
@@ -356,6 +355,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="biznes-tab" data-toggle="tab" href="#biznes" role="tab" aria-controls="contact" aria-selected="false">Biznes Dünyası</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="texnologiya-tab" data-toggle="tab" href="#texnologiya" role="tab" aria-controls="contact" aria-selected="false">Texnologiya</a>
                         </li>
                       </ul>
                       <button class="see-more-mid">

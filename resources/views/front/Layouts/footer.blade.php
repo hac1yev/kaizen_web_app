@@ -1,6 +1,7 @@
     
 <footer class="footer" style="padding: 5px 0;">
-    <div class="foot-left">
+    <div class="foot-left" style="display: flex; flex-direction: column; justify-content: center;
+">
         <a target="_blank" href="https://www.butagrup.com.tr/?lang=az">        
             <img src="{{ asset($setting->logo_kaizen_footer) }}" alt="">
         </a>
