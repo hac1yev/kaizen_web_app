@@ -65,6 +65,10 @@ class İndexController extends Controller
         ->select('posts.id','posts.description','posts.content','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at','posts.reading_time')
         ->where('posts.status','1')->where('category_id','15')->take(4)->get();
 
+        $techno = Posts::join('categories','categories.id','=','posts.category_id')
+        ->select('posts.id','posts.description','posts.content','posts.image','posts.view','posts.status','posts.category_id as category_id','categories.title as cat_title','posts.title as post_title','posts.created_at','posts.reading_time')
+        ->where('posts.status','1')->where('category_id','16')->take(4)->get();
+
         $adverts = AdvertFooter::where('status','1')->get();
         if(auth()->check()){
             $likes = PostLike::whereUserId(auth()->user()->id)->get()->pluck('post_id')->toArray();}
