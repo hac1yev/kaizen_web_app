@@ -43,10 +43,10 @@
                     <a href="{{route('film')}}">Filmlər</a>
                 </li>
                 <li>
-                    <a href="{{route('tech')}}">Texnologiya</a>
+                    <a href="{{route('biznes')}}">Biznes Dünyası</a>
                 </li>
                 <li>
-                    <a href="{{route('biznes')}}">Biznes Dünyası</a>
+                    <a href="{{route('tech')}}">Texnologiya</a>
                 </li>
         </div>
         <form action="{{route('contact')}}" method="POST" id="contact">

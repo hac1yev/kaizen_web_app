@@ -13,8 +13,72 @@
 
 @section('content')
 
+    <style>
+        .bitrix-reklam {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reklam-1is {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reklam-1is img {
+            width: 100%;
+        }
+
+        .bitrix-reklam a {
+            display: block;
+        }
+
+        .bitrix-reklam-content {
+            display: flex!important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #3471A6;
+            padding: 25px 0;
+        }
+
+        .bitrix-reklam-content h3 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .bitrix-reklam-content p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .bitrix-reklam-content:hover {
+            text-decoration: none;
+        }
+
+        .bitrix-reklam a img {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 767.5px) {
+            .travel-paper3-header,
+            .bitrix-reklam,
+            .reklam-1is {
+                display: none;
+            }
+        }
+
+    </style>
+
     <section class="travel-section">
         <section class="travel-section mt-4">
+            <a href="https://1is.az/" target="_blank" class="reklam-1is">
+                <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="bitrix-manage" />
+            </a>
             <div class="container">
                 <div class="row travel-row">
                     <div class="col-12">
@@ -173,6 +237,25 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+
+                        <div class="bitrix-reklam">
+                            <a href="https://bitrix.butagrup.com.tr/?lang=az" target="_blank" class="bitrix-manage">
+                                <!-- <img src="../../../../public/assets/images/bitrix24_manage.webp" alt="bitrix-manage" /> -->
+                                <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="bitrix-manage" />
+                            </a>
+                            <a href="https://bitrix.butagrup.com.tr/?lang=az" target="_blank" class="bitrix-reklam-content">
+                                <h3>Bitrix24</h2>
+                                <p>İşlərinizi Asanlaşdırır...</p>
+                            </a>
+                            <a href="https://bitrix.butagrup.com.tr/?lang=az" target="_blank" class="bitrix-gif">
+                                <!-- <img src="../../../../public/assets/images/giphy.gif" alt="giphy" /> -->
+                                <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="bitrix-manage" />
+                            </a>
+                            <a href="https://bitrix.butagrup.com.tr/?lang=az" target="_blank" class="bitrix-payment">
+                                <!-- <img src="../../../../public/assets/images/bitrix_payment.webp" alt="bitrix-payment" /> -->
+                                <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="bitrix-manage" />
+                            </a>
                         </div>
                     </div>
                 </div>
